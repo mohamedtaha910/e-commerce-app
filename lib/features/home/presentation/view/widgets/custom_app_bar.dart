@@ -32,13 +32,13 @@ class CustomAppBar extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             // color: Colors.grey.shade50,
-            color: Colors.grey.shade200,
-            shape: BoxShape.circle,
-            // borderRadius: BorderRadius.circular(12),
+            color: Colors.grey.shade100,
+            // shape: BoxShape.circle,
+            borderRadius: BorderRadius.circular(14),
           ),
           child: SvgPicture.asset(
             'assets/icons/bell.svg',
-            height: 20,
+            height:19,
             color: Colors.grey.shade700,
           ),
         ),
@@ -46,8 +46,9 @@ class CustomAppBar extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.grey.shade200,
-            shape: BoxShape.circle,
+            color: Colors.grey.shade100,
+            borderRadius: BorderRadius.circular(13),
+            // shape: BoxShape.circle,
           ),
           child: SvgPicture.asset('assets/icons/bag.svg', height: 22),
         ),
