@@ -31,7 +31,9 @@ class _CategoriesListState extends State<CategoriesList> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SvgPicture.asset('assets/icons/Categories.svg'),
+       
         const SizedBox(height: 16),
+      //  category list
         SizedBox(
           height: 33,
           child: ListView.builder(
@@ -81,12 +83,33 @@ class _CategoriesListState extends State<CategoriesList> {
 
         const SizedBox(height: 24),
 
-        Row(
-          // mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [ProductItem()],
-        ),
+        // product grid
+        ProductGrid(),
       ],
+    );
+  }
+}
+
+class ProductGrid extends StatelessWidget {
+  const ProductGrid({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      clipBehavior: Clip.none,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        // childAspectRatio: 0.4, // 1.8
+        childAspectRatio: 0.7, // 1.8
+        crossAxisSpacing: 10, // x axis spacing
+        mainAxisSpacing: 10, // y axis spacing
+      ),
+      itemCount: 20,
+      itemBuilder: (context, index) {
+        return ProductItem();
+      },
     );
   }
 }

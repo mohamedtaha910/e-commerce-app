@@ -7,6 +7,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
@@ -20,7 +21,7 @@ class ProductItem extends StatelessWidget {
             children: [
               Container(
                 height: 180,
-                width: 180,
+                width: 160,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 0,
