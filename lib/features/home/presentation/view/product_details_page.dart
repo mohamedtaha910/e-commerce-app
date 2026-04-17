@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/custom_product_image.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/describtion_sectio.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/details_app_bar.dart';
@@ -10,13 +11,16 @@ import 'package:e_commerce_app/features/home/presentation/view/widgets/reviews_s
 import 'package:flutter/material.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  const ProductDetailsPage({super.key});
+  const ProductDetailsPage({super.key, required this.product});
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
+        elevation: 0,
         automaticallyImplyLeading: false,
         title: DetailsAppBar(),
       ),
@@ -29,13 +33,21 @@ class ProductDetailsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
-              CustomProductImage(imagePaths: ['assets/images/test1.png' , 'assets/images/test2.webp']),
+              CustomProductImage(imagePaths: product.images!),
               const SizedBox(height: 24),
-              ProductMainInfo(),
+              ProductMainInfo(
+                title: product.title!,
+                price: product.price!,
+                discountPercentage: product.discountPercentage!,
+                category: product.category!,
+              ),
               const SizedBox(height: 32),
               Row(
                 children: [
-                  RatingInfo(),
+                  RatingInfo(
+                    rating: product.rating!,
+                    reviews: product.reviews!.length,
+                  ),
                   const Spacer(),
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -47,7 +59,7 @@ class ProductDetailsPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
-                      "in stock",
+                      product.availabilityStatus!,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
@@ -60,15 +72,25 @@ class ProductDetailsPage extends StatelessWidget {
               const SizedBox(height: 24),
               HorizintalLine(),
               SizedBox(height: 24),
-              ProductInfo(),
+              ProductInfo(
+                stock: product.stock!,
+                warrantyInfo: product.warrantyInformation!,
+                shippingInfo: product.shippingInformation!,
+                returnInfo: product.returnPolicy!,
+              ),
               const SizedBox(height: 24),
               HorizintalLine(),
               const SizedBox(height: 24),
-              DescribtionSection(),
+              DescribtionSection(
+                describtion: product.description!,
+              ),
               const SizedBox(height: 24),
               HorizintalLine(),
               const SizedBox(height: 24),
-              ReviewsSection(),
+              ReviewsSection(
+                reviews: product.reviews!,
+                rating: product.rating!,
+              ),
             ],
           ),
         ),
@@ -87,24 +109,26 @@ class ProductDetailsPage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
                   padding: EdgeInsets.symmetric(vertical: 15),
-                  shadowColor: Colors.deepPurple 
+                  shadowColor: Colors.deepPurple,
                 ),
                 onPressed: () {},
-                child: Text("Add to Cart" , style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "Add to Cart",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             SizedBox(width: 10),
             Expanded(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  
                   backgroundColor: AppColors.primaryColor,
                   padding: EdgeInsets.symmetric(vertical: 15),
-                  shadowColor: AppColors.primaryColor
+                  shadowColor: AppColors.primaryColor,
                 ),
 
                 onPressed: () {},
-                child: Text("Buy Now" , style: TextStyle(color: Colors.white),),
+                child: Text("Buy Now", style: TextStyle(color: Colors.white)),
               ),
             ),
           ],
@@ -114,21 +138,11 @@ class ProductDetailsPage extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
 // =========================================================================================
 // import 'package:flutter/material.dart';
 
 // class ProductDetailsPage extends StatelessWidget {
 //   const ProductDetailsPage({super.key});
-
-
-  
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -141,7 +155,7 @@ class ProductDetailsPage extends StatelessWidget {
 //           // Hero(
 //           //   tag: product['id'],
 //           //   child:
-//           //       Image.asset('assets/images/test1.png', height: 350, fit: BoxFit.cover), 
+//           //       Image.asset('assets/images/test1.png', height: 350, fit: BoxFit.cover),
 
 //           // ),
 //           Image.asset('assets/images/test1.png', height: 350, fit: BoxFit.cover),

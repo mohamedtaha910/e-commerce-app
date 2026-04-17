@@ -1,9 +1,13 @@
-
 import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductMainInfo extends StatelessWidget {
-  const ProductMainInfo({super.key});
+  const ProductMainInfo({super.key, required this.title, required this.category, required this.price, required this.discountPercentage});
+  final String title;
+  final String category;
+  final double price;
+  final double discountPercentage;
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,17 +20,15 @@ class ProductMainInfo extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.62,
               child: Text(
-                'Black Black Challenge Shoes ',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
-                
-                ),
+                title,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'men\'s shoes',
+              category,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey.shade600,
@@ -48,7 +50,7 @@ class ProductMainInfo extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '426.00',
+                  price.toString(),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -61,7 +63,7 @@ class ProductMainInfo extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                "20% OFF",
+                "$discountPercentage% OFF",
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.pink,

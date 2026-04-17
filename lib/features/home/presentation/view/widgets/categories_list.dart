@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/products_grid.dart';
-import 'package:e_commerce_app/features/home/presentation/view_model/get_categories_cubit.dart';
+import 'package:e_commerce_app/features/home/presentation/view_model/get_categories_cubit/get_categories_cubit.dart';
+import 'package:e_commerce_app/features/home/presentation/view_model/get_products/get_products_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,7 +20,9 @@ class _CategoriesListState extends State<CategoriesList> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<GetCategoriesCubit>(context).getCategories();
+    BlocProvider.of<GetProductsCubit>(
+      context,
+    ).getProducts(category: selectedCategory);
   }
 
   @override
@@ -55,6 +58,9 @@ class _CategoriesListState extends State<CategoriesList> {
                       onTap: () {
                         setState(() {
                           selectedCategory = categories[index];
+                          BlocProvider.of<GetProductsCubit>(
+                            context,
+                          ).getProducts(category: selectedCategory);
                         });
                       },
                       child: Container(

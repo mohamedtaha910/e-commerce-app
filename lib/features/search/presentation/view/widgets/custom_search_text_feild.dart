@@ -6,7 +6,6 @@ class CustomSearchTextFeild extends StatelessWidget {
   const CustomSearchTextFeild({super.key, this.onChanged});
   final void Function(String)? onChanged;
 
-
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -14,7 +13,7 @@ class CustomSearchTextFeild extends StatelessWidget {
       onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
-        
+
         fillColor: Colors.grey.shade200,
         prefixIcon: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
@@ -31,7 +30,8 @@ class CustomSearchTextFeild extends StatelessWidget {
         hintText: 'Search ',
         hintStyle: const TextStyle(
           fontWeight: FontWeight.w600,
-          color: Colors.black54),
+          color: Colors.black54,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(25),
           borderSide: BorderSide(color: Colors.black38, width: 0.2),

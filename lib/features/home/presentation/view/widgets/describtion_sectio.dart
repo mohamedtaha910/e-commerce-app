@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DescribtionSection extends StatelessWidget {
-  const DescribtionSection({super.key});
+  const DescribtionSection({super.key, required this.describtion});
+  final String describtion ;
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,12 @@ class DescribtionSection extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'Lorem ipsum dolor sit amet consectetur. Ornare massa odio mauris aliquet lectus tincidunt viverra. Justo cursus fringilla quam quisque pretium. Amet quis nulla viverra aliquam.',
-          style: TextStyle(color: Colors.black54, fontSize: 14, fontWeight: FontWeight.w500),
+          describtion,
+          style: TextStyle(
+            color: Colors.black54,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ],
     );

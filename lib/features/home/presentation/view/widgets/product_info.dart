@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
 
 class ProductInfo extends StatelessWidget {
-  const ProductInfo({super.key});
+  const ProductInfo({super.key, required this.shippingInfo, required this.warrantyInfo, required this.returnInfo, required this.stock});
+  final String shippingInfo;
+  final String warrantyInfo;
+  final String returnInfo;
+  final int stock;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         InfoRow(
-          title: 'shipping free on orders over \$50',
+          title: shippingInfo,
           icon: Icons.local_shipping,
         ),
 
         SizedBox(height: 8),
 
-        InfoRow(
-          title: '2 years warranty',
-          icon: Icons.verified_rounded,
-        ),
+        InfoRow(title: warrantyInfo, icon: Icons.verified_rounded),
 
         SizedBox(height: 8),
 
-        InfoRow(
-          title: '60 Items Left',
-          icon: Icons.inventory_2_outlined,
-        ),
+        InfoRow(title: '$stock Items Left', icon: Icons.inventory_2_outlined),
 
         SizedBox(height: 8),
-        InfoRow(
-          title: '7 days return policy',
-          icon: Icons.restart_alt,
-        ),
+        InfoRow(title: returnInfo, icon: Icons.restart_alt),
       ],
     );
   }
@@ -43,6 +38,19 @@ class InfoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [Icon(icon , color: const Color.fromARGB(255, 86, 52, 1)), SizedBox(width: 8), Text(title , style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500 , color: Colors.black54),)]);
+    return Row(
+      children: [
+        Icon(icon, color: const Color.fromARGB(255, 86, 52, 1)),
+        SizedBox(width: 8),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.black54,
+          ),
+        ),
+      ],
+    );
   }
 }

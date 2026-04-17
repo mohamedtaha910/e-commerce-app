@@ -16,7 +16,6 @@ class CustomSearchBar extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
             borderRadius: BorderRadius.circular(12),
-            
           ),
           child: Row(
             children: [
@@ -35,16 +34,16 @@ class CustomSearchBar extends StatelessWidget {
           ),
         ),
         // const Spacer(),
-         const SizedBox(width: 6),
+        const SizedBox(width: 6),
         Container(
-          width:MediaQuery.of(context).size.width * 0.12,
+          width: MediaQuery.of(context).size.width * 0.12,
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             color: AppColors.primaryColor,
             // shape: BoxShape.circle,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: SvgPicture.asset('assets/icons/Filter.svg' , height: 24,),
+          child: SvgPicture.asset('assets/icons/Filter.svg', height: 24),
         ),
       ],
     );

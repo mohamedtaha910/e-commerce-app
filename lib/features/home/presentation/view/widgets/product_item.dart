@@ -1,9 +1,11 @@
+import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/features/home/presentation/view/product_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, required this.product});
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,7 @@ class ProductItem extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProductDetailsPage()),
+          MaterialPageRoute(builder: (context) => ProductDetailsPage(product: product,)),
         );
       },
       child: Column(
@@ -38,10 +40,12 @@ class ProductItem extends StatelessWidget {
                     color: Colors.grey.shade200,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Image.asset(
-                    'assets/images/test1.png',
-                    fit: BoxFit.contain,
-                  ),
+                  child: product.images?[0] == null
+                      ? Image.asset('assets/images/test1.png')
+                      : Image.network(
+                          product.images?[0] ?? '',
+                          fit: BoxFit.contain,
+                        ),
                 ),
                 Positioned(
                   top: 0,
@@ -72,8 +76,8 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          const Text(
-            'Black Black Challenge',
+          Text(
+            product.title ?? '',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -83,8 +87,8 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 4),
-          const Text(
-            ' \$ 426.00',
+          Text(
+            ' \$ ${product.price ?? ''}',
             style: TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w700,

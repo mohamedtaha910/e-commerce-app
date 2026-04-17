@@ -38,7 +38,7 @@ class CustomAppBar extends StatelessWidget {
           ),
           child: SvgPicture.asset(
             'assets/icons/bell.svg',
-            height:19,
+            height: 19,
             color: Colors.grey.shade700,
           ),
         ),

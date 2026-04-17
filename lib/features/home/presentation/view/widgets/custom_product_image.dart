@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 class CustomProductImage extends StatefulWidget {
   const CustomProductImage({super.key, required this.imagePaths});
-  final List<String> imagePaths;
+  final List<dynamic> imagePaths;
 
   @override
   State<CustomProductImage> createState() => _CustomProductImageState();
@@ -53,7 +53,7 @@ class _CustomProductImageState extends State<CustomProductImage> {
                         return Container(
                           width: double.infinity,
                           margin: EdgeInsets.symmetric(horizontal: 5),
-                          child: Image.asset(imageUrl, fit: BoxFit.contain),
+                          child: Image.network(imageUrl, fit: BoxFit.contain),
                         );
                       },
                     );

@@ -37,16 +37,11 @@ class SearchPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top:  16 , left: 16 , right: 16),
+        padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              ProductGrid(),
-            ],
-          ),
+          child: Column(children: [const SizedBox(height: 20), ProductGrid()]),
         ),
       ),
     );
