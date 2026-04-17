@@ -1,12 +1,13 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/custom_product_image.dart';
+import 'package:e_commerce_app/features/home/presentation/view/widgets/describtion_sectio.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/details_app_bar.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/horizintal_line.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/product_info.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/product_main_info.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/rating_info.dart';
+import 'package:e_commerce_app/features/home/presentation/view/widgets/reviews_section.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key});
@@ -20,47 +21,102 @@ class ProductDetailsPage extends StatelessWidget {
         title: DetailsAppBar(),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            ProductImage(imagePath: 'assets/images/test1.png'),
-            const SizedBox(height: 24),
-            ProductMainInfo(),
-            const SizedBox(height: 24),
-            Row(
-              children: [
-                RatingInfo(),
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor.withAlpha(50),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    "in stock",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: AppColors.primaryColor,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 24),
+              CustomProductImage(imagePaths: ['assets/images/test1.png' , 'assets/images/test2.webp']),
+              const SizedBox(height: 24),
+              ProductMainInfo(),
+              const SizedBox(height: 32),
+              Row(
+                children: [
+                  RatingInfo(),
+                  const Spacer(),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor.withAlpha(50),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      "in stock",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: AppColors.primaryColor,
+                      ),
                     ),
                   ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              HorizintalLine(),
+              SizedBox(height: 24),
+              ProductInfo(),
+              const SizedBox(height: 24),
+              HorizintalLine(),
+              const SizedBox(height: 24),
+              DescribtionSection(),
+              const SizedBox(height: 24),
+              HorizintalLine(),
+              const SizedBox(height: 24),
+              ReviewsSection(),
+            ],
+          ),
+        ),
+      ),
+
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          // color: Colors.white38,
+          // boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple,
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  shadowColor: Colors.deepPurple 
                 ),
-              ],
+                onPressed: () {},
+                child: Text("Add to Cart" , style: TextStyle(color: Colors.white),),
+              ),
             ),
-            const SizedBox(height: 24),
-            HorizintalLine(),
-            SizedBox(height: 24),
-            ProductInfo(),
+            SizedBox(width: 10),
+            Expanded(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  
+                  backgroundColor: AppColors.primaryColor,
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  shadowColor: AppColors.primaryColor
+                ),
+
+                onPressed: () {},
+                child: Text("Buy Now" , style: TextStyle(color: Colors.white),),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+
+
+
 
 
 

@@ -13,9 +13,16 @@ class ProductMainInfo extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Black Black Challenge Shoes',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.62,
+              child: Text(
+                'Black Black Challenge Shoes ',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             const SizedBox(height: 8),
             Text(

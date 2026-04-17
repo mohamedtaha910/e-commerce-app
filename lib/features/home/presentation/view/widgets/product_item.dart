@@ -63,6 +63,8 @@ class ProductItem extends StatelessWidget {
           const SizedBox(height: 12),
           const Text(
             'Black Black Challenge',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,

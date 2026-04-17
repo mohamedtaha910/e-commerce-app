@@ -25,6 +25,12 @@ class ProductInfo extends StatelessWidget {
           title: '60 Items Left',
           icon: Icons.inventory_2_outlined,
         ),
+
+        SizedBox(height: 8),
+        InfoRow(
+          title: '7 days return policy',
+          icon: Icons.restart_alt,
+        ),
       ],
     );
   }
