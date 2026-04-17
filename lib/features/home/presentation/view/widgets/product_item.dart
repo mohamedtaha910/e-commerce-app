@@ -9,10 +9,10 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ProductDetailsPage()),
-          );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProductDetailsPage()),
+        );
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -54,7 +54,18 @@ class ProductItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(color: Colors.white, width: 4),
                     ),
-                    child: SvgPicture.asset('assets/icons/heart.svg', height: 22),
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: SvgPicture.asset(
+                        'assets/icons/heart.svg',
+                        height: 22,
+                      ),
+                      // child: const Icon(
+                      //   Icons.favorite,
+                      //   // color: Colors.red,
+                      //   size: 22,
+                      // ),
+                    ),
                   ),
                 ),
               ],
@@ -80,7 +91,6 @@ class ProductItem extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-      
         ],
       ),
     );

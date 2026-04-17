@@ -2,6 +2,7 @@
 import 'package:e_commerce_app/features/home/presentation/view/widgets/categories_list.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/custom_app_bar.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/custom_search_bar.dart';
+import 'package:e_commerce_app/features/search/presentation/view/search_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePageBody extends StatelessWidget {
@@ -22,7 +23,14 @@ class HomePageBody extends StatelessWidget {
             const SizedBox(height: 20),
             const CustomAppBar(),
             const SizedBox(height: 36),
-            CustomSearchBar(),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => SearchPage()));
+              },
+              child: CustomSearchBar(),
+            ),
             const SizedBox(height: 36),
 
             const CategoriesList(),
