@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/home/presentation/view/widgets/product_grid_shimmer.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/product_item.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_products/get_products_cubit.dart';
 import 'package:flutter/material.dart';
@@ -41,9 +42,7 @@ class ProductGrid extends StatelessWidget {
             },
           );
         }
-        return Center(
-          child: CircularProgressIndicator(),
-        );
+        return ProductGridShimmer();
       },
     );
   }

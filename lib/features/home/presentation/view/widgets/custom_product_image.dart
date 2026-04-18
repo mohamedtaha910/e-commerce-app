@@ -62,7 +62,7 @@ class _CustomProductImageState extends State<CustomProductImage> {
                 const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
+                  children: widget.imagePaths.length == 1 ? [] : List.generate(
                     widget.imagePaths.length,
                     (index) => AnimatedContainer(
                       duration: Duration(milliseconds: 300),

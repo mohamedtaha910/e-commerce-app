@@ -83,6 +83,7 @@ class ProductDetailsPage extends StatelessWidget {
               const SizedBox(height: 24),
               DescribtionSection(
                 describtion: product.description!,
+                brand: product.brand!,
               ),
               const SizedBox(height: 24),
               HorizintalLine(),

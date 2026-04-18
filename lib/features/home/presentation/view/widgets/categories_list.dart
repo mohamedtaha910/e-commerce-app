@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/features/home/presentation/view/widgets/categories_shimmer.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/products_grid.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_categories_cubit/get_categories_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_products/get_products_cubit.dart';
@@ -52,7 +53,7 @@ class _CategoriesListState extends State<CategoriesList> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   physics: BouncingScrollPhysics(),
-                  itemCount: 10,
+                  itemCount: categories.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
@@ -97,7 +98,7 @@ class _CategoriesListState extends State<CategoriesList> {
                 ),
               );
             }
-            return Center(child: CircularProgressIndicator());
+            return CategoriesShimmer();
           },
         ),
 

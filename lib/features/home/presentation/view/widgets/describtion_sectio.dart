@@ -1,8 +1,14 @@
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class DescribtionSection extends StatelessWidget {
-  const DescribtionSection({super.key, required this.describtion});
-  final String describtion ;
+  const DescribtionSection({
+    super.key,
+    required this.describtion,
+    required this.brand,
+  });
+  final String describtion;
+  final String brand;
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +18,20 @@ class DescribtionSection extends StatelessWidget {
         Text(
           'Describtion',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            Icon(Icons.store , color: const Color.fromARGB(255, 94, 40, 4),),
+            Text(
+              'Brand : $brand',
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 8),
         Text(
