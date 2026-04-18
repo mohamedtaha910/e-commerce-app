@@ -37,9 +37,9 @@ class CustomAppBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(14),
           ),
           child: SvgPicture.asset(
-            'assets/icons/bell.svg',
-            height: 19,
-            color: Colors.grey.shade700,
+            'assets/icons/notification.svg',
+            height: 22,
+            // color: Colors.grey.shade700,
           ),
         ),
         const SizedBox(width: 20),

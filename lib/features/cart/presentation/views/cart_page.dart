@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class FavouritePage extends StatelessWidget {
-  const FavouritePage({super.key});
+class CartPage extends StatelessWidget {
+  const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Favourite Page',
+          'Cart page',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -18,7 +18,7 @@ class FavouritePage extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          'Favourite Page ',
+          'Cart Page',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
