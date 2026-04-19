@@ -2,7 +2,13 @@ import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductInfo extends StatelessWidget {
-  const ProductInfo({super.key, required this.shippingInfo, required this.warrantyInfo, required this.returnInfo, required this.stock});
+  const ProductInfo({
+    super.key,
+    required this.shippingInfo,
+    required this.warrantyInfo,
+    required this.returnInfo,
+    required this.stock,
+  });
   final String shippingInfo;
   final String warrantyInfo;
   final String returnInfo;
@@ -12,10 +18,7 @@ class ProductInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        InfoRow(
-          title: shippingInfo,
-          icon: Icons.local_shipping,
-        ),
+        InfoRow(title: shippingInfo, icon: Icons.local_shipping),
 
         SizedBox(height: 8),
 
@@ -48,7 +51,8 @@ class InfoRow extends StatelessWidget {
             color: AppColors.secondaryColor.withAlpha(50),
             shape: BoxShape.circle,
           ),
-          child: Icon(icon, color: AppColors.secondaryColor , size: 22,),),
+          child: Icon(icon, color: AppColors.secondaryColor, size: 22),
+        ),
         SizedBox(width: 8),
         Text(
           title,

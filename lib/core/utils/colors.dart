@@ -5,5 +5,7 @@ class AppColors {
   static const backgroundColor2 = Color(0xffEDEDED);
   static const primaryColor = Color(0xffff8d41);
   static const secondaryColor = Color.fromARGB(255, 127, 77, 2);
+  static const  itemColor = Color.fromARGB(255, 238, 238, 238);
+
 
 }

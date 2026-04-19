@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/models/product_model/product.dart';
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/home/presentation/view/product_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -38,6 +39,7 @@ class ProductItem extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: Colors.grey.shade200,
+                    // color: AppColors.itemColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: product.images?[0] == null

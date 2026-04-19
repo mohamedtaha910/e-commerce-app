@@ -3,7 +3,6 @@ import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view/favourite_page.dart';
 import 'package:e_commerce_app/features/home/presentation/view/home_page_body.dart';
-import 'package:e_commerce_app/features/search/data/repos/search_repo.dart';
 import 'package:e_commerce_app/features/search/data/repos/search_repo_implementation.dart';
 import 'package:e_commerce_app/features/search/presentation/view/search_page.dart';
 import 'package:e_commerce_app/features/search/presentation/view_model/search_products_cubit/search_products_cubit.dart';
@@ -43,7 +42,7 @@ class _HomePageState extends State<HomePage> {
             bottom: 0,
             left: 0,
             right: 0,
-            height: 30,
+            height: 22,
             // height: 55,
             // height: 63,
             child: Container(
@@ -53,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                   end: Alignment.topCenter,
                   colors: [
                     Colors.white,
-                    Colors.white38,
+                    Colors.white30,
 
                     // Colors.transparent
                   ],
@@ -65,7 +64,7 @@ class _HomePageState extends State<HomePage> {
           Positioned(
             // height: 100,
             //  bottom: 0,  // => emulator
-            bottom: 16, // => windows
+            bottom: 22, // => windows
             left: 6,
             right: 6,
             child: SafeArea(
