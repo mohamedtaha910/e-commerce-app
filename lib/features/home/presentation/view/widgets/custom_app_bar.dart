@@ -10,7 +10,20 @@ class CustomAppBar extends StatelessWidget {
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SvgPicture.asset('assets/icons/profile_picture.svg', height: 44),
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            // color: Colors.grey.shade50,
+            color: Colors.grey.shade200,
+            shape: BoxShape.circle,
+            // borderRadius: BorderRadius.circular(25),
+          ),
+          child: SvgPicture.asset(
+            'assets/icons/logo.svg',
+            color: AppColors.primaryColor,
+            height: 20,
+          ),
+        ),
         const SizedBox(width: 10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +32,7 @@ class CustomAppBar extends StatelessWidget {
               'Hello, John',
               style: TextStyle(
                 fontSize: 14,
-                color: AppColors.text2Color,
+                color: Colors.black38,
                 fontWeight: FontWeight.w500,
               ),
             ),

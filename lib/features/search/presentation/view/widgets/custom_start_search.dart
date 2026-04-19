@@ -12,11 +12,11 @@ class CustomStartSearch extends StatelessWidget {
         Center(
           child: Image.asset('assets/icons/search_product.png', height: 150),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 48),
         Text(
           'Search For a Products',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.black54,
           ),

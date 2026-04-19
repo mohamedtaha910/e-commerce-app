@@ -22,9 +22,15 @@ class DescribtionSection extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: [
-            Icon(Icons.store , color: const Color.fromARGB(255, 94, 40, 4),),
+            Container(
+              padding: EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: AppColors.secondaryColor.withAlpha(50),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.store , color: AppColors.secondaryColor, size: 24,)),
             Text(
-              'Brand : $brand',
+              ' Brand : $brand',
               style: TextStyle(
                 color: Colors.black54,
                 fontSize: 14,

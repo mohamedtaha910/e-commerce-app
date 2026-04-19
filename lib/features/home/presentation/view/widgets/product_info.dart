@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductInfo extends StatelessWidget {
@@ -40,7 +41,14 @@ class InfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: const Color.fromARGB(255, 86, 52, 1)),
+        Container(
+          padding: EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            // color: Colors.grey.shade200,
+            color: AppColors.secondaryColor.withAlpha(50),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(icon, color: AppColors.secondaryColor , size: 22,),),
         SizedBox(width: 8),
         Text(
           title,
