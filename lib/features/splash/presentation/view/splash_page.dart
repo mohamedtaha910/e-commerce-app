@@ -1,14 +1,28 @@
-import 'package:e_commerce_app/core/utils/colors.dart';
+// import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/features/splash/presentation/view/onboarding_1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
   @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Onboarding1(),));
+    });
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 244, 123, 90),
+      backgroundColor: const Color.fromARGB(255, 248, 121, 86),
       // backgroundColor: AppColors.secondaryColor,
       body: Stack(
         children: [
