@@ -14,7 +14,7 @@ class CustomHeader extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.55,
+          height: MediaQuery.of(context).size.height * 0.5,
           width: MediaQuery.of(context).size.width,
           child: SvgPicture.asset(
             'assets/auth_images/header1.svg',
@@ -29,7 +29,7 @@ class CustomHeader extends StatelessWidget {
           child: SvgPicture.asset(
             image,
             fit: BoxFit.fill,
-            height: MediaQuery.of(context).size.height * 0.32,
+            height: MediaQuery.of(context).size.height * 0.3,
             // width: 130,
           ),
         ),
@@ -58,7 +58,7 @@ class CustomHeader extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 60,
+          bottom: 45,
           left: 16,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

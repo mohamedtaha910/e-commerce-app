@@ -7,13 +7,14 @@ class CustomButton extends StatelessWidget {
     required this.onTap,
     required this.verticalPadding,
     required this.color,
-    required this.textColor,
+    required this.textColor, required this.horizontalMargin,
   });
   final String title;
   final double verticalPadding;
   final void Function()? onTap;
   final Color color;
   final Color textColor;
+  final double horizontalMargin;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class CustomButton extends StatelessWidget {
           vertical: verticalPadding,
           horizontal: 24,
         ),
-        margin: EdgeInsets.symmetric(horizontal: 8),
+        margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
         decoration: BoxDecoration(
           // color: AppColors.primaryColor,
           color: color,

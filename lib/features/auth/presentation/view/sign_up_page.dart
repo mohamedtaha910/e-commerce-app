@@ -1,8 +1,10 @@
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/auth/presentation/view/log_in_page.dart';
 import 'package:e_commerce_app/features/auth/presentation/view/widgets/custom_auth_text_feild.dart';
 import 'package:e_commerce_app/features/auth/presentation/view/widgets/custom_header.dart';
 import 'package:e_commerce_app/features/auth/presentation/view/widgets/custom_shift.dart';
 import 'package:e_commerce_app/features/auth/presentation/view/widgets/other_way.dart';
+import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -22,6 +24,7 @@ class SignUpPage extends StatelessWidget {
               image: 'assets/auth_images/frame.svg',
               text: 'assets/auth_images/Sign_Up_word.svg',
             ),
+            SizedBox(height: 16),
             AuthTextFeild(
               hintText: 'Email',
               icon: Icons.email,
@@ -36,6 +39,15 @@ class SignUpPage extends StatelessWidget {
               onChanged: (value) {},
               borderRadius: 25,
               obscureText: true,
+            ),
+            SizedBox(height: 32),
+            CustomButton(
+              color: AppColors.primaryColor,
+              textColor: Colors.white,
+              title: 'Log In',
+              verticalPadding: 10,
+              horizontalMargin: 16,
+              onTap: () {},
             ),
             SizedBox(height: 16),
             OtherWay(),

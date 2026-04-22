@@ -48,6 +48,7 @@ class OnboardingBody extends StatelessWidget {
                       verticalPadding: 8,
                       color: Colors.grey.shade200,
                       textColor: Colors.black,
+                      horizontalMargin: 8,
                     )
                   : SizedBox.shrink(),
               Expanded(
@@ -57,6 +58,7 @@ class OnboardingBody extends StatelessWidget {
                   verticalPadding: isLast ? 8 : 12,
                   color: AppColors.primaryColor,
                   textColor: Colors.white,
+                  horizontalMargin: 8,
                 ),
               ),
             ],
