@@ -8,7 +8,6 @@ class CustomHeader extends StatelessWidget {
   final String image;
   final String text;
 
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -16,11 +15,23 @@ class CustomHeader extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.5,
           width: MediaQuery.of(context).size.width,
-          child: SvgPicture.asset(
-            'assets/auth_images/header1.svg',
-            // color: const Color.fromARGB(255, 198, 172, 151),
-            color: AppColors.secondaryColor.withAlpha(120),
-            fit: BoxFit.fill,
+          child: ShaderMask(
+            blendMode: BlendMode
+                .srcIn, // Ensures the gradient only fills the SVG shape
+            shaderCallback: (Rect bounds) {
+              return LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [AppColors.primaryColor.withAlpha(150), Colors.purple.withAlpha(150)],
+              ).createShader(bounds);
+            },
+            child: SvgPicture.asset(
+              'assets/auth_images/header1.svg',
+              // color: const Color.fromARGB(255, 198, 172, 151),
+              // color: AppColors.secondaryColor.withAlpha(120),
+              // color: AppColors.primaryColor.withAlpha(230),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
         Positioned(
@@ -63,10 +74,7 @@ class CustomHeader extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(
-                text,
-                width: 130,
-              ),
+              SvgPicture.asset(text, width: 130),
               SizedBox(height: 8),
               CustomLine(),
             ],

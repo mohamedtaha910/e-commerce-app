@@ -44,7 +44,7 @@ class SignUpPage extends StatelessWidget {
             CustomButton(
               color: AppColors.primaryColor,
               textColor: Colors.white,
-              title: 'Log In',
+              title: 'Sign Up',
               verticalPadding: 10,
               horizontalMargin: 16,
               onTap: () {},

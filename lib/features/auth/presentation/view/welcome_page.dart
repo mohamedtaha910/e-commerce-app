@@ -17,11 +17,22 @@ class WelcomePage extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.7,
                 width: MediaQuery.of(context).size.width,
-                child: SvgPicture.asset(
-                  'assets/auth_images/header1.svg',
-                  // color: const Color.fromARGB(255, 198, 172, 151),
-                  color: AppColors.secondaryColor.withAlpha(120),
-                  fit: BoxFit.fill,
+                child: ShaderMask(
+                  blendMode: BlendMode
+                      .srcIn, // Ensures the gradient only fills the SVG shape
+                  shaderCallback: (Rect bounds) {
+                    return LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [AppColors.primaryColor, Colors.purple],
+                    ).createShader(bounds);
+                  },
+                  child: SvgPicture.asset(
+                    'assets/auth_images/header1.svg',
+                    // color: const Color.fromARGB(255, 198, 172, 151),
+                    color: AppColors.secondaryColor.withAlpha(120),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
               Positioned(

@@ -4,10 +4,16 @@ import 'package:e_commerce_app/features/home/data/repos/home_repo_implementation
 import 'package:e_commerce_app/features/home/presentation/view_model/get_categories_cubit/get_categories_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_products/get_products_cubit.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/splash_page.dart';
+import 'package:e_commerce_app/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+await Firebase.initializeApp(
+	options: DefaultFirebaseOptions.currentPlatform,
+);
   setUpServiceLocator();
   runApp(const MyApp());
 }
