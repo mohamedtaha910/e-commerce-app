@@ -1,4 +1,6 @@
-import 'package:e_commerce_app/features/auth/presentation/view/sign_up_page.dart';
+// import 'package:e_commerce_app/features/auth/presentation/view/sign_up_page.dart';
+import 'package:e_commerce_app/features/auth/presentation/view/welcome_page.dart';
+// import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/widgets/onboarding_body.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +16,7 @@ class Onboarding2 extends StatelessWidget {
         desc: 'assets/splash_images/desc2.svg',
         buttonTitle: 'Start Shopping',
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomePage()));
         },
         isLast: true,
       ),

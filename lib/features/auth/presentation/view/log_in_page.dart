@@ -1,12 +1,12 @@
-import 'package:e_commerce_app/features/auth/presentation/view/log_in_page.dart';
+import 'package:e_commerce_app/features/auth/presentation/view/sign_up_page.dart';
 import 'package:e_commerce_app/features/auth/presentation/view/widgets/custom_auth_text_feild.dart';
 import 'package:e_commerce_app/features/auth/presentation/view/widgets/custom_header.dart';
 import 'package:e_commerce_app/features/auth/presentation/view/widgets/custom_shift.dart';
 import 'package:e_commerce_app/features/auth/presentation/view/widgets/other_way.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,8 @@ class SignUpPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomHeader(
-              image: 'assets/auth_images/frame.svg',
-              text: 'assets/auth_images/Sign_Up_word.svg',
+              image: 'assets/auth_images/sign_up.svg',
+              text: 'assets/auth_images/Log_in_word.svg',
             ),
             AuthTextFeild(
               hintText: 'Email',
@@ -41,9 +41,9 @@ class SignUpPage extends StatelessWidget {
             OtherWay(),
             SizedBox(height: 16),
             CustomShift(
-              destination: LoginPage(),
-              text: 'Log In',
-              text2: 'Already have an account?  ',
+              destination: SignUpPage(),
+              text: 'Register Now',
+              text2: 'Don\'t have an account?  ',
             ),
             SizedBox(height: 20),
           ],
