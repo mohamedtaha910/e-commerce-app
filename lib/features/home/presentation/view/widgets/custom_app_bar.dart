@@ -29,7 +29,7 @@ class CustomAppBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Hello, John',
+              'Hello, Dear',
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.black38,

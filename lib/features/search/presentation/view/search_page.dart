@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+  const SearchPage({super.key, required this.isInHome});
+  final bool isInHome;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +25,16 @@ class SearchPage extends StatelessWidget {
             SizedBox(height: 8),
             Row(
               children: [
-                GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 20,
-                    color: Colors.black54,
-                  ),
-                ),
+                isInHome
+                    ? GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          size: 20,
+                          color: Colors.black54,
+                        ),
+                      )
+                    : SizedBox.shrink(),
                 SizedBox(width: 10),
                 Expanded(
                   child: CustomSearchTextFeild(
@@ -56,7 +59,7 @@ class SearchPage extends StatelessWidget {
             // const SizedBox(height: 20),
             BlocBuilder<SearchProductsCubit, SearchProductsState>(
               builder: (context, state) {
-                if(state is SearchProductsInitial){
+                if (state is SearchProductsInitial) {
                   return CustomStartSearch();
                 }
                 if (state is SearchProductsFailure) {
@@ -70,7 +73,7 @@ class SearchPage extends StatelessWidget {
                 }
                 if (state is SearchProductsSuccess) {
                   List<Product> products = state.products;
-                  if(products.isEmpty){
+                  if (products.isEmpty) {
                     return CustomNoItem();
                   }
                   return SearchedProductsList(products: products);

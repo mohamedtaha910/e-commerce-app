@@ -36,7 +36,9 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
         validator: (data) {
           if (data!.isEmpty) {
             return 'feild is required';
-          } else {
+          } else if( widget.hintText == 'Password' && data.length < 6) {
+            return 'password must be at least 6 characters';
+          }else{
             return null;
           }
         },

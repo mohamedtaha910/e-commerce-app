@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/utils/service_locator.dart';
+import 'package:e_commerce_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/home/data/repos/home_repo_implementation.dart';
 // import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_categories_cubit/get_categories_cubit.dart';
@@ -33,6 +34,8 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               GetProductsCubit(getIt.get<HomeRepoImplementation>()),
         ),
+        BlocProvider(
+          create: (context) => AuthCubit() ,)
       ],
       child: MaterialApp(
         theme: ThemeData(

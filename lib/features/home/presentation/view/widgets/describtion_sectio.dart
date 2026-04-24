@@ -30,7 +30,7 @@ class DescribtionSection extends StatelessWidget {
               ),
               child: Icon(Icons.store , color: AppColors.secondaryColor, size: 24,)),
             Text(
-              ' Brand : $brand',
+              '  Brand : $brand',
               style: TextStyle(
                 color: Colors.black54,
                 fontSize: 14,

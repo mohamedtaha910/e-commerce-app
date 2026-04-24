@@ -22,7 +22,10 @@ class CustomHeader extends StatelessWidget {
               return LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [AppColors.primaryColor.withAlpha(150), Colors.purple.withAlpha(150)],
+                colors: [
+                  AppColors.primaryColor.withAlpha(150),
+                  Colors.purple.withAlpha(150),
+                ],
               ).createShader(bounds);
             },
             child: SvgPicture.asset(

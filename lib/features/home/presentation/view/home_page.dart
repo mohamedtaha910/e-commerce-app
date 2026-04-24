@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     BlocProvider(
       create: (context) =>
           SearchProductsCubit(getIt.get<SearchRepoImplementation>()),
-      child: SearchPage(),
+      child: SearchPage(isInHome: false,),
     ),
     FavouritePage(),
     CartPage(),

@@ -35,7 +35,7 @@ class HomePageBody extends StatelessWidget {
                       create: (context) => SearchProductsCubit(
                         getIt.get<SearchRepoImplementation>(),
                       ),
-                      child: SearchPage(),
+                      child: SearchPage(isInHome: true,),
                     ),
                   ),
                 );

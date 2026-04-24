@@ -10,7 +10,7 @@ class CustomStartSearch extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-          child: Image.asset('assets/icons/search_product.png', height: 150),
+          child: Image.asset('assets/icons/search_.jpg', height: 180),
         ),
         const SizedBox(height: 48),
         Text(

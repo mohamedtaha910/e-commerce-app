@@ -24,13 +24,16 @@ class WelcomePage extends StatelessWidget {
                     return LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [AppColors.primaryColor, Colors.purple],
+                      colors: [
+                        AppColors.primaryColor.withAlpha(150),
+                        Colors.purple.withAlpha(150),
+                      ],
                     ).createShader(bounds);
                   },
                   child: SvgPicture.asset(
                     'assets/auth_images/header1.svg',
                     // color: const Color.fromARGB(255, 198, 172, 151),
-                    color: AppColors.secondaryColor.withAlpha(120),
+                    // color: AppColors.secondaryColor.withAlpha(120),
                     fit: BoxFit.fill,
                   ),
                 ),
