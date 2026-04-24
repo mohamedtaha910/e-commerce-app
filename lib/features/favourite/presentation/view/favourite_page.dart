@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/search/presentation/view/widgets/serched_products_list.dart';
 import 'package:flutter/material.dart';
 
 class FavouritePage extends StatelessWidget {
@@ -7,25 +8,26 @@ class FavouritePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Favourite Page',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.black54,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal:  8.0),
+          child: Text(
+            'My Favourite',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
         ),
       ),
-      body: Center(
-        child: Text(
-          'Favourite Page ',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.black54,
-          ),
-        ),
-      ),
+      body: Column(
+        children: [
+
+        ],
+      )
     );
   }
 }

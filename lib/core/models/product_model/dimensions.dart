@@ -1,6 +1,13 @@
+import 'package:hive/hive.dart';
+
+part 'dimensions.g.dart';
+@HiveType(typeId: 2)
 class Dimensions {
+  @HiveField(0)
   double? width;
+  @HiveField(1)
   double? height;
+  @HiveField(2)
   double? depth;
 
   Dimensions({this.width, this.height, this.depth});

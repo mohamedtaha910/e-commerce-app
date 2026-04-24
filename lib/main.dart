@@ -1,3 +1,7 @@
+import 'package:e_commerce_app/core/models/product_model/dimensions.dart';
+import 'package:e_commerce_app/core/models/product_model/meta.dart';
+import 'package:e_commerce_app/core/models/product_model/product.dart';
+import 'package:e_commerce_app/core/models/product_model/review.dart';
 import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/home/data/repos/home_repo_implementation.dart';
@@ -9,12 +13,20 @@ import 'package:e_commerce_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp(
-	options: DefaultFirebaseOptions.currentPlatform,
-);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(ProductAdapter());
+  Hive.registerAdapter(DimensionsAdapter());
+  Hive.registerAdapter(MetaAdapter());
+  Hive.registerAdapter(ReviewAdapter());
+  await Hive.openBox<Product>('favProducts');
   setUpServiceLocator();
   runApp(const MyApp());
 }
@@ -28,14 +40,14 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              GetCategoriesCubit(getIt.get<HomeRepoImplementation>())..getCategories(),
+              GetCategoriesCubit(getIt.get<HomeRepoImplementation>())
+                ..getCategories(),
         ),
         BlocProvider(
           create: (context) =>
               GetProductsCubit(getIt.get<HomeRepoImplementation>()),
         ),
-        BlocProvider(
-          create: (context) => AuthCubit() ,)
+        BlocProvider(create: (context) => AuthCubit()),
       ],
       child: MaterialApp(
         theme: ThemeData(

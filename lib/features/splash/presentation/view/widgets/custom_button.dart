@@ -7,9 +7,11 @@ class CustomButton extends StatelessWidget {
     required this.onTap,
     required this.verticalPadding,
     required this.color,
-    required this.textColor, required this.horizontalMargin,
+    required this.textColor, required this.horizontalMargin, required this.titleSize,
+
   });
   final String title;
+  final double titleSize;
   final double verticalPadding;
   final void Function()? onTap;
   final Color color;
@@ -37,7 +39,7 @@ class CustomButton extends StatelessWidget {
             title,
             style: TextStyle(
               color: textColor,
-              fontSize: 17,
+              fontSize: titleSize,
               fontWeight: FontWeight.bold,
             ),
           ),

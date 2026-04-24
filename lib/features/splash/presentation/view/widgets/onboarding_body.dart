@@ -44,6 +44,7 @@ class OnboardingBody extends StatelessWidget {
               isLast
                   ? CustomButton(
                       title: 'Previous',
+                      titleSize: 15,
                       onTap: Navigator.of(context).pop,
                       verticalPadding: 8,
                       color: Colors.grey.shade200,
@@ -54,6 +55,7 @@ class OnboardingBody extends StatelessWidget {
               Expanded(
                 child: CustomButton(
                   title: buttonTitle,
+                  titleSize: isLast ? 16 : 17,
                   onTap: onTap,
                   verticalPadding: isLast ? 8 : 12,
                   color: AppColors.primaryColor,

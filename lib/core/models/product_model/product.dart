@@ -1,29 +1,55 @@
+import 'package:hive/hive.dart';
+
 import 'dimensions.dart';
 import 'meta.dart';
 import 'review.dart';
+part 'product.g.dart';
 
+@HiveType(typeId: 0)
 class Product {
+  @HiveField(0)
   int? id;
+  @HiveField(1)
   String? title;
+  @HiveField(2)
   String? description;
+  @HiveField(3)
   String? category;
+  @HiveField(4)
   double? price;
+  @HiveField(5)
   double? discountPercentage;
+  @HiveField(6)
   double? rating;
+  @HiveField(7)
   int? stock;
+  @HiveField(8)
   List<dynamic>? tags;
+  @HiveField(9)
   String? brand;
+  @HiveField(10)
   String? sku;
+  @HiveField(11)
   int? weight;
+  @HiveField(12)
   Dimensions? dimensions;
+  @HiveField(13)
   String? warrantyInformation;
+  @HiveField(14)
   String? shippingInformation;
+  @HiveField(15)
   String? availabilityStatus;
+  @HiveField(16)
   List<Review>? reviews;
+  @HiveField(17)
   String? returnPolicy;
+  @HiveField(18)
   int? minimumOrderQuantity;
+  @HiveField(19)
   Meta? meta;
+  @HiveField(20)
   List<dynamic>? images;
+  @HiveField(21)
   String? thumbnail;
 
   Product({
@@ -52,18 +78,18 @@ class Product {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-    id: json['id'] as int?,
+    id: int.tryParse(json['id'].toString()),
     title: json['title'] as String?,
     description: json['description'] as String?,
     category: json['category'] as String?,
-    price: (json['price'] as num?)?.toDouble(),
-    discountPercentage: (json['discountPercentage'] as num?)?.toDouble(),
-    rating: (json['rating'] as num?)?.toDouble(),
-    stock: json['stock'] as int?,
+    price: double.tryParse(json['price'].toString()),
+    discountPercentage: double.tryParse(json['discountPercentage'].toString()),
+    rating: double.tryParse(json['rating'].toString()),
+    stock: int.tryParse(json['stock'].toString()),
     tags: json['tags'],
     brand: json['brand'] as String?,
     sku: json['sku'] as String?,
-    weight: json['weight'] as int?,
+    weight: int.tryParse(json['weight'].toString()),
     dimensions: json['dimensions'] == null
         ? null
         : Dimensions.fromJson(json['dimensions'] as Map<String, dynamic>),
@@ -74,7 +100,7 @@ class Product {
         ?.map((e) => Review.fromJson(e as Map<String, dynamic>))
         .toList(),
     returnPolicy: json['returnPolicy'] as String?,
-    minimumOrderQuantity: json['minimumOrderQuantity'] as int?,
+    minimumOrderQuantity: int.tryParse(json['minimumOrderQuantity'].toString()),
     meta: json['meta'] == null
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),

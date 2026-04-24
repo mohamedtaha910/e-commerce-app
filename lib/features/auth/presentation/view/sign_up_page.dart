@@ -82,6 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       color: AppColors.primaryColor,
                       textColor: Colors.white,
                       title: 'Sign Up',
+                      titleSize: 17,
                       verticalPadding: 10,
                       horizontalMargin: 16,
                       onTap: () {
@@ -137,6 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
             SizedBox(height: 32),
             CustomButton(
               title: 'Ok',
+              titleSize: 17,
               onTap: () {
                 Navigator.pop(context);
               },

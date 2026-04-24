@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   String? email;
   String? password;
   bool isLoading = false;
-  // AutovalidateMode? autovalidateMode = AutoValidateMode.disabled;
+  AutovalidateMode? autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               scrollDirection: Axis.vertical,
               child: Form(
                 key: formKey,
-
+                autovalidateMode: autovalidateMode,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -84,9 +84,13 @@ class _LoginPageState extends State<LoginPage> {
                       color: AppColors.primaryColor,
                       textColor: Colors.white,
                       title: 'Log In',
+                      titleSize: 17,
                       verticalPadding: 10,
                       horizontalMargin: 16,
                       onTap: () {
+                        autovalidateMode = AutovalidateMode.always;
+                        setState(() {});
+
                         if (formKey.currentState!.validate()) {
                           BlocProvider.of<AuthCubit>(
                             context,
@@ -140,6 +144,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 32),
             CustomButton(
               title: 'Ok',
+              titleSize: 17,
               onTap: () {
                 Navigator.pop(context);
               },

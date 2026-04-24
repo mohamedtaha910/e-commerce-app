@@ -33,6 +33,7 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal:  16.0),
       child: TextFormField(
+        
         validator: (data) {
           if (data!.isEmpty) {
             return 'feild is required';

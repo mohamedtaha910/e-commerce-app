@@ -3,6 +3,7 @@ import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view/favourite_page.dart';
 import 'package:e_commerce_app/features/home/presentation/view/home_page_body.dart';
+import 'package:e_commerce_app/features/profile/presentation/view/profile_page.dart';
 import 'package:e_commerce_app/features/search/data/repos/search_repo_implementation.dart';
 import 'package:e_commerce_app/features/search/presentation/view/search_page.dart';
 import 'package:e_commerce_app/features/search/presentation/view_model/search_products_cubit/search_products_cubit.dart';
@@ -24,10 +25,12 @@ class _HomePageState extends State<HomePage> {
     BlocProvider(
       create: (context) =>
           SearchProductsCubit(getIt.get<SearchRepoImplementation>()),
-      child: SearchPage(isInHome: false,),
+      child: SearchPage(isInHome: false),
     ),
     FavouritePage(),
     CartPage(),
+    ProfilePage(),
+    
   ];
   @override
   Widget build(BuildContext context) {
@@ -69,7 +72,7 @@ class _HomePageState extends State<HomePage> {
             right: 6,
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 28),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(18),
 
@@ -137,6 +140,26 @@ class _HomePageState extends State<HomePage> {
                           color: AppColors.primaryColor,
                         ),
                         label: 'Favourites',
+                      ),
+
+                      NavigationDestination(
+                        icon: SvgPicture.asset(
+                          'assets/icons/bag.svg',
+                          height: 24,
+                          colorFilter: ColorFilter.mode(
+                            Colors.black54,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        selectedIcon: SvgPicture.asset(
+                          'assets/icons/bag.svg',
+                          height: 24,
+                          colorFilter: ColorFilter.mode(
+                            AppColors.primaryColor,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        label: 'Profile',
                       ),
                       NavigationDestination(
                         icon: SvgPicture.asset(

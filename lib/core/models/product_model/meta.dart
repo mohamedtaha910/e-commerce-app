@@ -1,7 +1,15 @@
+import 'package:hive/hive.dart';
+
+part 'meta.g.dart';
+@HiveType(typeId: 3)
 class Meta {
+  @HiveField(0)
   DateTime? createdAt;
+  @HiveField(1)
   DateTime? updatedAt;
+  @HiveField(2)
   String? barcode;
+  @HiveField(3)
   String? qrCode;
 
   Meta({this.createdAt, this.updatedAt, this.barcode, this.qrCode});
