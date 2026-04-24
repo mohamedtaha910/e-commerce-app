@@ -1,11 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomProductImage extends StatefulWidget {
-  const CustomProductImage({super.key, required this.imagePaths});
-  final List<dynamic> imagePaths;
+  const CustomProductImage({super.key, required this.product});
+  final Product product;
 
   @override
   State<CustomProductImage> createState() => _CustomProductImageState();
@@ -47,7 +50,7 @@ class _CustomProductImageState extends State<CustomProductImage> {
                       });
                     },
                   ),
-                  items: widget.imagePaths.map((imageUrl) {
+                  items: widget.product.images!.map((imageUrl) {
                     return Builder(
                       builder: (context) {
                         return Container(
@@ -62,21 +65,23 @@ class _CustomProductImageState extends State<CustomProductImage> {
                 const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: widget.imagePaths.length == 1 ? [] : List.generate(
-                    widget.imagePaths.length,
-                    (index) => AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
-                      margin: EdgeInsets.symmetric(horizontal: 4),
-                      width: currentIndex == index ? 12 : 8,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: currentIndex == index
-                            ? AppColors.primaryColor
-                            : Colors.grey,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
+                  children: widget.product.images!.length == 1
+                      ? []
+                      : List.generate(
+                          widget.product.images!.length,
+                          (index) => AnimatedContainer(
+                            duration: Duration(milliseconds: 300),
+                            margin: EdgeInsets.symmetric(horizontal: 4),
+                            width: currentIndex == index ? 12 : 8,
+                            height: 8,
+                            decoration: BoxDecoration(
+                              color: currentIndex == index
+                                  ? AppColors.primaryColor
+                                  : Colors.grey,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
                 ),
               ],
             ),
@@ -84,15 +89,38 @@ class _CustomProductImageState extends State<CustomProductImage> {
           Positioned(
             top: 0,
             right: 0,
-            child: Container(
-              padding: const EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                // shape: BoxShape.circle,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.white, width: 4),
-              ),
-              child: SvgPicture.asset('assets/icons/heart.svg', height: 22),
+            child: BlocBuilder<FavouriteCubit, FavouriteState>(
+              builder: (context, state) {
+               
+                  return Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      // shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.white, width: 4),
+                    ),
+                    child: GestureDetector(
+                      onTap: () => BlocProvider.of<FavouriteCubit>(
+                        context,
+                      ).addFavourite(widget.product),
+                      child:
+                          BlocProvider.of<FavouriteCubit>(
+                            context,
+                          ).isFavourite(widget.product.id!)
+                          ? const Icon(
+                              Icons.favorite,
+                              color: Colors.black,
+                              size: 22,
+                            )
+                          : SvgPicture.asset(
+                              'assets/icons/heart.svg',
+                              height: 22,
+                            ),
+                    ),
+                  );
+                
+              },
             ),
           ),
         ],

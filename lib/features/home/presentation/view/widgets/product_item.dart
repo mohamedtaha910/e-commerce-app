@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/product_details_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ProductItem extends StatelessWidget {
@@ -14,7 +16,9 @@ class ProductItem extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProductDetailsPage(product: product,)),
+          MaterialPageRoute(
+            builder: (context) => ProductDetailsPage(product: product),
+          ),
         );
       },
       child: Column(
@@ -52,26 +56,38 @@ class ProductItem extends StatelessWidget {
                 Positioned(
                   top: 0,
                   right: 0,
-                  child: Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      // shape: BoxShape.circle,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.white, width: 4),
-                    ),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: SvgPicture.asset(
-                        'assets/icons/heart.svg',
-                        height: 22,
-                      ),
-                      // child: const Icon(
-                      //   Icons.favorite,
-                      //   // color: Colors.red,
-                      //   size: 22,
-                      // ),
-                    ),
+                  child: BlocBuilder<FavouriteCubit, FavouriteState>(
+                    builder: (context, state) {
+                      return Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          // shape: BoxShape.circle,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white, width: 4),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<FavouriteCubit>(
+                              context,
+                            ).addFavourite(product);
+                          },
+                          child:
+                              BlocProvider.of<FavouriteCubit>(
+                                context,
+                              ).isFavourite(product.id!)
+                              ? const Icon(
+                                  Icons.favorite,
+                                  color: Colors.black,
+                                  size: 22,
+                                )
+                              : SvgPicture.asset(
+                                  'assets/icons/heart.svg',
+                                  height: 22,
+                                ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

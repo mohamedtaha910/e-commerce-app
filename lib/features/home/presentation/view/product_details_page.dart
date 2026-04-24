@@ -33,7 +33,7 @@ class ProductDetailsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
-              CustomProductImage(imagePaths: product.images!),
+              CustomProductImage(product: product),
               const SizedBox(height: 24),
               ProductMainInfo(
                 title: product.title!,
@@ -138,5 +138,3 @@ class ProductDetailsPage extends StatelessWidget {
     );
   }
 }
-
-
