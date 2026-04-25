@@ -8,17 +8,22 @@ class SearchedProductsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        // shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          return SerchedProductItem(
-            product: products[index],
-          );
-        },
+    return ListView.separated(
+      // shrinkWrap: true,
+      physics: BouncingScrollPhysics(),
+      itemCount: products.length,
+      separatorBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: const Divider(
+          indent: 32,
+          endIndent: 32,
+        ),
       ),
+      itemBuilder: (context, index) {
+        return SerchedProductItem(
+          product: products[index],
+        );
+      },
     );
   }
 }

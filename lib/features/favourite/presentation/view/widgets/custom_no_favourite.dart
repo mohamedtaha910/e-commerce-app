@@ -14,12 +14,12 @@ class CustomNoFavourite extends StatelessWidget {
         // const Spacer(),
         Image.asset('assets/icons/favourite_.jpg' , height: 200,),
         // SvgPicture.asset('assets/icons/empty_wish_list.svg' , height: 300,),
-        const SizedBox(height: 24),
+        const SizedBox(height: 18),
         Center(
           child: Text(
             'No Favourites Products Yet !',
             style: TextStyle(
-              fontSize: 17,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Colors.black54,
             ),

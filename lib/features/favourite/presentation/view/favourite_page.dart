@@ -43,11 +43,14 @@ class _FavouritePageState extends State<FavouritePage> {
           if (state is FavouriteSuccess) {
             List<Product> products = state.favourites;
 
-            return products.isNotEmpty
-                ? SearchedProductsList(products: products)
-                : CustomNoFavourite();
+            return Padding(
+              padding: const EdgeInsets.symmetric( horizontal: 16.0 , vertical: 8),
+              child: products.isNotEmpty
+                  ? SearchedProductsList(products: products)
+                  : CustomNoFavourite(),
+            );
           } else {
-            return const Center(child: Text('No Favourite222'));
+            return const Center(child: Text('Loading...'));
           }
         },
       ),

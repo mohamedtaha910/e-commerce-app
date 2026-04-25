@@ -51,38 +51,32 @@ class SearchPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 24, left: 16, right: 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // const SizedBox(height: 20),
-            BlocBuilder<SearchProductsCubit, SearchProductsState>(
-              builder: (context, state) {
-                if (state is SearchProductsInitial) {
-                  return CustomStartSearch();
-                }
-                if (state is SearchProductsFailure) {
-                  return Text(
-                    state.errorMessage,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black54,
-                    ),
-                  );
-                }
-                if (state is SearchProductsSuccess) {
-                  List<Product> products = state.products;
-                  if (products.isEmpty) {
-                    return CustomNoItem();
-                  }
-                  return SearchedProductsList(products: products);
-                }
-                return SearchedListShimmer();
-              },
-            ),
-          ],
-        ),
+      body: BlocBuilder<SearchProductsCubit, SearchProductsState>(
+        builder: (context, state) {
+          if (state is SearchProductsInitial) {
+            return CustomStartSearch();
+          }
+          if (state is SearchProductsFailure) {
+            return Text(
+              state.errorMessage,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.black54,
+              ),
+            );
+          }
+          if (state is SearchProductsSuccess) {
+            List<Product> products = state.products;
+            if (products.isEmpty) {
+              return CustomNoItem();
+            }
+            return Padding(
+              padding: const EdgeInsets.only( right: 16.0 , left: 16 , top: 16),
+              child: SearchedProductsList(products: products),
+            );
+          }
+          return SearchedListShimmer();
+        },
       ),
     );
   }

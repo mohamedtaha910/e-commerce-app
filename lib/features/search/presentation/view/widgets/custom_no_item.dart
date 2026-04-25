@@ -9,11 +9,11 @@ class CustomNoItem extends StatelessWidget {
     return Column(
       children: [
         Center(child: SvgPicture.asset('assets/icons/no_items.svg',)),
-        SizedBox(height: 24),
+        SizedBox(height: 20),
         Text(
           'No Item Found !',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 17,
             fontWeight: FontWeight.bold,
             color: Colors.black54,
           ),
