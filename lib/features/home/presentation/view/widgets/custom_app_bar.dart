@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -56,14 +57,21 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 20),
-        Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: Colors.grey.shade100,
-            borderRadius: BorderRadius.circular(13),
-            // shape: BoxShape.circle,
+        GestureDetector(
+          onTap: () {
+            Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (c) => CartPage()));
+          },
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(13),
+              // shape: BoxShape.circle,
+            ),
+            child: SvgPicture.asset('assets/icons/bag.svg', height: 22),
           ),
-          child: SvgPicture.asset('assets/icons/bag.svg', height: 22),
         ),
       ],
     );
