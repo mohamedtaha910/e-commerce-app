@@ -7,6 +7,7 @@ class CustomNoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(child: SvgPicture.asset('assets/icons/no_items.svg',)),
         SizedBox(height: 20),

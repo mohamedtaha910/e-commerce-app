@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       child: SearchPage(isInHome: false),
     ),
     FavouritePage(),
-    CartPage(),
+    // CartPage(),
     ProfilePage(),
     
   ];
@@ -68,11 +68,11 @@ class _HomePageState extends State<HomePage> {
             // height: 100,
             //  bottom: 0,  // => emulator
             bottom: 22, // => windows
-            left: 6,
-            right: 6,
+            left: 0,
+            right: 0,
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 28),
+                padding: const EdgeInsets.symmetric(horizontal: 42),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(18),
 
@@ -142,25 +142,25 @@ class _HomePageState extends State<HomePage> {
                         label: 'Favourites',
                       ),
 
-                      NavigationDestination(
-                        icon: SvgPicture.asset(
-                          'assets/icons/bag.svg',
-                          height: 24,
-                          colorFilter: ColorFilter.mode(
-                            Colors.black54,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                        selectedIcon: SvgPicture.asset(
-                          'assets/icons/bag.svg',
-                          height: 24,
-                          colorFilter: ColorFilter.mode(
-                            AppColors.primaryColor,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                        label: 'Profile',
-                      ),
+                      // NavigationDestination(
+                      //   icon: SvgPicture.asset(
+                      //     'assets/icons/bag.svg',
+                      //     height: 24,
+                      //     colorFilter: ColorFilter.mode(
+                      //       Colors.black54,
+                      //       BlendMode.srcIn,
+                      //     ),
+                      //   ),
+                      //   selectedIcon: SvgPicture.asset(
+                      //     'assets/icons/bag.svg',
+                      //     height: 24,
+                      //     colorFilter: ColorFilter.mode(
+                      //       AppColors.primaryColor,
+                      //       BlendMode.srcIn,
+                      //     ),
+                      //   ),
+                      //   label: 'Cart',
+                      // ),
                       NavigationDestination(
                         icon: SvgPicture.asset(
                           'assets/icons/Profile.svg',

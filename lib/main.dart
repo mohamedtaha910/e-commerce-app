@@ -7,8 +7,9 @@ import 'package:e_commerce_app/features/auth/presentation/view_model/auth_cubit/
 import 'package:e_commerce_app/features/favourite/data/repos/favourite_repo_implementation.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:e_commerce_app/features/home/data/repos/home_repo_implementation.dart';
-// import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_categories_cubit/get_categories_cubit.dart';
+// import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
+// import 'package:e_commerce_app/features/home/presentation/view_model/get_categories_cubit/get_categories_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_products/get_products_cubit.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/splash_page.dart';
 import 'package:e_commerce_app/firebase_options.dart';
