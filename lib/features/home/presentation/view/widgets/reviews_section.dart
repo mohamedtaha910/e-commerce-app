@@ -107,11 +107,12 @@ class RatingStars extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: List.generate(5, (index) {
-        return Icon(
-          index < rating ? Icons.star : Icons.star_border,
-          color: Colors.amber,
-          size: 18,
-        );
+        return index < rating
+            ? Padding(
+              padding: const EdgeInsets.only(right:  1.5),
+              child: Icon(Icons.star, color: Colors.amber, size: 18),
+            )
+            : Icon(Icons.star_border, color: Colors.black54, size: 18);
       }),
     );
   }

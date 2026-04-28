@@ -71,11 +71,14 @@ class SearchPage extends StatelessWidget {
               return CustomNoItem();
             }
             return Padding(
-              padding: const EdgeInsets.only( right: 16.0 , left: 16 , top: 16),
+              padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
               child: SearchedProductsList(products: products),
             );
           }
-          return SearchedListShimmer();
+          return Padding(
+            padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
+            child: SearchedListShimmer(),
+          );
         },
       ),
     );

@@ -1,7 +1,10 @@
 import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/product_details_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 // class SerchedProductItem extends StatelessWidget {
 //   const SerchedProductItem({super.key, required this.product});
@@ -141,7 +144,7 @@ class SerchedProductItem extends StatelessWidget {
     final double discountedPrice = originalPrice * (1 - discount / 100);
 
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => ProductDetailsPage(product: product),
@@ -151,16 +154,16 @@ class SerchedProductItem extends StatelessWidget {
       child: Container(
         // height: 110,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.white70,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey.shade300),
+          border: Border.all(color: Colors.black12),
           boxShadow: [
             BoxShadow(
               color: Colors.black12,
               offset: Offset(0, 2),
               blurRadius: 6,
-            )
-          ]
+            ),
+          ],
         ),
 
         // clipBehavior: Clip.hardEdge,
@@ -169,7 +172,7 @@ class SerchedProductItem extends StatelessWidget {
             // Product Image
             SizedBox(
               width: 110,
-      
+
               child: Image.network(
                 product.images![0],
                 fit: BoxFit.cover,
@@ -182,11 +185,14 @@ class SerchedProductItem extends StatelessWidget {
                 ),
               ),
             ),
-      
+
             // Product Info
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -196,15 +202,58 @@ class SerchedProductItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Title
-                        Text(
-                          product.title!,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black87,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.43,
+                              child: Text(
+                                product.title!,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.black87,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            BlocBuilder<FavouriteCubit, FavouriteState>(
+                              builder: (context, state) {
+                                return Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade100,
+                                    shape: BoxShape.circle,
+                                    // borderRadius: BorderRadius.circular(12),
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 1.6,
+                                    ),
+                                  ),
+                                  child: GestureDetector(
+                                    onTap: () =>
+                                        BlocProvider.of<FavouriteCubit>(
+                                          context,
+                                        ).addFavourite(product),
+                                    child:
+                                        BlocProvider.of<FavouriteCubit>(
+                                          context,
+                                        ).isFavourite(product.id!)
+                                        ? const Icon(
+                                            Icons.favorite,
+                                            color: Colors.black,
+                                            size: 19,
+                                          )
+                                        : SvgPicture.asset(
+                                            'assets/icons/heart.svg',
+                                            height: 19,
+                                          ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 6),
                         // Category badge
@@ -218,14 +267,14 @@ class SerchedProductItem extends StatelessWidget {
                             color: AppColors.primaryColor.withAlpha(50),
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          
+
                           child: Text(
                             product.category.toString().toUpperCase(),
                             style: const TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w600,
                               // color: Color(0xFF3B6D11),
-                              color: AppColors.primaryColor
+                              color: AppColors.primaryColor,
                             ),
                           ),
                         ),
@@ -240,7 +289,7 @@ class SerchedProductItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 6,),
+                    SizedBox(height: 6),
                     // Bottom section
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -308,7 +357,7 @@ class SerchedProductItem extends StatelessWidget {
                             ),
                           ],
                         ),
-      
+
                         // Stock + MOQ
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,

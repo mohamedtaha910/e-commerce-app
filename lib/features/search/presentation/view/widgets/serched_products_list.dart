@@ -14,14 +14,16 @@ class SearchedProductsList extends StatelessWidget {
       itemCount: products.length,
       separatorBuilder: (context, index) => Padding(
         padding: const EdgeInsets.all(8.0),
-        child: const Divider(
-          indent: 32,
-          endIndent: 32,
-        ),
+        child: const Divider(indent: 32, endIndent: 32),
       ),
       itemBuilder: (context, index) {
-        return SerchedProductItem(
-          product: products[index],
+        return Column(
+          children: [
+            SerchedProductItem(product: products[index]),
+            index == products.length - 1
+                ? const SizedBox(height: 80)
+                : SizedBox.shrink(),
+          ],
         );
       },
     );
