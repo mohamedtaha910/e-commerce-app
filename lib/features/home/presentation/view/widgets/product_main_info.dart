@@ -51,7 +51,7 @@ class ProductMainInfo extends StatelessWidget {
                 ),
                 Text(
                   price.toString(),
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 ),
               ],
             ),
@@ -59,7 +59,7 @@ class ProductMainInfo extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.red.shade100,
+                color: const Color.fromARGB(255, 252, 221, 224),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
@@ -67,7 +67,7 @@ class ProductMainInfo extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.pink,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),

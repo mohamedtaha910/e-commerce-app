@@ -35,18 +35,32 @@ class ReviewsSection extends StatelessWidget {
             ),
           ],
         ),
-
-        ...reviews.map(
-          (e) => Column(
-            children: [
-              const SizedBox(height: 24),
-              ReviewItem(review: e),
-              const SizedBox(height: 24),
-              const HorizintalLine(),
-              // const SizedBox(height: 16),
-            ],
-          ),
+        ListView.separated(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24),
+              child: ReviewItem(review: reviews[index]),
+            );
+          },
+          separatorBuilder: (context, index) {
+            return const HorizintalLine();
+          },
+          itemCount: reviews.length,
         ),
+
+        // ...reviews.map(
+        //   (e) => Column(
+        //     children: [
+        //       const SizedBox(height: 24),
+        //       ReviewItem(review: e),
+        //       const SizedBox(height: 24),
+        //       const HorizintalLine(),
+        //       // const SizedBox(height: 16),
+        //     ],
+        //   ),
+        // ),
         const SizedBox(height: 24),
       ],
     );
@@ -59,40 +73,40 @@ class ReviewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Image.asset(
-              'assets/images/user2.png',
-              height: 45,
-              width: 45,
-              fit: BoxFit.contain,
-            ),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  review.reviewerName!,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                RatingStars(rating: review.rating!),
-                const SizedBox(height: 8),
-              ],
-            ),
-          ],
+        Image.asset(
+          'assets/images/user2.png',
+          height: 40,
+          width: 45,
+          fit: BoxFit.contain,
         ),
-        SizedBox(height: 16),
-        Text(
-          review.comment!,
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
+
+        // SizedBox(width: 300),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal:  8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                review.reviewerName!,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 2,),
+              RatingStars(rating: review.rating!),
+              const SizedBox(height: 10),
+              Text(
+                review.comment!,
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+                // textAlign: TextAlign.center,
+              ),
+            ],
           ),
-          // textAlign: TextAlign.center,
         ),
       ],
     );
@@ -109,9 +123,9 @@ class RatingStars extends StatelessWidget {
       children: List.generate(5, (index) {
         return index < rating
             ? Padding(
-              padding: const EdgeInsets.only(right:  1.5),
-              child: Icon(Icons.star, color: Colors.amber, size: 18),
-            )
+                padding: const EdgeInsets.only(right: 1.5),
+                child: Icon(Icons.star, color: Colors.amber, size: 18),
+              )
             : Icon(Icons.star_border, color: Colors.black54, size: 18);
       }),
     );

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class RatingInfo extends StatelessWidget {
   const RatingInfo({super.key, required this.rating, required this.reviews});
-  final double rating ;
-  final int reviews ;
+  final double rating;
+  final int reviews;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,10 @@ class RatingInfo extends StatelessWidget {
             children: [
               Icon(Icons.star, color: Colors.amber, size: 20),
               SizedBox(width: 6),
-              Text(rating.toString() , style: TextStyle(fontWeight: FontWeight.w500)),
+              Text(
+                rating.toString(),
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
             ],
           ),
         ),

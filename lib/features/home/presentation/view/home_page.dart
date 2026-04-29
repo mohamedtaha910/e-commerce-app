@@ -65,9 +65,7 @@ class _HomePageState extends State<HomePage> {
           ),
 
           Positioned(
-            // height: 100,
-            //  bottom: 0,  // => emulator
-            bottom: 22, // => windows
+            bottom: 22, 
             left: 0,
             right: 0,
             child: SafeArea(

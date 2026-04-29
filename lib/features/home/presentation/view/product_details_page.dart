@@ -62,7 +62,7 @@ class ProductDetailsPage extends StatelessWidget {
                       product.availabilityStatus!,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 14,
+                        fontSize: 13,
                         color: AppColors.primaryColor,
                       ),
                     ),

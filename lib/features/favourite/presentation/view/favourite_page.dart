@@ -24,16 +24,22 @@ class _FavouritePageState extends State<FavouritePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        surfaceTintColor: Colors.transparent,
         automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(
-            'My Favourite',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+          child: Row(
+            children: [
+              Text(
+                'My Favourite',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              
+            ],
           ),
         ),
       ),
@@ -44,7 +50,7 @@ class _FavouritePageState extends State<FavouritePage> {
             List<Product> products = state.favourites;
 
             return Padding(
-              padding: const EdgeInsets.symmetric( horizontal: 16.0 , vertical: 8),
+              padding: const EdgeInsets.only( right: 16.0 , left: 16 , top: 8),
               child: products.isNotEmpty
                   ? SearchedProductsList(products: products)
                   : CustomNoFavourite(),

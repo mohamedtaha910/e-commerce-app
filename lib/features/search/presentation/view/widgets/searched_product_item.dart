@@ -156,22 +156,31 @@ class SerchedProductItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white70,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.black12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              offset: Offset(0, 2),
-              blurRadius: 6,
-            ),
-          ],
+          border: Border.all(color: Colors.black12, width: 0.6),
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.black12,
+          //     offset: Offset(0, 2),
+          //     blurRadius: 6,
+          //   ),
+          // ],
         ),
 
         // clipBehavior: Clip.hardEdge,
         child: Row(
           children: [
             // Product Image
-            SizedBox(
-              width: 110,
+            Container(
+              height: 138,
+              width: 125,
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  bottomLeft: Radius.circular(12),
+                ),
+                color: Colors.grey.shade100,
+              ),
 
               child: Image.network(
                 product.images![0],
@@ -206,7 +215,7 @@ class SerchedProductItem extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.43,
+                              width: MediaQuery.of(context).size.width * 0.42,
                               child: Text(
                                 product.title!,
                                 style: const TextStyle(
