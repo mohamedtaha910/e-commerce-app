@@ -12,7 +12,7 @@ class FavouriteCubit extends Cubit<FavouriteState> {
   final FavouriteRepo favouriteRepo;
 
   void loadFavorites() {
-    emit(FavouriteLoading());
+    // emit(FavouriteLoading());
 
     List<Product> products = favouriteRepo.fetchAllFavourites();
     emit(FavouriteSuccess(products));
@@ -24,4 +24,9 @@ class FavouriteCubit extends Cubit<FavouriteState> {
   }
 
   bool isFavourite(int id) => favouriteRepo.isFavourite(id);
+
+  void clearFavourites() {
+    favouriteRepo.clearFavourites();
+    emit(FavouriteSuccess([]));
+  }
 }

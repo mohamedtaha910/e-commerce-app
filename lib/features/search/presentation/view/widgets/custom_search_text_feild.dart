@@ -9,6 +9,7 @@ class CustomSearchTextFeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      autofocus: true,
       cursorColor: AppColors.primaryColor,
       onChanged: onChanged,
       decoration: InputDecoration(

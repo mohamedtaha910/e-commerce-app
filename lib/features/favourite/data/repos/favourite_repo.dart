@@ -8,6 +8,8 @@ abstract class FavouriteRepo {
 
   List<Product> fetchAllFavourites();
 
+  void clearFavourites();
+
   
 
 }

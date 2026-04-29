@@ -236,8 +236,8 @@ class SerchedProductItem extends StatelessWidget {
                                     shape: BoxShape.circle,
                                     // borderRadius: BorderRadius.circular(12),
                                     border: Border.all(
-                                      color: Colors.white,
-                                      width: 1.6,
+                                      color: Colors.black12,
+                                      width: 0.5,
                                     ),
                                   ),
                                   child: GestureDetector(

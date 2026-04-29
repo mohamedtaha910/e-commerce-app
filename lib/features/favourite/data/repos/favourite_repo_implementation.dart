@@ -25,4 +25,9 @@ class FavouriteRepoImplementation implements FavouriteRepo {
 
   @override
   bool isFavourite(int id) => box.containsKey(id);
+  
+  @override
+  void clearFavourites() {
+    box.clear();
+  }
 }

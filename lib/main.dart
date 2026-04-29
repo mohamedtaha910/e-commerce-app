@@ -5,6 +5,8 @@ import 'package:e_commerce_app/core/models/product_model/review.dart';
 import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
+import 'package:e_commerce_app/features/cart/data/repos/cart_repo_implementation.dart';
+import 'package:e_commerce_app/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_app/features/favourite/data/repos/favourite_repo_implementation.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:e_commerce_app/features/home/data/repos/home_repo_implementation.dart';
@@ -58,6 +60,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FavouriteCubit(FavouriteRepoImplementation()),
         ),
+        BlocProvider(create: (context) => CartCubit(CartRepoImplementation())),
       ],
       child: MaterialApp(
         theme: ThemeData(

@@ -1,5 +1,7 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/core/models/product_model/product.dart';
+import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
+import 'package:e_commerce_app/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/custom_product_image.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/describtion_sectio.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/details_app_bar.dart';
@@ -9,6 +11,7 @@ import 'package:e_commerce_app/features/home/presentation/view/widgets/product_m
 import 'package:e_commerce_app/features/home/presentation/view/widgets/rating_info.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/reviews_section.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key, required this.product});
@@ -106,17 +109,27 @@ class ProductDetailsPage extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
-                  padding: EdgeInsets.symmetric(vertical: 15),
-                  shadowColor: Colors.deepPurple,
-                ),
-                onPressed: () {},
-                child: Text(
-                  "Add to Cart",
-                  style: TextStyle(color: Colors.white),
-                ),
+              child: BlocBuilder<CartCubit, CartState>(
+                builder: (context, state) {
+                  return ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepPurple,
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      shadowColor: Colors.deepPurple,
+                    ),
+                    onPressed: () {
+                      BlocProvider.of<CartCubit>(
+                        context,
+                      ).addToCart(CartProduct(product: product));
+                    },
+                    child: Text(
+                      BlocProvider.of<CartCubit>(context).isInCart(product.id!)
+                          ? 'Remove from Cart'
+                          : 'Add to Cart',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  );
+                },
               ),
             ),
             SizedBox(width: 10),
