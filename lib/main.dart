@@ -4,6 +4,7 @@ import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/core/models/product_model/review.dart';
 import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
+import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
 import 'package:e_commerce_app/features/favourite/data/repos/favourite_repo_implementation.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:e_commerce_app/features/home/data/repos/home_repo_implementation.dart';
@@ -29,7 +30,10 @@ void main() async {
   Hive.registerAdapter(DimensionsAdapter());
   Hive.registerAdapter(MetaAdapter());
   Hive.registerAdapter(ReviewAdapter());
+  Hive.registerAdapter(CartProductAdapter());
+
   await Hive.openBox<Product>('favProducts');
+  await Hive.openBox<CartProduct>('cartProducts');
   setUpServiceLocator();
   runApp(const MyApp());
 }
