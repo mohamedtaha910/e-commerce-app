@@ -117,7 +117,7 @@ class CartProductItem extends StatelessWidget {
                                 onTap: () =>
                                     showconfirmMessage(context, cartproduct),
                                 child: Icon(Icons.delete, size: 18,
-                                color: Colors.red.shade400,
+                                color: Colors.red,
                                 ),
                               ),
                             ),

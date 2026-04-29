@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
+import 'package:e_commerce_app/features/notification/presentation/view/notification_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -42,18 +43,25 @@ class CustomAppBar extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            // color: Colors.grey.shade50,
-            color: Colors.grey.shade100,
-            // shape: BoxShape.circle,
-            borderRadius: BorderRadius.circular(14),
-          ),
-          child: SvgPicture.asset(
-            'assets/icons/notification.svg',
-            height: 22,
-            // color: Colors.grey.shade700,
+        GestureDetector(
+          onTap: () {
+            Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (c) => NotificationPage()));
+          },
+          child: Container(
+            padding: const EdgeInsets.all(9),
+            decoration: BoxDecoration(
+              // color: Colors.grey.shade50,
+              color: Colors.grey.shade100,
+              // shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: SvgPicture.asset(
+              'assets/icons/notification.svg',
+              height: 22,
+              // color: Colors.grey.shade700,
+            ),
           ),
         ),
         const SizedBox(width: 20),
@@ -70,7 +78,7 @@ class CustomAppBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(13),
               // shape: BoxShape.circle,
             ),
-            child: SvgPicture.asset('assets/icons/bag.svg', height: 22),
+            child: SvgPicture.asset('assets/icons/bag.svg', height: 24),
           ),
         ),
       ],

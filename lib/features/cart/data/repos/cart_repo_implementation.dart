@@ -24,7 +24,9 @@ class CartRepoImplementation implements CartRepo {
 
   @override
   void incrementQuantity(CartProduct product) {
-    product.quantity++;
+    if (product.quantity < product.product.stock!) {
+      product.quantity++;
+    }
   }
 
   @override
@@ -47,7 +49,7 @@ class CartRepoImplementation implements CartRepo {
 
   @override
   bool isInCart(int id) => box.containsKey(id);
-  
+
   @override
   void clearCart() {
     box.clear();
