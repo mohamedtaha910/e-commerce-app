@@ -44,70 +44,73 @@ class _LoginPageState extends State<LoginPage> {
       builder: (context, state) {
         return ModalProgressHUD(
           inAsyncCall: isLoading,
-          child: Scaffold(
-            // appBar: AppBar(),
-            body: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              child: Form(
-                key: formKey,
-                autovalidateMode: autovalidateMode,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomHeader(
-                      image: 'assets/auth_images/sign_up.svg',
-                      text: 'assets/auth_images/Log_in_word.svg',
-                    ),
-                    // SizedBox(height: 12),
-                    AuthTextFeild(
-                      hintText: 'Email',
-                      icon: Icons.email,
-                      onChanged: (value) {
-                        email = value;
-                      },
-                      borderRadius: 25,
-                      obscureText: false,
-                    ),
-                    SizedBox(height: 24),
-                    AuthTextFeild(
-                      hintText: 'Password',
-                      icon: Icons.lock,
-                      onChanged: (value) {
-                        password = value;
-                      },
-                      borderRadius: 25,
-                      obscureText: true,
-                    ),
-                    SizedBox(height: 32),
-                    CustomButton(
-                      color: AppColors.primaryColor,
-                      textColor: Colors.white,
-                      title: 'Log In',
-                      titleSize: 17,
-                      verticalPadding: 10,
-                      horizontalMargin: 16,
-                      onTap: () {
-                        autovalidateMode = AutovalidateMode.always;
-                        setState(() {});
-
-                        if (formKey.currentState!.validate()) {
-                          BlocProvider.of<AuthCubit>(
-                            context,
-                          ).loginUser(email: email!, password: password!);
-                        }
-                      },
-                    ),
-                    SizedBox(height: 16),
-                    OtherWay(),
-                    SizedBox(height: 16),
-                    CustomShift(
-                      destination: SignUpPage(),
-                      text: 'Register Now',
-                      text2: 'Don\'t have an account?  ',
-                    ),
-                    SizedBox(height: 20),
-                  ],
+          child: SafeArea(
+            bottom: false,
+            child: Scaffold(
+              // appBar: AppBar(),
+              body: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                child: Form(
+                  key: formKey,
+                  autovalidateMode: autovalidateMode,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomHeader(
+                        image: 'assets/auth_images/sign_up.svg',
+                        text: 'assets/auth_images/Log_in_word.svg',
+                      ),
+                      // SizedBox(height: 12),
+                      AuthTextFeild(
+                        hintText: 'Email',
+                        icon: Icons.email,
+                        onChanged: (value) {
+                          email = value;
+                        },
+                        borderRadius: 35,
+                        obscureText: false,
+                      ),
+                      SizedBox(height: 24),
+                      AuthTextFeild(
+                        hintText: 'Password',
+                        icon: Icons.lock,
+                        onChanged: (value) {
+                          password = value;
+                        },
+                        borderRadius: 35,
+                        obscureText: true,
+                      ),
+                      SizedBox(height: 32),
+                      CustomButton(
+                        color: AppColors.primaryColor,
+                        textColor: Colors.white,
+                        title: 'Log In',
+                        titleSize: 17,
+                        verticalPadding: 10,
+                        horizontalMargin: 16,
+                        onTap: () {
+                          autovalidateMode = AutovalidateMode.always;
+                          setState(() {});
+            
+                          if (formKey.currentState!.validate()) {
+                            BlocProvider.of<AuthCubit>(
+                              context,
+                            ).loginUser(email: email!, password: password!);
+                          }
+                        },
+                      ),
+                      SizedBox(height: 16),
+                      OtherWay(),
+                      SizedBox(height: 16),
+                      CustomShift(
+                        destination: SignUpPage(),
+                        text: 'Register Now',
+                        text2: 'Don\'t have an account?  ',
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
             ),
