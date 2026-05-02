@@ -98,7 +98,7 @@ class WelcomePage extends StatelessWidget {
             Spacer(),
       
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.symmetric(horizontal:  16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

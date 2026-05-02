@@ -19,6 +19,7 @@ class CustomAppBar extends StatelessWidget {
             color: Colors.grey.shade200,
             shape: BoxShape.circle,
             // borderRadius: BorderRadius.circular(25),
+            // border: Border.all(color: Colors.grey.shade400 , width: 0.6),  
           ),
           child: SvgPicture.asset(
             'assets/icons/logo.svg',

@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavouritePage extends StatefulWidget {
-  const FavouritePage({super.key});
+  const FavouritePage({super.key, required this.isFromProfile});
+  final bool isFromProfile;
 
   @override
   State<FavouritePage> createState() => _FavouritePageState();
@@ -29,35 +30,59 @@ class _FavouritePageState extends State<FavouritePage> {
         elevation: 0,
         surfaceTintColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            children: [
-              Text(
-                'My Favourite',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+        title: Row(
+          children: [
+            widget.isFromProfile == true
+                ? GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                        left: 12,
+                        right: 6,
+                        top: 6,
+                        bottom: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.black12, width: 1),
+                      ),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.black,
+                        size: 18,
+                      ),
+                    ),
+                  )
+                : SizedBox.shrink(),
+            widget.isFromProfile == true ? Spacer() : SizedBox.shrink(),
+
+            // const SizedBox(width: 8),
+            // Spacer(),
+            Text(
+              'My Favourite',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
-              const Spacer(),
-              GestureDetector(
-                onTap: () {
-                  deleteAllFavouriteMessage(context);
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.grey.shade300, width: 1),
-                  ),
-                  child: Icon(Icons.delete_sweep, color: Colors.red, size: 24),
+            ),
+            const Spacer(),
+            GestureDetector(
+              onTap: () {
+                deleteAllFavouriteMessage(context);
+              },
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.grey.shade300, width: 1),
                 ),
+                child: Icon(Icons.delete_sweep, color: Colors.red, size: 24),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       body: BlocBuilder<FavouriteCubit, FavouriteState>(

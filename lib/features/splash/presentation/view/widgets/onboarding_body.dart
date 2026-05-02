@@ -65,7 +65,7 @@ class OnboardingBody extends StatelessWidget {
               ),
             ],
           ),
-          Spacer(flex: 2),
+          const SizedBox(height: 24),
         ],
       ),
     );

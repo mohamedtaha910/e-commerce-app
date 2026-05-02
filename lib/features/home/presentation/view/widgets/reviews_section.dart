@@ -45,7 +45,13 @@ class ReviewsSection extends StatelessWidget {
             );
           },
           separatorBuilder: (context, index) {
-            return const HorizintalLine();
+            return HorizintalLine(
+              color: Colors.grey.shade200,
+              height: 1.6,
+              horizontalMargin: 48,
+              verticalMargin: 0,
+              borderRadius: 12,
+            );
           },
           itemCount: reviews.length,
         ),
@@ -85,7 +91,7 @@ class ReviewItem extends StatelessWidget {
 
         // SizedBox(width: 300),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal:  8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -93,7 +99,7 @@ class ReviewItem extends StatelessWidget {
                 review.reviewerName!,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 2,),
+              SizedBox(height: 2),
               RatingStars(rating: review.rating!),
               const SizedBox(height: 10),
               Text(

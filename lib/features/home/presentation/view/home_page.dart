@@ -27,7 +27,9 @@ class _HomePageState extends State<HomePage> {
           SearchProductsCubit(getIt.get<SearchRepoImplementation>()),
       child: SearchPage(isInHome: false),
     ),
-    FavouritePage(),
+    FavouritePage(
+      isFromProfile: false,
+    ),
     // CartPage(),
     ProfilePage(),
     

@@ -118,7 +118,16 @@ class _CartPageState extends State<CartPage> {
               padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
               margin: EdgeInsets.only(bottom: 8, right: 8, left: 8),
               decoration: BoxDecoration(
-                color: AppColors.secondaryColor.withAlpha(50),
+                color: Colors.blueGrey.withAlpha(30),
+                // gradient: LinearGradient(
+                //   colors: [
+                //     AppColors.primaryColor.withAlpha(30),
+                //     // Colors.blueGrey,
+                //     Colors.blueGrey.withAlpha(30),
+                // //   ],
+                //   begin: Alignment.centerLeft,
+                //   end: Alignment.centerRight,
+                // ),
                 // color: Colors.grey.shade100,
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(color: Colors.black12, width: 0.8),
@@ -152,7 +161,7 @@ class _CartPageState extends State<CartPage> {
                     width: double.infinity,
                     // height: 50,
                     decoration: BoxDecoration(
-                      color: AppColors.secondaryColor,
+                      color: Colors.blueGrey,
                       borderRadius: BorderRadius.circular(25),
                     ),
                     child: Center(

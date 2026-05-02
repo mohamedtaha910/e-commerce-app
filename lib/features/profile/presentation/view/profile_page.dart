@@ -1,3 +1,9 @@
+import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
+import 'package:e_commerce_app/features/favourite/presentation/view/favourite_page.dart';
+import 'package:e_commerce_app/features/home/presentation/view/widgets/horizintal_line.dart';
+import 'package:e_commerce_app/features/profile/presentation/view/widgets/profile_header.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -7,13 +13,225 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile' , style: TextStyle(color: Colors.black , fontSize: 20, fontWeight: FontWeight.bold),),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Account',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.grey.shade400),
+              ),
+              child: Icon(Icons.settings, color: Colors.black, size: 20),
+            ),
+          ],
+        ),
       ),
-      body:Column(
-        children: [
-          Text('Profile'),
-        ],
-      )
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 36.0),
+              child: ProfileHeader(),
+            ),
+            Text(
+              'Personal',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              // margin: const EdgeInsets.symmetric(horizontal: 16),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.grey.shade400, width: 0.1),
+              ),
+              child: Column(
+                children: [
+                  ProfileRow(
+                    text: 'Orders',
+                    textColor: Colors.black87,
+                    icon: Icons.shopping_bag,
+                    iconColor: Colors.blueGrey,
+                    circleColor: Colors.blueGrey.withAlpha(50),
+                    arrowColor: Colors.blueGrey,
+                  ),
+                  HorizintalLine(
+                    color: Colors.black26,
+                    height: 1,
+                    horizontalMargin: 36,
+                    verticalMargin: 16,
+                    borderRadius: 12,
+                  ),
+                  ProfileRow(
+                    text: 'Cart',
+                    textColor: Colors.black87,
+                    icon: Icons.shopping_cart,
+                    iconColor: Colors.blueGrey,
+                    circleColor: Colors.blueGrey.withAlpha(50),
+                    arrowColor: Colors.blueGrey,
+                    onTap: () {
+                      Navigator.of(
+                        context,
+                      ).push(MaterialPageRoute(builder: (c) => CartPage()));
+                    },
+                  ),
+                  HorizintalLine(
+                    color: Colors.black26,
+                    height: 1,
+                    horizontalMargin: 36,
+                    verticalMargin: 16,
+                    borderRadius: 12,
+                  ),
+
+                  ProfileRow(
+                    text: 'Favorites',
+                    textColor: Colors.black87,
+                    icon: Icons.favorite,
+                    iconColor: Colors.blueGrey,
+                    circleColor: Colors.blueGrey.withAlpha(50),
+                    arrowColor: Colors.blueGrey,
+                    onTap: () async {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (c) => FavouritePage(isFromProfile: true),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 24),
+            Text(
+              'General',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              // margin: const EdgeInsets.symmetric(horizontal: 16),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.grey.shade400, width: 0.1),
+              ),
+              child: Column(
+                children: [
+                  ProfileRow(
+                    text: 'Settings',
+                    textColor: Colors.black87,
+                    icon: Icons.settings,
+                    iconColor: Colors.blueGrey,
+                    circleColor: Colors.blueGrey.withAlpha(50),
+                    arrowColor: Colors.blueGrey,
+                  ),
+                  HorizintalLine(
+                    color: Colors.black26,
+                    height: 1,
+                    horizontalMargin: 36,
+                    verticalMargin: 16,
+                    borderRadius: 12,
+                  ),
+                  ProfileRow(
+                    text: 'Change Password',
+                    textColor: Colors.black87,
+                    icon: Icons.lock,
+                    iconColor: Colors.blueGrey,
+                    circleColor: Colors.blueGrey.withAlpha(50),
+                    arrowColor: Colors.blueGrey,
+                  ),
+                  HorizintalLine(
+                    color: Colors.black26,
+                    height: 1,
+                    horizontalMargin: 36,
+                    verticalMargin: 16,
+                    borderRadius: 12,
+                  ),
+
+                  ProfileRow(
+                    text: 'Logout',
+                    textColor: Colors.redAccent,
+                    icon: Icons.logout,
+                    iconColor: Colors.redAccent,
+                    circleColor: Colors.redAccent.withAlpha(50),
+                    arrowColor: Colors.redAccent,
+                    onTap: () async {
+                      // await FirebaseAuth.instance.signOut();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileRow extends StatelessWidget {
+  const ProfileRow({
+    super.key,
+    required this.textColor,
+    required this.text,
+    required this.icon,
+    this.onTap,
+    required this.iconColor,
+    required this.circleColor,
+    required this.arrowColor,
+  });
+  final Color textColor;
+  final String text;
+  final IconData icon;
+  final void Function()? onTap;
+  final Color iconColor;
+  final Color circleColor;
+  final Color arrowColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(icon, color: iconColor),
+        const SizedBox(width: 12),
+        Text(
+          text,
+          style: TextStyle(
+            color: textColor,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        Spacer(),
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+            decoration: BoxDecoration(
+              color: circleColor,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Icon(Icons.arrow_forward_ios, color: arrowColor, size: 14),
+          ),
+        ),
+      ],
     );
   }
 }

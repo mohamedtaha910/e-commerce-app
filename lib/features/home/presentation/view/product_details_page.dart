@@ -73,7 +73,13 @@ class ProductDetailsPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-              HorizintalLine(),
+              HorizintalLine(
+                color: Colors.grey.shade200,
+                height: 1.6,
+                horizontalMargin: 48,
+                verticalMargin: 0,
+                borderRadius: 12,
+              ),
               SizedBox(height: 24),
               ProductInfo(
                 stock: product.stock!,
@@ -82,14 +88,26 @@ class ProductDetailsPage extends StatelessWidget {
                 returnInfo: product.returnPolicy!,
               ),
               const SizedBox(height: 24),
-              HorizintalLine(),
+              HorizintalLine(
+                color: Colors.grey.shade200,
+                height: 1.6,
+                horizontalMargin: 48,
+                verticalMargin: 0,
+                borderRadius: 12,
+              ),
               const SizedBox(height: 24),
               DescribtionSection(
                 describtion: product.description!,
                 brand: product.brand ?? 'Unknown',
               ),
               const SizedBox(height: 24),
-              HorizintalLine(),
+              HorizintalLine(
+                color: Colors.grey.shade200,
+                height: 1.6,
+                horizontalMargin: 48,
+                verticalMargin: 0,
+                borderRadius: 12,
+              ),
               const SizedBox(height: 24),
               ReviewsSection(
                 reviews: product.reviews!,
@@ -120,7 +138,7 @@ class ProductDetailsPage extends StatelessWidget {
                     onPressed: () {
                       BlocProvider.of<CartCubit>(
                         context,
-                      ).addToCart(CartProduct(product: product));
+                      ).addToCart(CartProduct(product: product, quantity: 1));
                     },
                     child: Text(
                       BlocProvider.of<CartCubit>(context).isInCart(product.id!)
