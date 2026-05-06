@@ -1,13 +1,31 @@
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
+import 'package:e_commerce_app/features/cart/presentation/views/widgets/cart_product_list.dart';
+import 'package:e_commerce_app/features/order/presentation/view/payment_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class CheckoutPage extends StatelessWidget {
-  const CheckoutPage({super.key, required this.totalPrice, required this.checkoutProducts});
+class CheckoutPage extends StatefulWidget {
+  const CheckoutPage({
+    super.key,
+    required this.totalPrice,
+    required this.checkoutProducts,
+  });
   final double totalPrice;
-  final List<CartProduct> checkoutProducts ;
+  final List<CartProduct> checkoutProducts;
 
   @override
+  State<CheckoutPage> createState() => _CheckoutPageState();
+}
+
+class _CheckoutPageState extends State<CheckoutPage> {
+  String country = '';
+  String city = '';
+  String address = '';
+  @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+    var autoValidateMode = AutovalidateMode.disabled;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -33,9 +51,9 @@ class CheckoutPage extends StatelessWidget {
                 child: Icon(Icons.arrow_back_ios, size: 18),
               ),
             ),
-            SizedBox(width: 12),
+            SizedBox(width: 16),
             Text(
-              'Checkout',
+              'Shipping Address',
               style: TextStyle(
                 color: Colors.black87,
                 fontSize: 20,
@@ -45,7 +63,269 @@ class CheckoutPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(child: Text('Checkout Page')),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+        child: Form(
+          key: formKey,
+          autovalidateMode: autoValidateMode,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Country',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 12),
+              AdressTextFeild(
+                label: 'Country',
+                maxLines: 1,
+                borderRadius: 25,
+                onChanged: (value) {
+                  country = value;
+                },
+              ),
+              SizedBox(height: 24),
+              Text(
+                'City',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 12),
+              AdressTextFeild(
+                label: 'City',
+                maxLines: 1,
+                borderRadius: 25,
+                onChanged: (value) {
+                  city = value;
+                },
+              ),
+              SizedBox(height: 24),
+              Text(
+                'Address',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 12),
+              AdressTextFeild(
+                label: 'Address Details',
+                maxLines: 4,
+                borderRadius: 16,
+                onChanged: (value) {
+                  address = value;
+                },
+              ),
+              SizedBox(height: 24),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Stack(
+        clipBehavior: Clip.none,
+
+        children: [
+          Container(
+            height: 125,
+            padding: const EdgeInsets.only(top: 20, right: 16, left: 16),
+            margin: EdgeInsets.only(bottom: 8, right: 8, left: 8),
+            decoration: BoxDecoration(
+              color: Colors.blueGrey.withAlpha(30),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: Colors.black12, width: 0.8),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Est. Total:',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      '${widget.totalPrice.toStringAsFixed(2)} \$',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                GestureDetector(
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PaymentPage(
+                            country: country,
+                            city: city,
+                            address: address,
+                            totalPrice: widget.totalPrice,
+                            checkoutProducts: widget.checkoutProducts,
+                          ),
+                        ),
+                      );
+                    } else {
+                      autoValidateMode = AutovalidateMode.always;
+                      // setState(() {});
+                    }
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    width: double.infinity,
+                    // height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: Center(
+                      child: Row(
+                        children: [
+                          Spacer(),
+                          Text(
+                            'Continue',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
+                            size: 18,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            top: -16,
+            right: 0,
+            child: Container(
+              // height: 40,
+              // width: 40,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.black12, width: 0.8),
+              ),
+              child: Center(
+                child: Text(
+                  '${widget.checkoutProducts.length}',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          ...List.generate(
+            widget.checkoutProducts.length,
+            (index) => Positioned(
+              top: -16,
+              left: index * 28.0,
+              child: Container(
+                // height: 40,
+                // width: 40,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 2,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.black12, width: 0.8),
+                ),
+                child: Image.network(
+                  widget.checkoutProducts[index].product.images![0],
+                  height: 30,
+                  width: 24,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AdressTextFeild extends StatelessWidget {
+  const AdressTextFeild({
+    super.key,
+    required this.label,
+    required this.maxLines,
+    required this.borderRadius,
+    this.onChanged,
+  });
+  final String label;
+  final int maxLines;
+  final double borderRadius;
+  final Function(String)? onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter your $label';
+        }
+        return null;
+      },
+      onChanged: onChanged,
+      maxLines: maxLines,
+      maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds,
+      cursorColor: AppColors.primaryColor,
+      decoration: InputDecoration(
+        hint: Text(
+          'Enter your $label',
+          style: TextStyle(
+            color: Colors.black45,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+          textAlign: TextAlign.start,
+        ),
+
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: Colors.black54, width: 0.5),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: Colors.black54, width: 0.4),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: AppColors.primaryColor, width: 1),
+        ),
+      ),
     );
   }
 }

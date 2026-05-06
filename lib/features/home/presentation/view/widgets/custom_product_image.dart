@@ -38,6 +38,7 @@ class _CustomProductImageState extends State<CustomProductImage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(height: 12),
                 CarouselSlider(
                   options: CarouselOptions(
                     height: 240,
@@ -62,26 +63,52 @@ class _CustomProductImageState extends State<CustomProductImage> {
                     );
                   }).toList(),
                 ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: widget.product.images!.length == 1
-                      ? []
-                      : List.generate(
-                          widget.product.images!.length,
-                          (index) => AnimatedContainer(
-                            duration: Duration(milliseconds: 300),
-                            margin: EdgeInsets.symmetric(horizontal: 4),
-                            width: currentIndex == index ? 12 : 8,
-                            height: 8,
-                            decoration: BoxDecoration(
-                              color: currentIndex == index
-                                  ? AppColors.primaryColor
-                                  : Colors.grey,
-                              borderRadius: BorderRadius.circular(10),
+                const SizedBox(height: 41),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12),
+                      // bottomLeft: Radius.circular(12),
+                      // bottomRight: Radius.circular(12),
+                    ),
+                    border: Border.all(color: Colors.white, width: 0.5),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: widget.product.images!.length == 1
+                        ? []
+                        : List.generate(
+                            widget.product.images!.length,
+                            (index) => AnimatedContainer(
+                              padding: EdgeInsets.all(1),
+                              duration: Duration(milliseconds: 300),
+                              margin: EdgeInsets.symmetric(horizontal: 3),
+                              width: 45,
+                              height: 48,
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade200,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                  color: currentIndex == index
+                                      ? AppColors.primaryColor
+                                      : Colors.white,
+                                  width: 1,
+                                ),
+                              ),
+
+                              child: Image.network(
+                                widget.product.images![index],
+                              ),
                             ),
                           ),
-                        ),
+                  ),
                 ),
               ],
             ),
@@ -91,35 +118,33 @@ class _CustomProductImageState extends State<CustomProductImage> {
             right: 0,
             child: BlocBuilder<FavouriteCubit, FavouriteState>(
               builder: (context, state) {
-               
-                  return Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      // shape: BoxShape.circle,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.white, width: 4),
-                    ),
-                    child: GestureDetector(
-                      onTap: () => BlocProvider.of<FavouriteCubit>(
-                        context,
-                      ).addFavourite(widget.product),
-                      child:
-                          BlocProvider.of<FavouriteCubit>(
-                            context,
-                          ).isFavourite(widget.product.id!)
-                          ? const Icon(
-                              Icons.favorite,
-                              color: Colors.black,
-                              size: 22,
-                            )
-                          : SvgPicture.asset(
-                              'assets/icons/heart.svg',
-                              height: 22,
-                            ),
-                    ),
-                  );
-                
+                return Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    // shape: BoxShape.circle,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.white, width: 4),
+                  ),
+                  child: GestureDetector(
+                    onTap: () => BlocProvider.of<FavouriteCubit>(
+                      context,
+                    ).addFavourite(widget.product),
+                    child:
+                        BlocProvider.of<FavouriteCubit>(
+                          context,
+                        ).isFavourite(widget.product.id!)
+                        ? const Icon(
+                            Icons.favorite,
+                            color: Colors.black,
+                            size: 22,
+                          )
+                        : SvgPicture.asset(
+                            'assets/icons/heart.svg',
+                            height: 22,
+                          ),
+                  ),
+                );
               },
             ),
           ),
