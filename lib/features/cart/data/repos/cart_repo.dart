@@ -6,6 +6,7 @@ abstract class CartRepo {
   bool isInCart(int id);
 
   void addToCart(CartProduct product);
+  
   void clearCart();
 
   List<CartProduct> fetchAllCart();

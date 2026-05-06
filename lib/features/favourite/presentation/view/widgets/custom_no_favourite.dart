@@ -12,9 +12,9 @@ class CustomNoFavourite extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // const Spacer(),
-        Image.asset('assets/icons/favourite_.jpg' , height: 200,),
-        // SvgPicture.asset('assets/icons/empty_wish_list.svg' , height: 300,),
-        const SizedBox(height: 18),
+        // Image.asset('assets/icons/favourite_.jpg' , height: 200,),
+        SvgPicture.asset('assets/icons/empty_wish_list.svg' , height: 290,),
+        const SizedBox(height: 16),
         Center(
           child: Text(
             'No Favourites Products Yet !',

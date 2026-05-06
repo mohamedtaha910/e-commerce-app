@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomCartEmpty extends StatelessWidget {
   const CustomCartEmpty({super.key});
@@ -9,7 +10,8 @@ class CustomCartEmpty extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: Image.asset('assets/icons/cart_empty.png', width: 195),
+                  // child: Image.asset('assets/icons/cart_empty.png', width: 195),
+                  child: SvgPicture.asset('assets/icons/Empty_cart.svg' , width: 250,),
                 ),
                 const SizedBox(height: 24),
                 Text(

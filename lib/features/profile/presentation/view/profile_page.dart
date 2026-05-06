@@ -1,9 +1,10 @@
-import 'package:e_commerce_app/core/utils/colors.dart';
+// import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view/favourite_page.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/horizintal_line.dart';
 import 'package:e_commerce_app/features/profile/presentation/view/widgets/profile_header.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:e_commerce_app/features/profile/presentation/view/widgets/profile_row.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -69,8 +70,8 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: Icons.shopping_bag,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.blueGrey.withAlpha(50),
-                    arrowColor: Colors.blueGrey,
+                    circleColor: Colors.black.withAlpha(25),
+                    arrowColor: Colors.grey.shade700,
                   ),
                   HorizintalLine(
                     color: Colors.black26,
@@ -84,8 +85,8 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: Icons.shopping_cart,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.blueGrey.withAlpha(50),
-                    arrowColor: Colors.blueGrey,
+                    circleColor: Colors.black.withAlpha(25),
+                    arrowColor: Colors.grey.shade700,
                     onTap: () {
                       Navigator.of(
                         context,
@@ -105,8 +106,8 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: Icons.favorite,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.blueGrey.withAlpha(50),
-                    arrowColor: Colors.blueGrey,
+                    circleColor: Colors.black.withAlpha(25),
+                    arrowColor: Colors.grey.shade700,
                     onTap: () async {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -139,8 +140,8 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: Icons.settings,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.blueGrey.withAlpha(50),
-                    arrowColor: Colors.blueGrey,
+                    circleColor: Colors.black.withAlpha(25),
+                    arrowColor: Colors.grey.shade700,
                   ),
                   HorizintalLine(
                     color: Colors.black26,
@@ -154,8 +155,8 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: Icons.lock,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.blueGrey.withAlpha(50),
-                    arrowColor: Colors.blueGrey,
+                    circleColor: Colors.black.withAlpha(25),
+                    arrowColor: Colors.grey.shade700,
                   ),
                   HorizintalLine(
                     color: Colors.black26,
@@ -182,56 +183,6 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ProfileRow extends StatelessWidget {
-  const ProfileRow({
-    super.key,
-    required this.textColor,
-    required this.text,
-    required this.icon,
-    this.onTap,
-    required this.iconColor,
-    required this.circleColor,
-    required this.arrowColor,
-  });
-  final Color textColor;
-  final String text;
-  final IconData icon;
-  final void Function()? onTap;
-  final Color iconColor;
-  final Color circleColor;
-  final Color arrowColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, color: iconColor),
-        const SizedBox(width: 12),
-        Text(
-          text,
-          style: TextStyle(
-            color: textColor,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        Spacer(),
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-            decoration: BoxDecoration(
-              color: circleColor,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Icon(Icons.arrow_forward_ios, color: arrowColor, size: 14),
-          ),
-        ),
-      ],
     );
   }
 }

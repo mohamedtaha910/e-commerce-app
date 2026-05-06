@@ -137,8 +137,8 @@ class _FavouritePageState extends State<FavouritePage> {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  verticalPadding: 6,
-                  color: Colors.white,
+                  verticalPadding: 4,
+                  color: AppColors.primaryColor .withAlpha(50),
                   textColor: AppColors.primaryColor,
                   horizontalMargin: 8,
                   titleSize: 14,
@@ -150,9 +150,10 @@ class _FavouritePageState extends State<FavouritePage> {
                     BlocProvider.of<FavouriteCubit>(context).clearFavourites();
                     Navigator.pop(context);
                   },
-                  verticalPadding: 6,
-                  color: AppColors.primaryColor,
-                  textColor: Colors.white,
+                  verticalPadding: 4,
+                  // color: AppColors.primaryColor,
+                  color: Colors.red.withAlpha(50),
+                  textColor: Colors.red,
                   horizontalMargin: 8,
                 ),
               ],

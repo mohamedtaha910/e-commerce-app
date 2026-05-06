@@ -358,8 +358,8 @@ void showconfirmMessage(BuildContext context, CartProduct cartproduct) {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                verticalPadding: 6,
-                color: Colors.white,
+                verticalPadding: 4,
+                color: AppColors.primaryColor.withAlpha(50),
                 textColor: AppColors.primaryColor,
                 horizontalMargin: 8,
                 titleSize: 14,
@@ -371,9 +371,9 @@ void showconfirmMessage(BuildContext context, CartProduct cartproduct) {
                   BlocProvider.of<CartCubit>(context).addToCart(cartproduct);
                   Navigator.pop(context);
                 },
-                verticalPadding: 6,
-                color: AppColors.primaryColor,
-                textColor: Colors.white,
+                verticalPadding: 4,
+                color: Colors.red.withAlpha(50),
+                textColor: Colors.red,
                 horizontalMargin: 8,
               ),
             ],

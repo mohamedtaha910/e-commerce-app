@@ -20,7 +20,7 @@ class DetailsAppBar extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey.shade200,
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.black12),
+              border: Border.all(color: Colors.black12 , width: 0.6),
               // borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(Icons.arrow_back_ios, color: Colors.black54, size: 18),
@@ -34,7 +34,7 @@ class DetailsAppBar extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
             shape: BoxShape.circle,
-            border: Border.all(color: Colors.black12),
+            border: Border.all(color: Colors.black12 , width: 0.6),
             // borderRadius: BorderRadius.circular(12),
           ),
           child: SvgPicture.asset('assets/icons/bag.svg'),

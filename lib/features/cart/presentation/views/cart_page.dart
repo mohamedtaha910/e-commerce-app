@@ -119,16 +119,6 @@ class _CartPageState extends State<CartPage> {
               margin: EdgeInsets.only(bottom: 8, right: 8, left: 8),
               decoration: BoxDecoration(
                 color: Colors.blueGrey.withAlpha(30),
-                // gradient: LinearGradient(
-                //   colors: [
-                //     AppColors.primaryColor.withAlpha(30),
-                //     // Colors.blueGrey,
-                //     Colors.blueGrey.withAlpha(30),
-                // //   ],
-                //   begin: Alignment.centerLeft,
-                //   end: Alignment.centerRight,
-                // ),
-                // color: Colors.grey.shade100,
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(color: Colors.black12, width: 0.8),
               ),
@@ -137,10 +127,10 @@ class _CartPageState extends State<CartPage> {
                   Row(
                     children: [
                       Text(
-                        'Total:',
+                        'Est. Total:',
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w700,
                           color: Colors.black,
                         ),
                       ),
@@ -149,8 +139,8 @@ class _CartPageState extends State<CartPage> {
                         '${totalPrice.toStringAsFixed(2)} \$',
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.blueGrey,
                         ),
                       ),
                     ],
@@ -219,8 +209,8 @@ class _CartPageState extends State<CartPage> {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  verticalPadding: 6,
-                  color: Colors.white,
+                  verticalPadding: 4,
+                  color: AppColors.primaryColor.withAlpha(50),
                   textColor: AppColors.primaryColor,
                   horizontalMargin: 8,
                   titleSize: 14,
@@ -232,9 +222,9 @@ class _CartPageState extends State<CartPage> {
                     BlocProvider.of<CartCubit>(context).clearCart();
                     Navigator.pop(context);
                   },
-                  verticalPadding: 6,
-                  color: AppColors.primaryColor,
-                  textColor: Colors.white,
+                  verticalPadding: 4,
+                  color: Colors.red.withAlpha(50),
+                  textColor: Colors.red,
                   horizontalMargin: 8,
                 ),
               ],
