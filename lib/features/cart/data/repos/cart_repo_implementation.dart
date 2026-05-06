@@ -19,6 +19,7 @@ class CartRepoImplementation implements CartRepo {
   void decrementQuantity(CartProduct product) {
     if (product.quantity > 1) {
       product.quantity--;
+      box.put(product.product.id, product);
     }
   }
 
@@ -26,6 +27,8 @@ class CartRepoImplementation implements CartRepo {
   void incrementQuantity(CartProduct product) {
     if (product.quantity < product.product.stock!) {
       product.quantity++;
+      box.put(product.product.id, product);
+
     }
   }
 

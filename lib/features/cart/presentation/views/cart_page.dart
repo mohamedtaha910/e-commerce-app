@@ -4,6 +4,7 @@ import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
 import 'package:e_commerce_app/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_app/features/cart/presentation/views/widgets/cart_product_list.dart';
 import 'package:e_commerce_app/features/cart/presentation/views/widgets/custom_cart_empty.dart';
+import 'package:e_commerce_app/features/order/presentation/view/checkout_page.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
 // import 'package:e_commerce_app/features/search/presentation/view/widgets/serched_products_list.dart';
 import 'package:flutter/material.dart';
@@ -139,28 +140,55 @@ class _CartPageState extends State<CartPage> {
                         '${totalPrice.toStringAsFixed(2)} \$',
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.blueGrey,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.primaryColor,
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 24),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 12),
-                    width: double.infinity,
-                    // height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey,
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Checkout',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CheckoutPage(
+                            totalPrice: totalPrice,
+                            checkoutProducts: cartProducts,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 16,
+                      ),
+                      width: double.infinity,
+                      // height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey,
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: Center(
+                        child: Row(
+                          children: [
+                            Spacer(),
+                            Text(
+                              'Checkout',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Spacer(),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                              size: 18,
+                            ),
+                          ],
                         ),
                       ),
                     ),
