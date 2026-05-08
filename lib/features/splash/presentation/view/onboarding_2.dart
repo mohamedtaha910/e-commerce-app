@@ -16,7 +16,9 @@ class Onboarding2 extends StatelessWidget {
         desc: 'assets/splash_images/desc2.svg',
         buttonTitle: 'Start Shopping',
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomePage()));
+          Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (context) => const WelcomePage()));
         },
         isLast: true,
       ),

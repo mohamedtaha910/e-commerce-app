@@ -172,17 +172,19 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => PaymentPage(
-                            country: country,
-                            city: city,
-                            address: address,
-                            totalPrice: widget.totalPrice,
-                            checkoutProducts: widget.checkoutProducts,
-                          ),
+                          builder: (context) =>
+                              // PaymentPage(
+                              //   country: country,
+                              //   city: city,
+                              //   address: address,
+                              //   totalPrice: widget.totalPrice,
+                              //   checkoutProducts: widget.checkoutProducts,
+                              // ),
+                              PaymentScreen(),
                         ),
                       );
                     } else {
-                      autoValidateMode = AutovalidateMode.always;
+                      autoValidateMode = AutovalidateMode.onUserInteraction;
                       // setState(() {});
                     }
                   },

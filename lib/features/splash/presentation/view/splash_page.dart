@@ -11,14 +11,17 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Onboarding1(),));
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Onboarding1()),
+      );
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +30,7 @@ class _SplashPageState extends State<SplashPage> {
       body: Stack(
         children: [
           Positioned(
-            top: 6,
+            top: 0,
             child: SvgPicture.asset('assets/splash_images/Ellipse 1.svg'),
           ),
           Positioned(
@@ -35,20 +38,23 @@ class _SplashPageState extends State<SplashPage> {
             child: SvgPicture.asset('assets/splash_images/Ellipse 2.svg'),
           ),
           Positioned(
-            top: 70,
+            top: 65,
             child: SvgPicture.asset('assets/splash_images/Ellipse 3.svg'),
           ),
           Positioned(
-            top:MediaQuery.of(context).size.height * 0.45,
+            top: MediaQuery.of(context).size.height * 0.45,
             left: MediaQuery.of(context).size.width * 0.3,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SvgPicture.asset('assets/icons/logo.svg' , ),
+                SvgPicture.asset('assets/icons/logo.svg', height: 30),
                 const SizedBox(width: 10),
                 // Text('Shoppivia', style: TextStyle(fontSize: 24, color: Colors.white , fontWeight: FontWeight.bold),)
-                SvgPicture.asset('assets/splash_images/Shopivia.svg' , width: 130,)
+                SvgPicture.asset(
+                  'assets/splash_images/Shopivia.svg',
+                  width: 130,
+                ),
               ],
             ),
           ),

@@ -38,7 +38,9 @@ class _CustomProductImageState extends State<CustomProductImage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 12),
+                widget.product.images!.length == 1
+                    ? SizedBox.shrink()
+                    : SizedBox(height: 24),
                 CarouselSlider(
                   options: CarouselOptions(
                     height: 240,
@@ -63,28 +65,30 @@ class _CustomProductImageState extends State<CustomProductImage> {
                     );
                   }).toList(),
                 ),
-                const SizedBox(height: 41),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 6,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
-                      // bottomLeft: Radius.circular(12),
-                      // bottomRight: Radius.circular(12),
-                    ),
-                    border: Border.all(color: Colors.white, width: 0.5),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: widget.product.images!.length == 1
-                        ? []
-                        : List.generate(
+                widget.product.images!.length == 1
+                    ? SizedBox.shrink()
+                    : const SizedBox(height: 28),
+                widget.product.images!.length == 1
+                    ? SizedBox.shrink()
+                    : Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                            // bottomLeft: Radius.circular(12),
+                            // bottomRight: Radius.circular(12),
+                          ),
+                          border: Border.all(color: Colors.white, width: 0.5),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(
                             widget.product.images!.length,
                             (index) => AnimatedContainer(
                               padding: EdgeInsets.all(1),
@@ -94,12 +98,12 @@ class _CustomProductImageState extends State<CustomProductImage> {
                               height: 48,
                               decoration: BoxDecoration(
                                 color: Colors.grey.shade200,
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(8),
                                 border: Border.all(
                                   color: currentIndex == index
                                       ? AppColors.primaryColor
                                       : Colors.white,
-                                  width: 1,
+                                  width: 1.5,
                                 ),
                               ),
 
@@ -108,8 +112,8 @@ class _CustomProductImageState extends State<CustomProductImage> {
                               ),
                             ),
                           ),
-                  ),
-                ),
+                        ),
+                      ),
               ],
             ),
           ),

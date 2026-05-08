@@ -65,15 +65,15 @@ class WelcomePage extends StatelessWidget {
                         right: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.black38,
-                        // color: Colors.white10,
+                        // color: Colors.black38,
+                        color: Colors.white,
                         // color: AppColors.primaryColor.withAlpha(200),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(25),
                       ),
                       child: Icon(
                         Icons.arrow_back_ios,
-                        color: Colors.white,
-                        size: 18,
+                        color: AppColors.primaryColor,
+                        size: 17,
                       ),
                     ),
                   ),
@@ -96,9 +96,9 @@ class WelcomePage extends StatelessWidget {
               ),
             ),
             Spacer(),
-      
+
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:  16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
