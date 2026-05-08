@@ -14,6 +14,7 @@ import 'package:e_commerce_app/features/home/presentation/view_model/get_categor
 // import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
 // import 'package:e_commerce_app/features/home/presentation/view_model/get_categories_cubit/get_categories_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_products/get_products_cubit.dart';
+import 'package:e_commerce_app/features/order/data/models/order_model.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/splash_page.dart';
 import 'package:e_commerce_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,9 +34,11 @@ void main() async {
   Hive.registerAdapter(MetaAdapter());
   Hive.registerAdapter(ReviewAdapter());
   Hive.registerAdapter(CartProductAdapter());
+  Hive.registerAdapter(OrderAdapter());
 
   await Hive.openBox<Product>('favProducts');
   await Hive.openBox<CartProduct>('cartProducts');
+  await Hive.openBox<Order>('orders');
   setUpServiceLocator();
   runApp(const MyApp());
 }
