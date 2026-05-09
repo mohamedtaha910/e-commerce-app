@@ -1,5 +1,13 @@
 // import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
+import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
+import 'package:e_commerce_app/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
+import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
+import 'package:e_commerce_app/features/order/data/models/order_model.dart';
+import 'package:e_commerce_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
+import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // class PaymentPage extends StatelessWidget {
 //   const PaymentPage({super.key, required this.country, required this.city, required this.address, required this.totalPrice, required this.checkoutProducts});
@@ -18,14 +26,28 @@ import 'package:flutter/material.dart';
 //   }
 // }
 // ===================================================
-class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
+class PaymentPage extends StatefulWidget {
+  const PaymentPage({
+    super.key,
+    required this.country,
+    required this.city,
+    required this.address,
+    required this.totalPrice,
+    required this.checkoutProducts,
+    required this.fullName,
+  });
+  final String fullName;
+  final String country;
+  final String city;
+  final String address;
+  final double totalPrice;
+  final List<CartProduct> checkoutProducts;
 
   @override
-  State<PaymentScreen> createState() => _PaymentScreenState();
+  State<PaymentPage> createState() => _PaymentPageState();
 }
 
-class _PaymentScreenState extends State<PaymentScreen> {
+class _PaymentPageState extends State<PaymentPage> {
   int selectedMethod = 0;
 
   @override
@@ -76,8 +98,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
           _card(
             child: ListTile(
               leading: const Icon(Icons.location_on),
-              title: const Text("Mohamed Taha"),
-              subtitle: const Text("Beni Suef, Egypt"),
+              title: Text(widget.fullName),
+              subtitle: Text('${widget.city}, ${widget.country}'),
               trailing: const Icon(Icons.edit),
             ),
           ),
@@ -92,49 +114,129 @@ class _PaymentScreenState extends State<PaymentScreen> {
           const Spacer(),
 
           // 💰 Total + Pay Button
+        ],
+      ),
+      bottomNavigationBar: Stack(
+        clipBehavior: Clip.none,
+
+        children: [
           Container(
-            padding: const EdgeInsets.all(16),
+            height: 125,
+            padding: const EdgeInsets.only(top: 20, right: 16, left: 16),
+            margin: EdgeInsets.only(bottom: 8, right: 8, left: 8),
             decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(color: Colors.grey.withOpacity(0.1), blurRadius: 10),
-              ],
+              color: Colors.blueGrey.withAlpha(30),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: Colors.black12, width: 0.8),
             ),
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("Total", style: TextStyle(fontSize: 16)),
                     Text(
-                      "\$${total.toStringAsFixed(2)}",
-                      style: const TextStyle(
+                      'Est. Total:',
+                      style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      '${widget.totalPrice.toStringAsFixed(2)} \$',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryColor,
                       ),
                     ),
                   ],
                 ),
-
-                const SizedBox(height: 12),
-
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      backgroundColor: Colors.black,
+                const SizedBox(height: 24),
+                GestureDetector(
+                  onTap: () => _payNow(context),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    width: double.infinity,
+                    // height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey,
+                      borderRadius: BorderRadius.circular(25),
                     ),
-                    onPressed: () {
-                      _payNow(context);
-                    },
-                    child: const Text(
-                      "Pay Now",
-                      style: TextStyle(fontSize: 16),
+                    child: Center(
+                      child: Row(
+                        children: [
+                          Spacer(),
+                          Text(
+                            'Confirm Order',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
+                            size: 18,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            top: -16,
+            right: 0,
+            child: Container(
+              // height: 40,
+              // width: 40,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.black12, width: 0.8),
+              ),
+              child: Center(
+                child: Text(
+                  '${widget.checkoutProducts.length}',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          ...List.generate(
+            widget.checkoutProducts.length,
+            (index) => Positioned(
+              top: -16,
+              left: index * 28.0,
+              child: Container(
+                // height: 40,
+                // width: 40,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 2,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.black12, width: 0.8),
+                ),
+                child: Image.network(
+                  widget.checkoutProducts[index].product.images![0],
+                  height: 30,
+                  width: 24,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
         ],
@@ -199,14 +301,82 @@ class _PaymentScreenState extends State<PaymentScreen> {
     );
   }
 
-  // 💥 Pay Action
+  //  Pay Action
   void _payNow(BuildContext context) {
-    // context.read<CartCubit>().checkout(context);
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Order placed successfully 🎉")),
+    final order = Order(
+      id: DateTime.now().toString(),
+      items: widget.checkoutProducts,
+      total: widget.totalPrice,
+      date: DateTime.now(),
+      city: widget.city,
+      country: widget.country,
+      address: widget.address,
     );
+    BlocProvider.of<OrderCubit>(context).addOrder(order);
+    BlocProvider.of<CartCubit>(context).clearCart();
 
-    Navigator.pop(context);
+    successMessage(context);
+  }
+
+  void successMessage(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.green.withAlpha(50),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.check, color: Colors.green, size: 32),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Order placed successfully!',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                // CustomButton(
+                //   title: 'Cancel',
+                //   onTap: () {
+                //     Navigator.pop(context);
+                //   },
+                //   verticalPadding: 4,
+                //   color: AppColors.primaryColor.withAlpha(50),
+                //   textColor: AppColors.primaryColor,
+                //   horizontalMargin: 8,
+                //   titleSize: 14,
+                // ),
+                CustomButton(
+                  title: 'Go to Home',
+                  titleSize: 14,
+                  onTap: () {
+                    BlocProvider.of<CartCubit>(context).clearCart();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                    );
+                  },
+                  verticalPadding: 4,
+                  color: Colors.green.withAlpha(50),
+                  textColor: Colors.green,
+                  horizontalMargin: 8,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

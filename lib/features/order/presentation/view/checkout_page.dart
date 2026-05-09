@@ -204,7 +204,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               //   totalPrice: widget.totalPrice,
                               //   checkoutProducts: widget.checkoutProducts,
                               // ),
-                              PaymentScreen(),
+                              PaymentPage(
+                                country: country,
+                                city: city,
+                                address: address,
+                                totalPrice: widget.totalPrice,
+                                checkoutProducts: widget.checkoutProducts,
+                                fullName: fullName,
+                              ),
                         ),
                       );
                     } else {
