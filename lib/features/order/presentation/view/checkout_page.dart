@@ -19,6 +19,7 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
+  String fullName = '';
   String country = '';
   String city = '';
   String address = '';
@@ -68,64 +69,87 @@ class _CheckoutPageState extends State<CheckoutPage> {
         child: Form(
           key: formKey,
           autovalidateMode: autoValidateMode,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Country',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // const SizedBox(height: 16),
+                Text(
+                  'Full Name',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              AdressTextFeild(
-                label: 'Country',
-                maxLines: 1,
-                borderRadius: 25,
-                onChanged: (value) {
-                  country = value;
-                },
-              ),
-              SizedBox(height: 24),
-              Text(
-                'City',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                const SizedBox(height: 12),
+                AdressTextFeild(
+                  label: 'Full Name',
+                  maxLines: 1,
+                  borderRadius: 25,
+                  onChanged: (value) {
+                    fullName = value;
+                  },
                 ),
-              ),
-              const SizedBox(height: 12),
-              AdressTextFeild(
-                label: 'City',
-                maxLines: 1,
-                borderRadius: 25,
-                onChanged: (value) {
-                  city = value;
-                },
-              ),
-              SizedBox(height: 24),
-              Text(
-                'Address',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                SizedBox(height: 24),
+                Text(
+                  'Country',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              AdressTextFeild(
-                label: 'Address Details',
-                maxLines: 4,
-                borderRadius: 16,
-                onChanged: (value) {
-                  address = value;
-                },
-              ),
-              SizedBox(height: 24),
-            ],
+                const SizedBox(height: 12),
+                AdressTextFeild(
+                  label: 'Country',
+                  maxLines: 1,
+                  borderRadius: 25,
+                  onChanged: (value) {
+                    country = value;
+                  },
+                ),
+                SizedBox(height: 24),
+                Text(
+                  'City',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                AdressTextFeild(
+                  label: 'City',
+                  maxLines: 1,
+                  borderRadius: 25,
+                  onChanged: (value) {
+                    city = value;
+                  },
+                ),
+                SizedBox(height: 24),
+                Text(
+                  'Address',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                AdressTextFeild(
+                  label: 'Address Details',
+                  maxLines: 4,
+                  borderRadius: 16,
+                  onChanged: (value) {
+                    address = value;
+                  },
+                ),
+                SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
       ),
@@ -184,7 +208,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         ),
                       );
                     } else {
-                      autoValidateMode = AutovalidateMode.onUserInteraction;
+                      autoValidateMode = AutovalidateMode.always;
                       // setState(() {});
                     }
                   },

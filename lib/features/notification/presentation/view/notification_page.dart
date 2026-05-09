@@ -67,7 +67,7 @@ class NotificationPage extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           Text(
-            'No Notification Found ! ',
+            'you All Caught Up with Notifications',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,

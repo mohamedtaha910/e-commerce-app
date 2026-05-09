@@ -15,6 +15,8 @@ import 'package:e_commerce_app/features/home/presentation/view_model/get_categor
 // import 'package:e_commerce_app/features/home/presentation/view_model/get_categories_cubit/get_categories_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_products/get_products_cubit.dart';
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
+import 'package:e_commerce_app/features/order/data/repos/order_repo_implementation.dart';
+import 'package:e_commerce_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/splash_page.dart';
 import 'package:e_commerce_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -64,6 +66,9 @@ class MyApp extends StatelessWidget {
           create: (context) => FavouriteCubit(FavouriteRepoImplementation()),
         ),
         BlocProvider(create: (context) => CartCubit(CartRepoImplementation())),
+        BlocProvider(
+          create: (context) => OrderCubit(OrderRepoImplementation()),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
