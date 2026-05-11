@@ -157,7 +157,6 @@ class OrderItem extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 4),
-
             ],
           ),
           Spacer(),

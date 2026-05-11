@@ -1,7 +1,8 @@
-import 'package:e_commerce_app/core/models/product_model/product.dart';
-import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
-import 'package:e_commerce_app/features/order/presentation/view/widgets/order_product_item.dart';
+import 'package:e_commerce_app/features/order/presentation/view/widgets/adress_info.dart';
+import 'package:e_commerce_app/features/order/presentation/view/widgets/id_info.dart';
+import 'package:e_commerce_app/features/order/presentation/view/widgets/order_products_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OrderDetailsPage extends StatelessWidget {
@@ -11,7 +12,42 @@ class OrderDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Order Details')),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Container(
+                padding: const EdgeInsets.only(
+                  left: 14,
+                  right: 6,
+                  top: 8,
+                  bottom: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.black12, width: 0.4),
+                ),
+                child: Icon(Icons.arrow_back_ios, size: 18),
+              ),
+            ),
+            SizedBox(width: 16),
+            Text(
+              'Order Details',
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
@@ -20,48 +56,66 @@ class OrderDetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 16),
               Text(
-                'Order ID: ${order.id}',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                'Order ID',
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
-              Text(
-                'Total Price: \$${order.total.toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+              SizedBox(height: 16),
+              IdInfo(id: order.id),
+              SizedBox(height: 16),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.black12, width: 0.4),
+                ),
+                child: Text(
+                  'Total Price: \$${order.total.toStringAsFixed(2)}',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
               ),
               SizedBox(height: 16),
               Text(
-                'Items',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                'Shipping Address ',
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
               ),
+              SizedBox(height: 16),
+              AdressInfo(
+                address: order.address,
+                city: order.city,
+                country: order.country,
+              ),
+              SizedBox(height: 24),
+              Row(
+                children: [
+                  Text(
+                    'Items',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Spacer(),
+                  Text(
+                    '${order.items.length} ${order.items.length > 1 ? 'Products' : 'Product'}',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[600],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
               OrderProductsList(cartProducts: order.items),
+              SizedBox(height: 36),
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class OrderProductsList extends StatelessWidget {
-  const OrderProductsList({super.key, required this.cartProducts});
-  final List<CartProduct> cartProducts;
-
-  @override
-  Widget build(BuildContext context) {
-    List<Product> products = cartProducts.map((e) => e.product).toList();
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemCount: products.length,
-      separatorBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        // child: const Divider(indent: 40, endIndent: 40 ),
-        child: SizedBox(height: 4),
-      ),
-      itemBuilder: (context, index) {
-        return OrderProductItem(cartproduct: cartProducts[index]);
-      },
     );
   }
 }

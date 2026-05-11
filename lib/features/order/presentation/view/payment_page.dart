@@ -342,9 +342,9 @@ class _PaymentPageState extends State<PaymentPage> {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 24),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // CustomButton(
                 //   title: 'Cancel',
@@ -358,7 +358,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 //   titleSize: 14,
                 // ),
                 CustomButton(
-                  title: 'Go to Home',
+                  title: 'Continue Shopping',
                   titleSize: 14,
                   onTap: () {
                     BlocProvider.of<CartCubit>(context).clearCart();
