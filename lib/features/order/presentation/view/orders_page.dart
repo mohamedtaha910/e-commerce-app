@@ -158,34 +158,6 @@ class OrderItem extends StatelessWidget {
               ),
               SizedBox(height: 4),
 
-              // Row(
-              //   mainAxisSize: MainAxisSize.min,
-              //   mainAxisAlignment: MainAxisAlignment.center,
-
-              //   children: List.generate(
-              //     order.items.length < 5 ? order.items.length : 5,
-              //     (index) => Container(
-              //       // height: 40,
-              //       // width: 40,
-              //       padding: const EdgeInsets.symmetric(
-              //         horizontal: 10,
-              //         vertical: 2,
-              //       ),
-              //       margin: const EdgeInsets.only(right: 0),
-              //       decoration: BoxDecoration(
-              //         color: Colors.white,
-              //         shape: BoxShape.circle,
-              //         border: Border.all(color: Colors.black12, width: 0.8),
-              //       ),
-              //       child: Image.network(
-              //         order.items[index].product.images![0],
-              //         height: 30,
-              //         width: 24,
-              //         fit: BoxFit.cover,
-              //       ),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
           Spacer(),

@@ -149,6 +149,7 @@ class _CartPageState extends State<CartPage> {
                   const SizedBox(height: 24),
                   GestureDetector(
                     onTap: () {
+                      if (cartProducts.isEmpty) return;
                       Navigator.push(
                         context,
                         MaterialPageRoute(
