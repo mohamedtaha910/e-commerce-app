@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class IdInfo extends StatelessWidget {
-  const IdInfo({super.key, required this.id});
-  final String id;
+class TotalPriceInfo extends StatelessWidget {
+  const TotalPriceInfo({super.key, required this.total});
+  final double total;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +18,17 @@ class IdInfo extends StatelessWidget {
       child: Row(
         children: [
           Icon(
-            CupertinoIcons.info_circle_fill,
-            color: Colors.blueAccent,
-            size: 27,
-            // size: 30,
+            CupertinoIcons.money_dollar_circle_fill,
+            color: Colors.green.shade700,
+            size: 28,
           ),
           SizedBox(width: 12),
-          Icon(Icons.arrow_forward_ios, color: Colors.blueAccent, size: 12),
+          Icon(Icons.arrow_forward_ios, color: Colors.green.shade700, size: 12),
           SizedBox(width: 12),
-          Text(id, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          Text(
+            '\$${total.toStringAsFixed(2)}',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );

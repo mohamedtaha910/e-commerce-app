@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -7,8 +8,10 @@ class CustomButton extends StatelessWidget {
     required this.onTap,
     required this.verticalPadding,
     required this.color,
-    required this.textColor, required this.horizontalMargin, required this.titleSize,
-
+    required this.textColor,
+    required this.horizontalMargin,
+    required this.titleSize,
+    this.isBorder = false,
   });
   final String title;
   final double titleSize;
@@ -17,6 +20,7 @@ class CustomButton extends StatelessWidget {
   final Color color;
   final Color textColor;
   final double horizontalMargin;
+  final bool isBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +37,9 @@ class CustomButton extends StatelessWidget {
           // color: AppColors.primaryColor,
           color: color,
           borderRadius: BorderRadius.circular(25),
+          border: isBorder
+              ? Border.all(color: AppColors.primaryColor, width: 0.4)
+              : null,
         ),
         child: Center(
           child: Text(

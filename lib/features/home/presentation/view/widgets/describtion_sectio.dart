@@ -28,7 +28,12 @@ class DescribtionSection extends StatelessWidget {
                 color: AppColors.secondaryColor.withAlpha(50),
                 shape: BoxShape.circle,
               ),
-              child: Icon(Icons.store , color: AppColors.secondaryColor, size: 24,)),
+              child: Icon(
+                Icons.store,
+                color: AppColors.secondaryColor,
+                size: 24,
+              ),
+            ),
             Text(
               '  Brand : $brand',
               style: TextStyle(

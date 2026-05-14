@@ -83,7 +83,7 @@ class _CustomProductImageState extends State<CustomProductImage> {
                             // bottomLeft: Radius.circular(12),
                             // bottomRight: Radius.circular(12),
                           ),
-                          border: Border.all(color: Colors.white, width: 0.5),
+                          border: Border.all(color: Colors.white, width: 1),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,

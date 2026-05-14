@@ -30,13 +30,22 @@ class AdressInfo extends StatelessWidget {
             size: 30,
           ),
           SizedBox(width: 12),
+          Icon(Icons.arrow_forward_ios, color: Colors.redAccent, size: 12),
+          SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('$city, $country', style: TextStyle(fontSize: 14)),
+              Text(
+                '$city, $country',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
               Text(
                 address,
-                style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ],
           ),

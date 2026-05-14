@@ -187,7 +187,7 @@ class _CartPageState extends State<CartPage> {
                             Icon(
                               Icons.arrow_forward_ios,
                               color: Colors.white,
-                              size: 18,
+                              size: 16,
                             ),
                           ],
                         ),
@@ -239,10 +239,11 @@ class _CartPageState extends State<CartPage> {
                     Navigator.pop(context);
                   },
                   verticalPadding: 4,
-                  color: AppColors.primaryColor.withAlpha(50),
+                  color: Colors.transparent,
                   textColor: AppColors.primaryColor,
                   horizontalMargin: 8,
                   titleSize: 14,
+                  isBorder: true,
                 ),
                 CustomButton(
                   title: 'Ok',

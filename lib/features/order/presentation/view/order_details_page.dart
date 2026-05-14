@@ -2,6 +2,7 @@ import 'package:e_commerce_app/features/order/data/models/order_model.dart';
 import 'package:e_commerce_app/features/order/presentation/view/widgets/adress_info.dart';
 import 'package:e_commerce_app/features/order/presentation/view/widgets/id_info.dart';
 import 'package:e_commerce_app/features/order/presentation/view/widgets/order_products_list.dart';
+import 'package:e_commerce_app/features/order/presentation/view/widgets/total_price_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -59,31 +60,21 @@ class OrderDetailsPage extends StatelessWidget {
               SizedBox(height: 16),
               Text(
                 'Order ID',
-                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
               IdInfo(id: order.id),
-              SizedBox(height: 16),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 12,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.black12, width: 0.4),
-                ),
-                child: Text(
-                  'Total Price: \$${order.total.toStringAsFixed(2)}',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
+              SizedBox(height: 24),
+              Text(
+                'Total Price',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
+              TotalPriceInfo(total: order.total),
+              SizedBox(height: 24),
               Text(
                 'Shipping Address ',
-                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
               AdressInfo(
@@ -96,7 +87,7 @@ class OrderDetailsPage extends StatelessWidget {
                 children: [
                   Text(
                     'Items',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                   ),
                   Spacer(),
                   Text(

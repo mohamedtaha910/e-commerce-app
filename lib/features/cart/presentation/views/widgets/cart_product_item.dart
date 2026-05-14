@@ -14,9 +14,7 @@ class CartProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Product product = cartproduct.product;
-    final double originalPrice = (product.price as num).toDouble();
     final double discount = (product.discountPercentage as num).toDouble();
-    final double discountedPrice = originalPrice * (1 - discount / 100);
 
     return GestureDetector(
       onTap: () {
@@ -116,8 +114,10 @@ class CartProductItem extends StatelessWidget {
                               child: GestureDetector(
                                 onTap: () =>
                                     showconfirmMessage(context, cartproduct),
-                                child: Icon(Icons.delete, size: 18,
-                                color: Colors.red,
+                                child: Icon(
+                                  Icons.delete,
+                                  size: 18,
+                                  color: Colors.red,
                                 ),
                               ),
                             ),
@@ -258,7 +258,10 @@ class CartProductItem extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: Colors.grey.shade100,
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.black12, width: 0.4),
+                                border: Border.all(
+                                  color: Colors.black12,
+                                  width: 0.4,
+                                ),
                               ),
                               child: Row(
                                 children: [
@@ -359,10 +362,12 @@ void showconfirmMessage(BuildContext context, CartProduct cartproduct) {
                   Navigator.pop(context);
                 },
                 verticalPadding: 4,
-                color: AppColors.primaryColor.withAlpha(50),
+                // color: AppColors.primaryColor.withAlpha(50),
+                color: Colors.transparent,
                 textColor: AppColors.primaryColor,
                 horizontalMargin: 8,
                 titleSize: 14,
+                isBorder: true,
               ),
               CustomButton(
                 title: 'Ok',

@@ -196,22 +196,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              // PaymentPage(
-                              //   country: country,
-                              //   city: city,
-                              //   address: address,
-                              //   totalPrice: widget.totalPrice,
-                              //   checkoutProducts: widget.checkoutProducts,
-                              // ),
-                              PaymentPage(
-                                country: country,
-                                city: city,
-                                address: address,
-                                totalPrice: widget.totalPrice,
-                                checkoutProducts: widget.checkoutProducts,
-                                fullName: fullName,
-                              ),
+                          builder: (context) => PaymentPage(
+                            country: country,
+                            city: city,
+                            address: address,
+                            totalPrice: widget.totalPrice,
+                            checkoutProducts: widget.checkoutProducts,
+                            fullName: fullName,
+                          ),
                         ),
                       );
                     } else {
@@ -243,7 +235,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           Icon(
                             Icons.arrow_forward_ios,
                             color: Colors.white,
-                            size: 18,
+                            size: 16,
                           ),
                         ],
                       ),

@@ -138,10 +138,11 @@ class _FavouritePageState extends State<FavouritePage> {
                     Navigator.pop(context);
                   },
                   verticalPadding: 4,
-                  color: AppColors.primaryColor .withAlpha(50),
+                  color: Colors.transparent,
                   textColor: AppColors.primaryColor,
                   horizontalMargin: 8,
                   titleSize: 14,
+                  isBorder: true,
                 ),
                 CustomButton(
                   title: 'Ok',

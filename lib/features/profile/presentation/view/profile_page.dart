@@ -5,6 +5,7 @@ import 'package:e_commerce_app/features/home/presentation/view/widgets/horizinta
 import 'package:e_commerce_app/features/order/presentation/view/orders_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/view/widgets/profile_header.dart';
 import 'package:e_commerce_app/features/profile/presentation/view/widgets/profile_row.dart';
+import 'package:flutter/cupertino.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -33,11 +34,15 @@ class ProfilePage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: Colors.grey.shade200,
+                color: Colors.grey.shade100,
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.grey.shade400),
+                border: Border.all(color: Colors.grey.shade400, width: 0.4),
               ),
-              child: Icon(Icons.settings, color: Colors.black, size: 20),
+              child: Icon(
+                CupertinoIcons.settings_solid,
+                color: Colors.black,
+                size: 22,
+              ),
             ),
           ],
         ),
@@ -60,16 +65,16 @@ class ProfilePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               // margin: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
-                color: Colors.grey.shade200,
+                color: Colors.grey.shade100,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey.shade400, width: 0.1),
+                border: Border.all(color: Colors.grey.shade400, width: 0.08),
               ),
               child: Column(
                 children: [
                   ProfileRow(
                     text: 'Orders',
                     textColor: Colors.black87,
-                    icon: Icons.shopping_bag,
+                    icon: CupertinoIcons.square_list_fill,
                     iconColor: Colors.blueGrey,
                     circleColor: Colors.black.withAlpha(25),
                     arrowColor: Colors.grey.shade700,
@@ -89,7 +94,7 @@ class ProfilePage extends StatelessWidget {
                   ProfileRow(
                     text: 'Cart',
                     textColor: Colors.black87,
-                    icon: Icons.shopping_cart,
+                    icon: CupertinoIcons.cart_fill,
                     iconColor: Colors.blueGrey,
                     circleColor: Colors.black.withAlpha(25),
                     arrowColor: Colors.grey.shade700,
@@ -112,8 +117,8 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: Icons.favorite,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(25),
-                    arrowColor: Colors.grey.shade700,
+                    circleColor: Colors.black.withAlpha(20),
+                    arrowColor: Colors.black54,
                     onTap: () async {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -135,9 +140,9 @@ class ProfilePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               // margin: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
-                color: Colors.grey.shade200,
+                color: Colors.grey.shade100,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey.shade400, width: 0.1),
+                border: Border.all(color: Colors.grey.shade400, width: 0.08),
               ),
               child: Column(
                 children: [

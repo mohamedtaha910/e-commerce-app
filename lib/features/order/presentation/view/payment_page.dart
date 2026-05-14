@@ -4,8 +4,10 @@ import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
 import 'package:e_commerce_app/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
+import 'package:e_commerce_app/features/order/presentation/view/orders_page.dart';
 import 'package:e_commerce_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -97,7 +99,11 @@ class _PaymentPageState extends State<PaymentPage> {
           _sectionTitle("Shipping Address"),
           _card(
             child: ListTile(
-              leading: const Icon(Icons.location_on),
+              leading: const Icon(
+                CupertinoIcons.location_circle,
+                color: Colors.redAccent,
+                size: 30,
+              ),
               title: Text(widget.fullName),
               subtitle: Text('${widget.city}, ${widget.country}'),
               trailing: const Icon(Icons.edit),
@@ -121,7 +127,7 @@ class _PaymentPageState extends State<PaymentPage> {
 
         children: [
           Container(
-            height: 125,
+            height: 175,
             padding: const EdgeInsets.only(top: 20, right: 16, left: 16),
             margin: EdgeInsets.only(bottom: 8, right: 8, left: 8),
             decoration: BoxDecoration(
@@ -134,9 +140,9 @@ class _PaymentPageState extends State<PaymentPage> {
                 Row(
                   children: [
                     Text(
-                      'Est. Total:',
+                      'sub Total:',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
                       ),
@@ -145,7 +151,51 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       '${widget.totalPrice.toStringAsFixed(2)} \$',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 3),
+                Row(
+                  children: [
+                    Text(
+                      'Shipping:',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      'Free',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 3),
+                Row(
+                  children: [
+                    Text(
+                      'Est. Total:',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      '${widget.totalPrice.toStringAsFixed(2)} \$',
+                      style: TextStyle(
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: AppColors.primaryColor,
                       ),
@@ -292,10 +342,11 @@ class _PaymentPageState extends State<PaymentPage> {
   Widget _card({required Widget child}) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.grey.shade50,
+        color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.black12, width: 0.4),
       ),
       child: child,
     );
@@ -331,7 +382,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 color: Colors.green.withAlpha(50),
                 shape: BoxShape.circle,
               ),
-              child: Icon(Icons.check, color: Colors.green, size: 32),
+              child: Icon(Icons.check, color: Colors.green, size: 36),
             ),
             SizedBox(height: 16),
             Text(
@@ -342,13 +393,17 @@ class _PaymentPageState extends State<PaymentPage> {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 29),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // CustomButton(
-                //   title: 'Cancel',
+                //   title: '',
                 //   onTap: () {
+                //     Navigator.pushReplacement(
+                //       context,
+                //       MaterialPageRoute(builder: (context) => OrdersPage()),
+                //     );
                 //     Navigator.pop(context);
                 //   },
                 //   verticalPadding: 4,
@@ -366,6 +421,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       context,
                       MaterialPageRoute(builder: (context) => const HomePage()),
                     );
+                    // Navigator.pop(context);
                   },
                   verticalPadding: 4,
                   color: Colors.green.withAlpha(50),
