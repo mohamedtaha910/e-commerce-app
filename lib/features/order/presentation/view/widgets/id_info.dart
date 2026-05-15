@@ -14,6 +14,15 @@ class IdInfo extends StatelessWidget {
         color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.black12, width: 0.4),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.grey.shade200,
+        //     blurRadius: 4,
+        //     offset: (Offset(0, 2)),
+        //     spreadRadius: 1,
+        //     // blurStyle: BlurStyle.outer,
+        //   ),
+        // ],
       ),
       child: Row(
         children: [

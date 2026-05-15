@@ -23,10 +23,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
   String country = '';
   String city = '';
   String address = '';
+  final formKey = GlobalKey<FormState>();
+  var autoValidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    var autoValidateMode = AutovalidateMode.disabled;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -88,7 +88,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 AdressTextFeild(
                   label: 'Full Name',
                   maxLines: 1,
-                  borderRadius: 25,
+                  borderRadius: 35,
                   onChanged: (value) {
                     fullName = value;
                   },
@@ -106,7 +106,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 AdressTextFeild(
                   label: 'Country',
                   maxLines: 1,
-                  borderRadius: 25,
+                  borderRadius: 35,
                   onChanged: (value) {
                     country = value;
                   },
@@ -124,7 +124,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 AdressTextFeild(
                   label: 'City',
                   maxLines: 1,
-                  borderRadius: 25,
+                  borderRadius: 35,
                   onChanged: (value) {
                     city = value;
                   },
@@ -142,7 +142,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 AdressTextFeild(
                   label: 'Address Details',
                   maxLines: 4,
-                  borderRadius: 16,
+                  borderRadius: 20,
                   onChanged: (value) {
                     address = value;
                   },
@@ -159,8 +159,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
         children: [
           Container(
             height: 125,
-            padding: const EdgeInsets.only(top: 20, right: 16, left: 16),
-            margin: EdgeInsets.only(bottom: 8, right: 8, left: 8),
+            padding: const EdgeInsets.only(
+              top: 20,
+              right: 16,
+              left: 16,
+              bottom: 8,
+            ),
+            margin: EdgeInsets.only(bottom: 16, right: 10, left: 10),
             decoration: BoxDecoration(
               color: Colors.blueGrey.withAlpha(30),
               borderRadius: BorderRadius.circular(14),
@@ -173,7 +178,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     Text(
                       'Est. Total:',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 17,
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
                       ),
@@ -182,16 +187,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     Text(
                       '${widget.totalPrice.toStringAsFixed(2)} \$',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: AppColors.primaryColor,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 22),
                 GestureDetector(
                   onTap: () {
+                    autoValidateMode = AutovalidateMode.always;
+                    setState(() {});
                     if (formKey.currentState!.validate()) {
                       Navigator.push(
                         context,
@@ -206,18 +213,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           ),
                         ),
                       );
-                    } else {
-                      autoValidateMode = AutovalidateMode.always;
-                      // setState(() {});
                     }
                   },
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                     width: double.infinity,
                     // height: 50,
                     decoration: BoxDecoration(
                       color: Colors.blueGrey,
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(35),
                     ),
                     child: Center(
                       child: Row(
@@ -246,8 +250,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
           ),
           Positioned(
-            top: -16,
-            right: 0,
+            top: -17,
+            right: 3,
             child: Container(
               // height: 40,
               // width: 40,

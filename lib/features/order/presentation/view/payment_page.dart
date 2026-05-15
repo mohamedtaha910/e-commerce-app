@@ -127,9 +127,14 @@ class _PaymentPageState extends State<PaymentPage> {
 
         children: [
           Container(
-            height: 175,
-            padding: const EdgeInsets.only(top: 20, right: 16, left: 16),
-            margin: EdgeInsets.only(bottom: 8, right: 8, left: 8),
+            height: 185,
+            padding: const EdgeInsets.only(
+              top: 20,
+              right: 16,
+              left: 16,
+              bottom: 8,
+            ),
+            margin: EdgeInsets.only(bottom: 16, right: 10, left: 10),
             decoration: BoxDecoration(
               color: Colors.blueGrey.withAlpha(30),
               borderRadius: BorderRadius.circular(14),
@@ -151,9 +156,9 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       '${widget.totalPrice.toStringAsFixed(2)} \$',
                       style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.primaryColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black54,
                       ),
                     ),
                   ],
@@ -173,9 +178,9 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       'Free',
                       style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.primaryColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black54,
                       ),
                     ),
                   ],
@@ -186,7 +191,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       'Est. Total:',
                       style: TextStyle(
-                        fontSize: 17,
+                        fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
                       ),
@@ -195,18 +200,18 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       '${widget.totalPrice.toStringAsFixed(2)} \$',
                       style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
                         color: AppColors.primaryColor,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 22),
                 GestureDetector(
                   onTap: () => _payNow(context),
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                     width: double.infinity,
                     // height: 50,
                     decoration: BoxDecoration(
@@ -240,8 +245,8 @@ class _PaymentPageState extends State<PaymentPage> {
             ),
           ),
           Positioned(
-            top: -16,
-            right: 0,
+            top: -17,
+            right: 3,
             child: Container(
               // height: 40,
               // width: 40,

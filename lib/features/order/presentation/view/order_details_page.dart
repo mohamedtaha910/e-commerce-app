@@ -37,7 +37,8 @@ class OrderDetailsPage extends StatelessWidget {
                 child: Icon(Icons.arrow_back_ios, size: 18),
               ),
             ),
-            SizedBox(width: 16),
+            // SizedBox(width: 16),
+            Spacer(),
             Text(
               'Order Details',
               style: TextStyle(
@@ -46,6 +47,9 @@ class OrderDetailsPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+
+            Spacer(),
+            SizedBox(width: 24),
           ],
         ),
       ),
@@ -60,21 +64,21 @@ class OrderDetailsPage extends StatelessWidget {
               SizedBox(height: 16),
               Text(
                 'Order ID',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
               IdInfo(id: order.id),
               SizedBox(height: 24),
               Text(
                 'Total Price',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
               TotalPriceInfo(total: order.total),
               SizedBox(height: 24),
               Text(
                 'Shipping Address ',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
               AdressInfo(

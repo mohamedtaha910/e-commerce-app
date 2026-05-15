@@ -23,6 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String? email;
   String? password;
   bool isLoading = false;
+  AutovalidateMode? autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
@@ -44,67 +45,76 @@ class _SignUpPageState extends State<SignUpPage> {
           inAsyncCall: isLoading,
           child: SafeArea(
             bottom: false,
-            child: Scaffold(
-              // backgroundColor:AppColors.backgroundColor,
-              // appBar: AppBar(),
-              body: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomHeader(
-                        image: 'assets/auth_images/frame.svg',
-                        text: 'assets/auth_images/Sign_Up_word.svg',
-                      ),
-                      // SizedBox(height: 16),
-                      AuthTextFeild(
-                        hintText: 'Email',
-                        icon: Icons.email,
-                        onChanged: (value) {
-                          email = value;
-                        },
-                        borderRadius: 25,
-                        obscureText: false,
-                      ),
-                      SizedBox(height: 24),
-                      AuthTextFeild(
-                        hintText: 'Password',
-                        icon: Icons.lock,
-                        onChanged: (value) {
-                          password = value;
-                        },
-                        borderRadius: 25,
-                        obscureText: true,
-                      ),
-                      SizedBox(height: 32),
-                      CustomButton(
-                        color: AppColors.primaryColor,
-                        textColor: Colors.white,
-                        title: 'Sign Up',
-                        titleSize: 17,
-                        verticalPadding: 10,
-                        horizontalMargin: 16,
-                        onTap: () {
-                          if (formKey.currentState!.validate()) {
-                            BlocProvider.of<AuthCubit>(
-                              context,
-                            ).registerUser(email: email!, password: password!);
-                          }
-                        },
-                      ),
-                      SizedBox(height: 16),
-                      OtherWay(),
-                      SizedBox(height: 16),
-                      CustomShift(
-                        destination: LoginPage(),
-                        text: 'Log In',
-                        text2: 'Already have an account?  ',
-                      ),
-                      SizedBox(height: 20),
-                    ],
+            child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+              },
+              child: Scaffold(
+                // backgroundColor:AppColors.backgroundColor,
+                // appBar: AppBar(),
+                body: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  child: Form(
+                    key: formKey,
+                    autovalidateMode: autovalidateMode,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomHeader(
+                          image: 'assets/auth_images/frame.svg',
+                          text: 'assets/auth_images/Sign_Up_word.svg',
+                        ),
+                        // SizedBox(height: 16),
+                        AuthTextFeild(
+                          hintText: 'Email',
+                          icon: Icons.email,
+                          onChanged: (value) {
+                            email = value;
+                          },
+                          borderRadius: 35,
+                          obscureText: false,
+                        ),
+                        SizedBox(height: 24),
+                        AuthTextFeild(
+                          hintText: 'Password',
+                          icon: Icons.lock,
+                          onChanged: (value) {
+                            password = value;
+                          },
+                          borderRadius: 35,
+                          obscureText: true,
+                        ),
+                        SizedBox(height: 32),
+                        CustomButton(
+                          color: AppColors.primaryColor,
+                          textColor: Colors.white,
+                          title: 'Sign Up',
+                          titleSize: 17,
+                          verticalPadding: 8,
+                          horizontalMargin: 16,
+                          onTap: () {
+                            autovalidateMode = AutovalidateMode.always;
+                            setState(() {});
+                            if (formKey.currentState!.validate()) {
+                              BlocProvider.of<AuthCubit>(context).registerUser(
+                                email: email!,
+                                password: password!,
+                              );
+                            }
+                          },
+                        ),
+                        SizedBox(height: 32),
+                        OtherWay(),
+                        SizedBox(height: 24),
+                        CustomShift(
+                          destination: LoginPage(),
+                          text: 'Log In',
+                          text2: 'Already have an account?  ',
+                        ),
+                        SizedBox(height: 20),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -114,6 +124,7 @@ class _SignUpPageState extends State<SignUpPage> {
       },
     );
   }
+
   void showErrorMessage(BuildContext context, {required String message}) {
     showDialog(
       context: context,

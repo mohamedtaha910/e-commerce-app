@@ -2,17 +2,23 @@ import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductMainInfo extends StatelessWidget {
-  const ProductMainInfo({super.key, required this.title, required this.category, required this.price, required this.discountPercentage});
+  const ProductMainInfo({
+    super.key,
+    required this.title,
+    required this.category,
+    required this.price,
+    required this.discountPercentage,
+  });
   final String title;
   final String category;
   final double price;
   final double discountPercentage;
 
-
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,6 +44,7 @@ class ProductMainInfo extends StatelessWidget {
           ],
         ),
         Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -60,13 +67,14 @@ class ProductMainInfo extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 252, 221, 224),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(35),
+                // shape: BoxShape.circle,
               ),
               child: Text(
                 "$discountPercentage% OFF",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Colors.pink,
+                  color: Colors.pink.shade700,
                   fontWeight: FontWeight.w700,
                 ),
               ),

@@ -7,36 +7,28 @@ class OtherWay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
           Row(
-      
             children: [
-              Expanded(
-                child: Divider(
-                  thickness: 1,
-                  color: Colors.black54,
-                ),
-              ),
+              Expanded(child: Divider(thickness: 1, color: Colors.black54)),
               Text(
                 '  Or continue with  ',
-                style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w500),
-              ),
-              Expanded(
-                child: Divider(
-                  thickness: 1,
+                style: TextStyle(
                   color: Colors.black54,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
+              Expanded(child: Divider(thickness: 1, color: Colors.black54)),
             ],
           ),
           SizedBox(height: 16),
-      
+
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-      
+
             children: [
               SvgPicture.asset('assets/auth_images/facebook.svg'),
               SizedBox(width: 16),

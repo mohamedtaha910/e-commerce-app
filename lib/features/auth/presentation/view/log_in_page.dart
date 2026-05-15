@@ -87,12 +87,12 @@ class _LoginPageState extends State<LoginPage> {
                         textColor: Colors.white,
                         title: 'Log In',
                         titleSize: 17,
-                        verticalPadding: 10,
+                        verticalPadding: 8,
                         horizontalMargin: 16,
                         onTap: () {
                           autovalidateMode = AutovalidateMode.always;
                           setState(() {});
-            
+
                           if (formKey.currentState!.validate()) {
                             BlocProvider.of<AuthCubit>(
                               context,
@@ -100,9 +100,9 @@ class _LoginPageState extends State<LoginPage> {
                           }
                         },
                       ),
-                      SizedBox(height: 16),
+                      SizedBox(height: 32),
                       OtherWay(),
-                      SizedBox(height: 16),
+                      SizedBox(height: 24),
                       CustomShift(
                         destination: SignUpPage(),
                         text: 'Register Now',

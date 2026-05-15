@@ -116,8 +116,13 @@ class _CartPageState extends State<CartPage> {
 
             bottomNavigationBar: Container(
               height: 125,
-              padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
-              margin: EdgeInsets.only(bottom: 8, right: 8, left: 8),
+              padding: const EdgeInsets.only(
+                top: 16,
+                right: 16,
+                left: 16,
+                bottom: 8,
+              ),
+              margin: EdgeInsets.only(bottom: 16, right: 10, left: 10),
               decoration: BoxDecoration(
                 color: Colors.blueGrey.withAlpha(30),
                 borderRadius: BorderRadius.circular(14),
@@ -146,7 +151,7 @@ class _CartPageState extends State<CartPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 22),
                   GestureDetector(
                     onTap: () {
                       if (cartProducts.isEmpty) return;
@@ -162,7 +167,7 @@ class _CartPageState extends State<CartPage> {
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(
-                        vertical: 12,
+                        vertical: 10,
                         horizontal: 16,
                       ),
                       width: double.infinity,

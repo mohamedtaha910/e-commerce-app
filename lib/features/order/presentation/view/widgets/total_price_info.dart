@@ -20,7 +20,7 @@ class TotalPriceInfo extends StatelessWidget {
           Icon(
             CupertinoIcons.money_dollar_circle_fill,
             color: Colors.green.shade700,
-            size: 28,
+            size: 29,
           ),
           SizedBox(width: 12),
           Icon(Icons.arrow_forward_ios, color: Colors.green.shade700, size: 12),

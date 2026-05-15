@@ -17,7 +17,7 @@ class WelcomePage extends StatelessWidget {
             Stack(
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.67,
                   width: MediaQuery.of(context).size.width,
                   child: ShaderMask(
                     blendMode: BlendMode
@@ -43,6 +43,7 @@ class WelcomePage extends StatelessWidget {
                 Positioned(
                   top: 20,
                   left: 15,
+                  right: 10,
                   child: SvgPicture.asset(
                     'assets/auth_images/login.svg',
                     fit: BoxFit.fill,
@@ -68,30 +69,35 @@ class WelcomePage extends StatelessWidget {
                         // color: Colors.black38,
                         color: Colors.white,
                         // color: AppColors.primaryColor.withAlpha(200),
-                        borderRadius: BorderRadius.circular(25),
+                        borderRadius: BorderRadius.circular(30),
                       ),
                       child: Icon(
                         Icons.arrow_back_ios,
                         color: AppColors.primaryColor,
-                        size: 17,
+                        size: 18,
                       ),
                     ),
                   ),
                 ),
               ],
             ),
+            Transform.translate(
+              offset: Offset(0, -28),
+
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: SvgPicture.asset('assets/auth_images/Welcome.svg'),
+              ),
+            ),
+            // const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: SvgPicture.asset('assets/auth_images/Welcome.svg'),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
               child: Text(
                 'Join thousands of happy shoppers. It’s fast, free, and only takes a few seconds!',
                 style: TextStyle(
                   color: Colors.black45,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
@@ -124,7 +130,7 @@ class WelcomePage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 36),
           ],
         ),
       ),

@@ -14,38 +14,40 @@ class HomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: MediaQuery.of(context).size.width * 0.04,
-      ),
-      child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            const CustomAppBar(),
-            const SizedBox(height: 36),
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => BlocProvider(
-                      create: (context) => SearchProductsCubit(
-                        getIt.get<SearchRepoImplementation>(),
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.04,
+        ),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              const CustomAppBar(),
+              const SizedBox(height: 36),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                        create: (context) => SearchProductsCubit(
+                          getIt.get<SearchRepoImplementation>(),
+                        ),
+                        child: SearchPage(isInHome: true),
                       ),
-                      child: SearchPage(isInHome: true,),
                     ),
-                  ),
-                );
-              },
-              child: CustomSearchBar(),
-            ),
-            const SizedBox(height: 36),
+                  );
+                },
+                child: CustomSearchBar(),
+              ),
+              const SizedBox(height: 36),
 
-            const CategoriesList(),
-          ],
+              const CategoriesList(),
+            ],
+          ),
         ),
       ),
     );

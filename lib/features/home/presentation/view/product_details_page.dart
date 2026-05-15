@@ -58,15 +58,19 @@ class ProductDetailsPage extends StatelessWidget {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: AppColors.primaryColor.withAlpha(50),
-                      borderRadius: BorderRadius.circular(12),
+                      color: product.availabilityStatus == 'In Stock'
+                          ? Colors.green.withAlpha(50)
+                          : Colors.red.withAlpha(50),
+                      borderRadius: BorderRadius.circular(35),
                     ),
                     child: Text(
                       product.availabilityStatus!,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 13,
-                        color: AppColors.primaryColor,
+                        color: product.availabilityStatus == 'In Stock'
+                            ? Colors.green
+                            : Colors.pink.shade700,
                       ),
                     ),
                   ),

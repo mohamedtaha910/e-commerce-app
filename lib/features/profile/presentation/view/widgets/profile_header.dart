@@ -10,10 +10,10 @@ class ProfileHeader extends StatelessWidget {
       children: [
         // const SizedBox(width: 16),
         CircleAvatar(
-          radius: 40,
-          backgroundColor: Colors.grey.shade200,
+          radius: 60,
+          backgroundColor: Colors.grey.shade400,
           child: CircleAvatar(
-            radius: 60,
+            radius: 58,
             child: Image.asset('assets/images/user2.png'),
           ),
         ),
@@ -23,14 +23,14 @@ class ProfileHeader extends StatelessWidget {
           children: [
             Text(
               FirebaseAuth.instance.currentUser?.email!.split('@')[0] ??
-                  'John Doe',
+                  'UnKnown User',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 4),
             Text(
               FirebaseAuth.instance.currentUser?.email ??
-                  'john.doe@example.com',
-              style: TextStyle(fontSize: 16),
+                  'UnKnown Use@example.com',
+              style: TextStyle(fontSize: 16, color: Colors.black54),
             ),
           ],
         ),

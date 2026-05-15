@@ -22,7 +22,6 @@ class ProductItem extends StatelessWidget {
         );
       },
       child: Container(
-
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,6 +54,9 @@ class ProductItem extends StatelessWidget {
                           : Image.network(
                               product.images?[0] ?? '',
                               fit: BoxFit.contain,
+                              errorBuilder: (context, error, stack) {
+                                return Icon(Icons.image_not_supported_rounded);
+                              },
                             ),
                     ),
                   ),
@@ -114,7 +116,7 @@ class ProductItem extends StatelessWidget {
               ' \$ ${product.price ?? ''}',
               style: TextStyle(
                 fontSize: 17,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w600,
                 color: Colors.black,
               ),
             ),

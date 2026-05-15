@@ -53,7 +53,7 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 36.0),
+              padding: const EdgeInsets.symmetric(vertical: 28.0),
               child: ProfileHeader(),
             ),
             Text(

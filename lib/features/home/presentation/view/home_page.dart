@@ -27,12 +27,9 @@ class _HomePageState extends State<HomePage> {
           SearchProductsCubit(getIt.get<SearchRepoImplementation>()),
       child: SearchPage(isInHome: false),
     ),
-    FavouritePage(
-      isFromProfile: false,
-    ),
+    FavouritePage(isFromProfile: false),
     // CartPage(),
     ProfilePage(),
-    
   ];
   @override
   Widget build(BuildContext context) {
@@ -42,12 +39,13 @@ class _HomePageState extends State<HomePage> {
         children: [
           pages[currentIndex],
 
+          //  shadow
           Positioned(
             // top: 100,
             bottom: 0,
             left: 0,
             right: 0,
-            height: 22,
+            height: 30,
             // height: 55,
             // height: 63,
             child: Container(
@@ -67,12 +65,12 @@ class _HomePageState extends State<HomePage> {
           ),
 
           Positioned(
-            bottom: 22, 
+            bottom: 22,
             left: 0,
             right: 0,
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 42),
+                padding: const EdgeInsets.symmetric(horizontal: 36),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(18),
 

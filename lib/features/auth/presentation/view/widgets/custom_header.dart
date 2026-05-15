@@ -13,7 +13,7 @@ class CustomHeader extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.47,
           width: MediaQuery.of(context).size.width,
           child: ShaderMask(
             blendMode: BlendMode
@@ -39,11 +39,12 @@ class CustomHeader extends StatelessWidget {
         ),
         Positioned(
           top: 25,
-          left: 80,
+          left: 85,
+          right: 85,
           child: SvgPicture.asset(
             image,
             fit: BoxFit.fill,
-            height: MediaQuery.of(context).size.height * 0.3,
+            height: MediaQuery.of(context).size.height * 0.28,
             // width: 130,
           ),
         ),
@@ -70,7 +71,7 @@ class CustomHeader extends StatelessWidget {
               child: Icon(
                 Icons.arrow_back_ios,
                 color: AppColors.primaryColor,
-                size: 17,
+                size: 18,
               ),
             ),
           ),

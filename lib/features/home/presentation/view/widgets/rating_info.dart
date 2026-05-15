@@ -12,12 +12,12 @@ class RatingInfo extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
           decoration: BoxDecoration(
-            color: Colors.amber.withAlpha(50),
-            borderRadius: BorderRadius.circular(12),
+            color: Colors.amber.withAlpha(45),
+            borderRadius: BorderRadius.circular(35),
           ),
           child: Row(
             children: [
-              Icon(Icons.star, color: Colors.amber, size: 20),
+              Icon(Icons.star, color: Colors.amber.shade600, size: 20),
               SizedBox(width: 6),
               Text(
                 rating.toString(),

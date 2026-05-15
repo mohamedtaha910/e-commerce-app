@@ -16,6 +16,15 @@ class OrderItem extends StatelessWidget {
         color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.black12, width: 0.4),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade200,
+            blurRadius: 4,
+            offset: (Offset(0, 2)),
+            spreadRadius: 0.6,
+            // blurStyle: BlurStyle.outer,
+          ),
+        ],
       ),
       child: Row(
         children: [
@@ -24,15 +33,16 @@ class OrderItem extends StatelessWidget {
             // height: 60,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             decoration: BoxDecoration(
-              color: Colors.blue.withAlpha(50),
+              color: Colors.blue.withAlpha(38),
               // borderRadius: BorderRadius.circular(12),
               shape: BoxShape.circle,
+
               // border: Border.all(color: Colors.green.shade700, width: 0.8),
             ),
             // child: Icon(CupertinoIcons.square_list_fill, color: Colors.blue),
             child: SvgPicture.asset(
               'assets/icons/order.svg',
-              color: Colors.blue,
+              color: Colors.blue.shade500,
               width: 24,
               height: 28,
             ),
@@ -50,7 +60,7 @@ class OrderItem extends StatelessWidget {
                 'Total: \$${order.total.toStringAsFixed(2)}',
                 style: TextStyle(
                   fontSize: 14,
-                  color: Colors.grey.shade700,
+                  color: Colors.grey.shade600,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -59,7 +69,7 @@ class OrderItem extends StatelessWidget {
                 '${order.items.length} items',
                 style: TextStyle(
                   fontSize: 14,
-                  color: Colors.grey.shade700,
+                  color: Colors.grey.shade600,
                   fontWeight: FontWeight.w600,
                 ),
               ),

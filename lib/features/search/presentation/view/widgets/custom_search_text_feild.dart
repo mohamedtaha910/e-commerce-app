@@ -13,6 +13,7 @@ class CustomSearchTextFeild extends StatelessWidget {
       cursorColor: AppColors.primaryColor,
       onChanged: onChanged,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(vertical: 13, horizontal: 16),
         filled: true,
 
         fillColor: Colors.grey.shade200,
@@ -34,15 +35,15 @@ class CustomSearchTextFeild extends StatelessWidget {
           color: Colors.black54,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(35),
           borderSide: BorderSide(color: Colors.black38, width: 0.2),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(35),
           borderSide: BorderSide(color: Colors.black38, width: 0.2),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(35),
           borderSide: BorderSide(color: Colors.black54, width: 0.4),
         ),
       ),

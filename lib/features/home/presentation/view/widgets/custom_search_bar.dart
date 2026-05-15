@@ -43,7 +43,7 @@ class CustomSearchBar extends StatelessWidget {
             // shape: BoxShape.circle,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: SvgPicture.asset('assets/icons/Filter.svg', height: 24),
+          child: SvgPicture.asset('assets/icons/filter.svg', height: 24),
         ),
       ],
     );

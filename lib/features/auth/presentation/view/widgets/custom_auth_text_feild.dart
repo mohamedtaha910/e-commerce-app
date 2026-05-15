@@ -31,24 +31,24 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal:  16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: TextFormField(
-        
         validator: (data) {
           if (data!.isEmpty) {
             return 'feild is required';
-          } else if( widget.hintText == 'Password' && data.length < 6) {
+          } else if (widget.hintText == 'Password' && data.length < 6) {
             return 'password must be at least 6 characters';
-          }else{
+          } else {
             return null;
           }
         },
         scrollPadding: EdgeInsets.symmetric(horizontal: 16),
         onChanged: widget.onChanged,
         obscureText: isHidden,
-      
+
         cursorColor: AppColors.primaryColor,
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           suffix: GestureDetector(
             onTap: () {
               setState(() {
@@ -60,7 +60,7 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
               color: Colors.grey,
             ),
           ),
-      
+
           fillColor: Colors.grey.withOpacity(0.1),
           filled: true,
           label: Row(
@@ -71,7 +71,7 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
               Text(widget.hintText, style: TextStyle(color: Colors.grey)),
             ],
           ),
-      
+
           // hintText: hintText,
           // hintStyle: TextStyle(color: Colors.grey),
           border: OutlineInputBorder(

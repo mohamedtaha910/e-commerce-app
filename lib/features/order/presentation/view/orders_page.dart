@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
 import 'package:e_commerce_app/features/order/presentation/view/order_details_page.dart';
+import 'package:e_commerce_app/features/order/presentation/view/widgets/no_order.dart';
 import 'package:e_commerce_app/features/order/presentation/view/widgets/order_item.dart';
 import 'package:e_commerce_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:flutter/cupertino.dart';
@@ -66,12 +67,7 @@ class _OrdersPageState extends State<OrdersPage> {
           } else if (state is OrderSuccess) {
             final orders = state.orders;
             if (orders.isEmpty) {
-              return const Center(
-                child: Text(
-                  'No orders found.',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              );
+              return NoOrder();
             }
             return ListView.builder(
               physics: const BouncingScrollPhysics(),
