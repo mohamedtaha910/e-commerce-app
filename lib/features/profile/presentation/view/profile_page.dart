@@ -3,6 +3,7 @@ import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view/favourite_page.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/horizintal_line.dart';
 import 'package:e_commerce_app/features/order/presentation/view/orders_page.dart';
+import 'package:e_commerce_app/features/profile/presentation/view/change_password_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/view/widgets/profile_header.dart';
 import 'package:e_commerce_app/features/profile/presentation/view/widgets/profile_row.dart';
 import 'package:flutter/cupertino.dart';
@@ -168,6 +169,11 @@ class ProfilePage extends StatelessWidget {
                     iconColor: Colors.blueGrey,
                     circleColor: Colors.black.withAlpha(25),
                     arrowColor: Colors.grey.shade700,
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (c) => ChangePasswordPage()),
+                      );
+                    },
                   ),
                   HorizintalLine(
                     color: Colors.black26,

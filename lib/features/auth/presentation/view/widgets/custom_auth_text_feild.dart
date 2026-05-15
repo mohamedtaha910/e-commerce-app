@@ -9,12 +9,14 @@ class AuthTextFeild extends StatefulWidget {
     required this.onChanged,
     required this.borderRadius,
     required this.obscureText,
+    this.paddign = 16,
   });
   final String hintText;
   final IconData icon;
   final void Function(String)? onChanged;
   final double borderRadius;
   final bool obscureText;
+  final double paddign;
 
   @override
   State<AuthTextFeild> createState() => _AuthTextFeildState();
@@ -31,7 +33,7 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: widget.paddign),
       child: TextFormField(
         validator: (data) {
           if (data!.isEmpty) {
