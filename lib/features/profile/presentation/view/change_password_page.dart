@@ -24,206 +24,209 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   Widget build(BuildContext context) {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          surfaceTintColor: Colors.transparent,
-          automaticallyImplyLeading: false,
-          title: Row(
-            children: [
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 14,
-                    right: 6,
-                    top: 8,
-                    bottom: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
-                    shape: BoxShape.circle,
-                    // borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.black12, width: 0.4),
-                  ),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 18,
-                    color: Colors.black54,
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            surfaceTintColor: Colors.transparent,
+            automaticallyImplyLeading: false,
+            title: Row(
+              children: [
+                GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      left: 14,
+                      right: 6,
+                      top: 8,
+                      bottom: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade100,
+                      shape: BoxShape.circle,
+                      // borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.black12, width: 0.4),
+                    ),
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      size: 18,
+                      color: Colors.black54,
+                    ),
                   ),
                 ),
-              ),
-              const Spacer(),
-              Text(
-                'Change Password ',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                const Spacer(),
+                Text(
+                  'Change Password ',
+                  style: TextStyle(
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
-              ),
-              const Spacer(),
-            ],
+                const Spacer(),
+              ],
+            ),
           ),
-        ),
-        body: Form(
-          key: formKey,
-          autovalidateMode: autovalidateMode,
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 16,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Old Password',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+          body: Form(
+            key: formKey,
+            autovalidateMode: autovalidateMode,
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 16,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Old Password',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  AuthTextFeild(
-                    borderRadius: 35,
-                    obscureText: true,
-                    hintText: 'Enter old password',
-                    icon: Icons.lock,
-                    onChanged: (value) {
-                      oldPassword = value;
-                    },
-                    paddign: 0,
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'New Password',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                    SizedBox(height: 20),
+                    AuthTextFeild(
+                      borderRadius: 35,
+                      obscureText: true,
+                      hintText: 'Enter old password',
+                      icon: Icons.lock,
+                      onChanged: (value) {
+                        oldPassword = value;
+                      },
+                      paddign: 0,
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  AuthTextFeild(
-                    borderRadius: 35,
-                    obscureText: true,
-                    hintText: 'Enter new password',
-                    icon: Icons.lock,
-                    onChanged: (value) {
-                      newPassword = value;
-                    },
-                    paddign: 0,
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'Confirm Password',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                    SizedBox(height: 20),
+                    Text(
+                      'New Password',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  AuthTextFeild(
-                    borderRadius: 35,
-                    obscureText: true,
-                    hintText: 'Enter Confirm password',
-                    icon: Icons.lock,
-                    onChanged: (value) {
-                      confirmPassword = value;
-                    },
-                    paddign: 0,
-                  ),
-                  const SizedBox(height: 42),
-                  // Spacer(),
-                  CustomButton(
-                    title: 'Change Password',
-                    verticalPadding: 10,
-                    color: AppColors.primaryColor,
-                    textColor: Colors.white,
-                    horizontalMargin: 0,
-                    titleSize: 17,
-                    onTap: () async {
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState!.save();
-                        setState(() {
-                          isLoading = true;
-                        });
-                        if (newPassword.length < 6) {
-                          isLoading = false;
-                          setState(() {});
-                          showMessage(
-                            context,
-                            message: 'Password must be at least 6 characters',
-                            icon: Icons.error,
-                            color: Colors.red,
-                          );
-                        } else if (newPassword != confirmPassword) {
-                          isLoading = false;
-                          setState(() {});
-                          showMessage(
-                            context,
-                            message: 'Passwords do not match',
-                            icon: Icons.error,
-                            color: Colors.red,
-                          );
-                        } else {
-                          // // ================== windows =====================================
-                          // await Future.delayed(
-                          //   Duration(seconds: 2),
-                          //   () {},
-                          // );
-
-                          // isLoading = false;
-                          // setState(() {});
-                          // showMessage(
-                          //   context,
-                          //   message: 'Password change successfully',
-                          //   icon: Icons.check,
-                          //   color: Colors.green,
-                          // );
-                          // =================== emulator =====================================
-
-                          // print('Password changed successfullyy');
-
-                          bool result = await updatePassword(
-                            email: email,
-                            oldPassword: oldPassword,
-                            newPassword: newPassword,
-                          );
-                          isLoading = false;
-                          setState(() {});
-
-                          if (result) {
+                    SizedBox(height: 20),
+                    AuthTextFeild(
+                      borderRadius: 35,
+                      obscureText: true,
+                      hintText: 'Enter new password',
+                      icon: Icons.lock,
+                      onChanged: (value) {
+                        newPassword = value;
+                      },
+                      paddign: 0,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Confirm Password',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    AuthTextFeild(
+                      borderRadius: 35,
+                      obscureText: true,
+                      hintText: 'Enter Confirm password',
+                      icon: Icons.lock,
+                      onChanged: (value) {
+                        confirmPassword = value;
+                      },
+                      paddign: 0,
+                    ),
+                    const SizedBox(height: 42),
+                    // Spacer(),
+                    CustomButton(
+                      title: 'Change Password',
+                      verticalPadding: 9,
+                      color: Colors.blueGrey,
+                      textColor: Colors.white,
+                      horizontalMargin: 0,
+                      titleSize: 17,
+                      onTap: () async {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          setState(() {
+                            isLoading = true;
+                          });
+                          if (newPassword.length < 6) {
+                            isLoading = false;
+                            setState(() {});
                             showMessage(
                               context,
-                              message: 'Password changed successfully',
-                              icon: Icons.check,
-                              color: Colors.green,
-                            );
-                          } else {
-                            showMessage(
-                              context,
-                              message: 'Something went wrong',
+                              message: 'Password must be at least 6 characters',
                               icon: Icons.error,
                               color: Colors.red,
                             );
+                          } else if (newPassword != confirmPassword) {
+                            isLoading = false;
+                            setState(() {});
+                            showMessage(
+                              context,
+                              message: 'Passwords do not match',
+                              icon: Icons.error,
+                              color: Colors.red,
+                            );
+                          } else {
+                            // // ================== windows =====================================
+                            // await Future.delayed(
+                            //   Duration(seconds: 2),
+                            //   () {},
+                            // );
+
+                            // isLoading = false;
+                            // setState(() {});
+                            // showMessage(
+                            //   context,
+                            //   message: 'Password change successfully',
+                            //   icon: Icons.check,
+                            //   color: Colors.green,
+                            // );
+                            // =================== emulator =====================================
+
+                            // print('Password changed successfullyy');
+
+                            bool result = await updatePassword(
+                              email: email,
+                              oldPassword: oldPassword,
+                              newPassword: newPassword,
+                            );
+                            isLoading = false;
+                            setState(() {});
+
+                            if (result) {
+                              showMessage(
+                                context,
+                                message: 'Password changed successfully',
+                                icon: Icons.check,
+                                color: Colors.green,
+                              );
+                            } else {
+                              showMessage(
+                                context,
+                                message: 'Something went wrong',
+                                icon: Icons.error,
+                                color: Colors.red,
+                              );
+                            }
+                            // =====================================================================
                           }
-                          // =====================================================================
+                        } else {
+                          autovalidateMode = AutovalidateMode.always;
+                          setState(() {});
                         }
-                      } else {
-                        autovalidateMode = AutovalidateMode.always;
-                        setState(() {});
-                      }
-                    },
-                  ),
-                ],
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -10,6 +10,7 @@ import 'package:e_commerce_app/features/home/presentation/view/widgets/product_i
 import 'package:e_commerce_app/features/home/presentation/view/widgets/product_main_info.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/rating_info.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/reviews_section.dart';
+import 'package:e_commerce_app/features/order/presentation/view/checkout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -123,7 +124,7 @@ class ProductDetailsPage extends StatelessWidget {
       ),
 
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.only(right: 16, left: 16, top: 0, bottom: 16),
         decoration: BoxDecoration(
           // color: Colors.white38,
           // boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
@@ -136,7 +137,7 @@ class ProductDetailsPage extends StatelessWidget {
                   return ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepPurple,
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                      padding: EdgeInsets.symmetric(vertical: 10),
                       shadowColor: Colors.deepPurple,
                     ),
                     onPressed: () {
@@ -159,11 +160,22 @@ class ProductDetailsPage extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryColor,
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   shadowColor: AppColors.primaryColor,
                 ),
 
-                onPressed: () {},
+                onPressed: () {
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(
+                  //     builder: (c) => CheckoutPage(
+                  //       totalPrice: product.price!,
+                  //       checkoutProducts: [
+                  //         CartProduct(product: product, quantity: 1),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // );
+                },
                 child: Text("Buy Now", style: TextStyle(color: Colors.white)),
               ),
             ),

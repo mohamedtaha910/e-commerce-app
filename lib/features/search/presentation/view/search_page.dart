@@ -14,72 +14,75 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        title: Column(
-          children: [
-            SizedBox(height: 8),
-            Row(
-              children: [
-                isInHome
-                    ? GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          size: 20,
-                          color: Colors.black54,
-                        ),
-                      )
-                    : SizedBox.shrink(),
-                SizedBox(width: 10),
-                Expanded(
-                  child: CustomSearchTextFeild(
-                    onChanged: (value) {
-                      BlocProvider.of<SearchProductsCubit>(
-                        context,
-                      ).searchProducts(query: value);
-                    },
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 70,
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          surfaceTintColor: Colors.transparent,
+          title: Column(
+            children: [
+              SizedBox(height: 8),
+              Row(
+                children: [
+                  isInHome
+                      ? GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            size: 20,
+                            color: Colors.black54,
+                          ),
+                        )
+                      : SizedBox.shrink(),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: CustomSearchTextFeild(
+                      onChanged: (value) {
+                        BlocProvider.of<SearchProductsCubit>(
+                          context,
+                        ).searchProducts(query: value);
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
-            // SizedBox(height: 8),
-          ],
-        ),
-      ),
-      body: BlocBuilder<SearchProductsCubit, SearchProductsState>(
-        builder: (context, state) {
-          if (state is SearchProductsInitial) {
-            return CustomStartSearch();
-          }
-          if (state is SearchProductsFailure) {
-            return Text(
-              state.errorMessage,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: Colors.black54,
+                ],
               ),
-            );
-          }
-          if (state is SearchProductsSuccess) {
-            List<Product> products = state.products;
-            if (products.isEmpty) {
-              return CustomNoItem();
+              // SizedBox(height: 8),
+            ],
+          ),
+        ),
+        body: BlocBuilder<SearchProductsCubit, SearchProductsState>(
+          builder: (context, state) {
+            if (state is SearchProductsInitial) {
+              return CustomStartSearch();
+            }
+            if (state is SearchProductsFailure) {
+              return Text(
+                state.errorMessage,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black54,
+                ),
+              );
+            }
+            if (state is SearchProductsSuccess) {
+              List<Product> products = state.products;
+              if (products.isEmpty) {
+                return CustomNoItem();
+              }
+              return Padding(
+                padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
+                child: SearchedProductsList(products: products),
+              );
             }
             return Padding(
               padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
-              child: SearchedProductsList(products: products),
+              child: SearchedListShimmer(),
             );
-          }
-          return Padding(
-            padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
-            child: SearchedListShimmer(),
-          );
-        },
+          },
+        ),
       ),
     );
   }

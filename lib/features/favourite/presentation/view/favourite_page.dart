@@ -45,7 +45,7 @@ class _FavouritePageState extends State<FavouritePage> {
                       decoration: BoxDecoration(
                         color: Colors.grey.shade200,
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.black12, width: 1),
+                        border: Border.all(color: Colors.black12, width: 0.4),
                       ),
                       child: Icon(
                         Icons.arrow_back_ios,

@@ -122,7 +122,7 @@ class _CartPageState extends State<CartPage> {
                 left: 16,
                 bottom: 8,
               ),
-              margin: EdgeInsets.only(bottom: 16, right: 10, left: 10),
+              margin: EdgeInsets.only(bottom: 18, right: 10, left: 10),
               decoration: BoxDecoration(
                 color: Colors.blueGrey.withAlpha(30),
                 borderRadius: BorderRadius.circular(14),

@@ -18,6 +18,7 @@ class OtherWay extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.black54,
                   fontWeight: FontWeight.w500,
+                  fontSize: 13,
                 ),
               ),
               Expanded(child: Divider(thickness: 1, color: Colors.black54)),

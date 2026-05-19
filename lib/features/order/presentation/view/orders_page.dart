@@ -1,9 +1,7 @@
-import 'package:e_commerce_app/features/order/data/models/order_model.dart';
 import 'package:e_commerce_app/features/order/presentation/view/order_details_page.dart';
 import 'package:e_commerce_app/features/order/presentation/view/widgets/no_order.dart';
 import 'package:e_commerce_app/features/order/presentation/view/widgets/order_item.dart';
 import 'package:e_commerce_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,7 +43,7 @@ class _OrdersPageState extends State<OrdersPage> {
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.black12, width: 0.4),
                 ),
-                child: Icon(Icons.arrow_back_ios, size: 18),
+                child: Icon(Icons.arrow_back_ios, size: 16),
               ),
             ),
             SizedBox(width: 16),
@@ -69,22 +67,25 @@ class _OrdersPageState extends State<OrdersPage> {
             if (orders.isEmpty) {
               return NoOrder();
             }
-            return ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: orders.length,
-              itemBuilder: (context, index) {
-                final order = orders[index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (c) => OrderDetailsPage(order: order),
-                      ),
-                    );
-                  },
-                  child: OrderItem(order: order),
-                );
-              },
+            return Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: orders.length,
+                itemBuilder: (context, index) {
+                  final order = orders[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (c) => OrderDetailsPage(order: order),
+                        ),
+                      );
+                    },
+                    child: OrderItem(order: order),
+                  );
+                },
+              ),
             );
           } else {
             return const Center(

@@ -67,14 +67,15 @@ class WelcomePage extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         // color: Colors.black38,
-                        color: Colors.white,
+                        color: Colors.grey.shade100,
                         // color: AppColors.primaryColor.withAlpha(200),
                         borderRadius: BorderRadius.circular(30),
+                        border: Border.all(color: Colors.black26, width: 0.4),
                       ),
                       child: Icon(
                         Icons.arrow_back_ios,
-                        color: AppColors.primaryColor,
-                        size: 18,
+                        color: Colors.black54,
+                        size: 17,
                       ),
                     ),
                   ),

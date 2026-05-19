@@ -45,17 +45,19 @@ class _HomePageState extends State<HomePage> {
             bottom: 0,
             left: 0,
             right: 0,
-            height: 30,
+            // height: 42,
             // height: 55,
             // height: 63,
             child: Container(
+              height: 45,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
                     Colors.white,
-                    Colors.white30,
+                    Colors.white.withAlpha(30),
+                    // Colors.white.withAlpha(10),
 
                     // Colors.transparent
                   ],

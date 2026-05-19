@@ -5,6 +5,7 @@ import 'package:e_commerce_app/features/cart/presentation/view_model/cart_cubit/
 import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
 import 'package:e_commerce_app/features/order/presentation/view/orders_page.dart';
+import 'package:e_commerce_app/features/order/presentation/view/succes_page.dart';
 import 'package:e_commerce_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -134,7 +135,7 @@ class _PaymentPageState extends State<PaymentPage> {
               left: 16,
               bottom: 8,
             ),
-            margin: EdgeInsets.only(bottom: 16, right: 10, left: 10),
+            margin: EdgeInsets.only(bottom: 18, right: 10, left: 10),
             decoration: BoxDecoration(
               color: Colors.blueGrey.withAlpha(30),
               borderRadius: BorderRadius.circular(14),
@@ -148,7 +149,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       'sub Total:',
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.w700,
+                        // fontWeight: FontWeight.w400,
                         color: Colors.black,
                       ),
                     ),
@@ -157,7 +158,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       '${widget.totalPrice.toStringAsFixed(2)} \$',
                       style: TextStyle(
                         fontSize: 15,
-                        fontWeight: FontWeight.w500,
+                        // fontWeight: FontWeight.w500,
                         color: Colors.black54,
                       ),
                     ),
@@ -170,7 +171,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       'Shipping:',
                       style: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.w700,
+                        // fontWeight: FontWeight.w400,
                         color: Colors.black,
                       ),
                     ),
@@ -179,7 +180,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       'Free',
                       style: TextStyle(
                         fontSize: 15,
-                        fontWeight: FontWeight.w500,
+                        // fontWeight: FontWeight.w500,
                         color: Colors.black54,
                       ),
                     ),
@@ -368,13 +369,11 @@ class _PaymentPageState extends State<PaymentPage> {
       country: widget.country,
       address: widget.address,
     );
-    BlocProvider.of<OrderCubit>(context).addOrder(order);
-    BlocProvider.of<CartCubit>(context).clearCart();
 
-    successMessage(context);
+    confirmMessage(context, order);
   }
 
-  void successMessage(BuildContext context) {
+  void confirmMessage(BuildContext context, Order order) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -391,7 +390,7 @@ class _PaymentPageState extends State<PaymentPage> {
             ),
             SizedBox(height: 16),
             Text(
-              'Order placed successfully!',
+              'Are you sure you want to confirm your order?',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16,
@@ -402,29 +401,38 @@ class _PaymentPageState extends State<PaymentPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // CustomButton(
-                //   title: '',
-                //   onTap: () {
-                //     Navigator.pushReplacement(
-                //       context,
-                //       MaterialPageRoute(builder: (context) => OrdersPage()),
-                //     );
-                //     Navigator.pop(context);
-                //   },
-                //   verticalPadding: 4,
-                //   color: AppColors.primaryColor.withAlpha(50),
-                //   textColor: AppColors.primaryColor,
-                //   horizontalMargin: 8,
-                //   titleSize: 14,
-                // ),
                 CustomButton(
-                  title: 'Continue Shopping',
+                  title: 'Cancel',
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => OrdersPage()),
+                    );
+                    Navigator.pop(context);
+                  },
+                  verticalPadding: 4,
+                  color: AppColors.primaryColor.withAlpha(50),
+                  textColor: AppColors.primaryColor,
+                  horizontalMargin: 8,
+                  titleSize: 14,
+                ),
+                CustomButton(
+                  title: 'Confirm',
                   titleSize: 14,
                   onTap: () {
                     BlocProvider.of<CartCubit>(context).clearCart();
+                    BlocProvider.of<OrderCubit>(context).addOrder(order);
+                    BlocProvider.of<CartCubit>(context).clearCart();
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
+                      MaterialPageRoute(
+                        builder: (context) => OrderSuccessPage(
+                          orderId: order.id,
+                          estimatedDelivery: order.date.toString(),
+                          itemCount: order.items.length,
+                          totalAmount: order.total,
+                        ),
+                      ),
                     );
                     // Navigator.pop(context);
                   },

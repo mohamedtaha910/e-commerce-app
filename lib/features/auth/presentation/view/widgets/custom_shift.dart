@@ -2,7 +2,12 @@ import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomShift extends StatelessWidget {
-  const CustomShift({super.key, required this.destination, required this.text, required this.text2});
+  const CustomShift({
+    super.key,
+    required this.destination,
+    required this.text,
+    required this.text2,
+  });
   final Widget destination;
   final String text;
   final String text2;
@@ -16,7 +21,7 @@ class CustomShift extends StatelessWidget {
           text2,
           style: TextStyle(
             color: Colors.black45,
-            fontSize: 14,
+            fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -32,6 +37,7 @@ class CustomShift extends StatelessWidget {
             style: TextStyle(
               color: AppColors.primaryColor,
               fontWeight: FontWeight.bold,
+              fontSize: 13,
             ),
           ),
         ),

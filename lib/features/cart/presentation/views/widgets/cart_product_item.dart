@@ -167,7 +167,7 @@ class CartProductItem extends StatelessWidget {
                               Text(
                                 '\$${product.price!.toStringAsFixed(2)}',
                                 style: const TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 13,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),

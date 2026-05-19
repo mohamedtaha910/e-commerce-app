@@ -83,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: 32),
                       CustomButton(
+                        // color: const Color.fromARGB(255, 248, 124, 41),
                         color: AppColors.primaryColor,
                         textColor: Colors.white,
                         title: 'Log In',

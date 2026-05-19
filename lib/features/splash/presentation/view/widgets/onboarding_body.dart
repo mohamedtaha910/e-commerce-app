@@ -47,17 +47,18 @@ class OnboardingBody extends StatelessWidget {
                       titleSize: 15,
                       onTap: Navigator.of(context).pop,
                       verticalPadding: 10,
-                      color: Colors.grey.shade200,
+                      color: Colors.transparent,
                       textColor: Colors.black,
                       horizontalMargin: 8,
+                      isBorder: true,
                     )
                   : SizedBox.shrink(),
               Expanded(
                 child: CustomButton(
                   title: buttonTitle,
-                  titleSize: isLast ? 16 : 17,
+                  titleSize: isLast ? 15 : 16,
                   onTap: onTap,
-                  verticalPadding: isLast ? 10 : 12,
+                  verticalPadding: 10,
                   color: AppColors.primaryColor,
                   textColor: Colors.white,
                   horizontalMargin: 8,
@@ -65,7 +66,7 @@ class OnboardingBody extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 30),
         ],
       ),
     );
