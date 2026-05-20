@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view/favourite_page.dart';
+import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/home_page_body.dart';
 import 'package:e_commerce_app/features/profile/presentation/view/profile_page.dart';
 import 'package:e_commerce_app/features/search/data/repos/search_repo_implementation.dart';
@@ -31,6 +32,12 @@ class _HomePageState extends State<HomePage> {
     // CartPage(),
     ProfilePage(),
   ];
+  @override
+  void initState() {
+    BlocProvider.of<FavouriteCubit>(context).loadFavorites();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

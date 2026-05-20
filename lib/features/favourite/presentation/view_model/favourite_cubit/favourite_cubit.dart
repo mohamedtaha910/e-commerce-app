@@ -10,20 +10,32 @@ part 'favourite_state.dart';
 class FavouriteCubit extends Cubit<FavouriteState> {
   FavouriteCubit(this.favouriteRepo) : super(FavouriteInitial());
   final FavouriteRepo favouriteRepo;
+  List<Product> products = [];
 
-  void loadFavorites() {
-    // emit(FavouriteLoading());
+  void loadFavorites() async {
+    emit(FavouriteLoading());
 
-    List<Product> products = favouriteRepo.fetchAllFavourites();
+    products = await favouriteRepo.fetchAllFavourites();
     emit(FavouriteSuccess(products));
   }
 
-  void addFavourite(Product product) {
-    favouriteRepo.addFavourite(product);
-    loadFavorites();
+  void addFavourite(Product product) async {
+    final exists = products.any((e) => e.id == product.id);
+
+    if (exists) {
+      products.removeWhere((e) => e.id == product.id);
+    } else {
+      products.add(product);
+    }
+
+    emit(FavouriteSuccess(List.from(products)));
+
+    await favouriteRepo.addFavourite(product);
   }
 
-  bool isFavourite(int id) => favouriteRepo.isFavourite(id);
+  bool isFavourite(int id) {
+    return products.any((product) => product.id == id);
+  }
 
   void clearFavourites() {
     favouriteRepo.clearFavourites();

@@ -50,154 +50,166 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24.0),
-              child: ProfileHeader(),
-            ),
-            Text(
-              'Personal',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              // margin: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey.shade400, width: 0.08),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                child: ProfileHeader(),
               ),
-              child: Column(
-                children: [
-                  ProfileRow(
-                    text: 'Orders',
-                    textColor: Colors.black87,
-                    icon: CupertinoIcons.square_list_fill,
-                    iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(20),
-                    arrowColor: Colors.grey.shade700,
-                    onTap: () {
-                      Navigator.of(
-                        context,
-                      ).push(MaterialPageRoute(builder: (c) => OrdersPage()));
-                    },
-                  ),
-                  HorizintalLine(
-                    color: Colors.black26,
-                    height: 1,
-                    horizontalMargin: 36,
-                    verticalMargin: 16,
-                    borderRadius: 12,
-                  ),
-                  ProfileRow(
-                    text: 'Cart',
-                    textColor: Colors.black87,
-                    icon: CupertinoIcons.cart_fill,
-                    iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(20),
-                    arrowColor: Colors.grey.shade700,
-                    onTap: () {
-                      Navigator.of(
-                        context,
-                      ).push(MaterialPageRoute(builder: (c) => CartPage()));
-                    },
-                  ),
-                  HorizintalLine(
-                    color: Colors.black26,
-                    height: 1,
-                    horizontalMargin: 36,
-                    verticalMargin: 16,
-                    borderRadius: 12,
-                  ),
+              Text(
+                'Personal',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                // margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey.shade400, width: 0.08),
+                ),
+                child: Column(
+                  children: [
+                    ProfileRow(
+                      text: 'Orders',
+                      textColor: Colors.black87,
+                      icon: CupertinoIcons.square_list_fill,
+                      iconColor: Colors.blueGrey,
+                      circleColor: Colors.black.withAlpha(20),
+                      arrowColor: Colors.grey.shade700,
+                      onTap: () {
+                        Navigator.of(
+                          context,
+                        ).push(MaterialPageRoute(builder: (c) => OrdersPage()));
+                      },
+                    ),
+                    HorizintalLine(
+                      color: Colors.black26,
+                      height: 1,
+                      horizontalMargin: 36,
+                      verticalMargin: 16,
+                      borderRadius: 12,
+                    ),
+                    ProfileRow(
+                      text: 'Cart',
+                      textColor: Colors.black87,
+                      icon: CupertinoIcons.cart_fill,
+                      iconColor: Colors.blueGrey,
+                      circleColor: Colors.black.withAlpha(20),
+                      arrowColor: Colors.grey.shade700,
+                      onTap: () {
+                        Navigator.of(
+                          context,
+                        ).push(MaterialPageRoute(builder: (c) => CartPage()));
+                      },
+                    ),
+                    HorizintalLine(
+                      color: Colors.black26,
+                      height: 1,
+                      horizontalMargin: 36,
+                      verticalMargin: 16,
+                      borderRadius: 12,
+                    ),
 
-                  ProfileRow(
-                    text: 'Favorites',
-                    textColor: Colors.black87,
-                    icon: Icons.favorite,
-                    iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(20),
-                    arrowColor: Colors.black54,
-                    onTap: () async {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (c) => FavouritePage(isFromProfile: true),
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                    ProfileRow(
+                      text: 'Favorites',
+                      textColor: Colors.black87,
+                      icon: Icons.favorite,
+                      iconColor: Colors.blueGrey,
+                      circleColor: Colors.black.withAlpha(20),
+                      arrowColor: Colors.black54,
+                      onTap: () async {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (c) => FavouritePage(isFromProfile: true),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 24),
-            Text(
-              'General',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              // margin: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey.shade400, width: 0.08),
+              SizedBox(height: 24),
+              Text(
+                'General',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              child: Column(
-                children: [
-                  ProfileRow(
-                    text: 'Settings',
-                    textColor: Colors.black87,
-                    icon: Icons.settings,
-                    iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(20),
-                    arrowColor: Colors.grey.shade700,
-                  ),
-                  HorizintalLine(
-                    color: Colors.black26,
-                    height: 1,
-                    horizontalMargin: 36,
-                    verticalMargin: 16,
-                    borderRadius: 12,
-                  ),
-                  ProfileRow(
-                    text: 'Change Password',
-                    textColor: Colors.black87,
-                    icon: Icons.lock,
-                    iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(20),
-                    arrowColor: Colors.grey.shade700,
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (c) => ChangePasswordPage()),
-                      );
-                    },
-                  ),
-                  HorizintalLine(
-                    color: Colors.black26,
-                    height: 1,
-                    horizontalMargin: 36,
-                    verticalMargin: 16,
-                    borderRadius: 12,
-                  ),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                // margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey.shade400, width: 0.08),
+                ),
+                child: Column(
+                  children: [
+                    ProfileRow(
+                      text: 'Settings',
+                      textColor: Colors.black87,
+                      icon: Icons.settings,
+                      iconColor: Colors.blueGrey,
+                      circleColor: Colors.black.withAlpha(20),
+                      arrowColor: Colors.grey.shade700,
+                    ),
+                    HorizintalLine(
+                      color: Colors.black26,
+                      height: 1,
+                      horizontalMargin: 36,
+                      verticalMargin: 16,
+                      borderRadius: 12,
+                    ),
+                    ProfileRow(
+                      text: 'Change Password',
+                      textColor: Colors.black87,
+                      icon: Icons.lock,
+                      iconColor: Colors.blueGrey,
+                      circleColor: Colors.black.withAlpha(20),
+                      arrowColor: Colors.grey.shade700,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (c) => ChangePasswordPage(),
+                          ),
+                        );
+                      },
+                    ),
+                    HorizintalLine(
+                      color: Colors.black26,
+                      height: 1,
+                      horizontalMargin: 36,
+                      verticalMargin: 16,
+                      borderRadius: 12,
+                    ),
 
-                  ProfileRow(
-                    text: 'Logout',
-                    textColor: Colors.redAccent,
-                    icon: Icons.logout,
-                    iconColor: Colors.redAccent,
-                    circleColor: Colors.redAccent.withAlpha(50),
-                    arrowColor: Colors.redAccent,
-                    onTap: () async {
-                      // await FirebaseAuth.instance.signOut();
-                    },
-                  ),
-                ],
+                    ProfileRow(
+                      text: 'Logout',
+                      textColor: Colors.redAccent,
+                      icon: Icons.logout,
+                      iconColor: Colors.redAccent,
+                      circleColor: Colors.redAccent.withAlpha(50),
+                      arrowColor: Colors.redAccent,
+                      onTap: () async {
+                        // await FirebaseAuth.instance.signOut();
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -2,7 +2,6 @@ import 'package:e_commerce_app/core/models/product_model/dimensions.dart';
 import 'package:e_commerce_app/core/models/product_model/meta.dart';
 import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/core/models/product_model/review.dart';
-import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
@@ -20,6 +19,7 @@ import 'package:e_commerce_app/features/order/data/repos/order_repo_implementati
 import 'package:e_commerce_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/splash_page.dart';
 import 'package:e_commerce_app/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +39,7 @@ void main() async {
   Hive.registerAdapter(CartProductAdapter());
   Hive.registerAdapter(OrderAdapter());
 
-  await Hive.openBox<Product>('favProducts');
+  // await Hive.openBox<Product>('favProducts');
   await Hive.openBox<CartProduct>('cartProducts');
   await Hive.openBox<Order>('orders');
   setUpServiceLocator();
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(
-          create: (context) => FavouriteCubit(FavouriteRepoImplementation()),
+          create: (context) => FavouriteCubit(FavouriteRepoImplementation(auth: FirebaseAuth.instance)),
         ),
         BlocProvider(create: (context) => CartCubit(CartRepoImplementation())),
         BlocProvider(

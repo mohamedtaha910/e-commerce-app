@@ -21,16 +21,23 @@ class ProfileHeader extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              FirebaseAuth.instance.currentUser?.email!.split('@')[0] ??
-                  'UnKnown User',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: Text(
+                FirebaseAuth.instance.currentUser?.email!.split('@')[0] ??
+                    'UnKnown User',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ),
             SizedBox(height: 4),
-            Text(
-              FirebaseAuth.instance.currentUser?.email ??
-                  'UnKnown Use@example.com',
-              style: TextStyle(fontSize: 16, color: Colors.black54),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+
+              child: Text(
+                FirebaseAuth.instance.currentUser?.email ??
+                    'UnKnown Use@example.com',
+                style: TextStyle(fontSize: 16, color: Colors.black54),
+              ),
             ),
           ],
         ),
