@@ -40,7 +40,7 @@ void main() async {
   Hive.registerAdapter(OrderAdapter());
 
   // await Hive.openBox<Product>('favProducts');
-  await Hive.openBox<CartProduct>('cartProducts');
+  // await Hive.openBox<CartProduct>('cartProducts');
   await Hive.openBox<Order>('orders');
   setUpServiceLocator();
   runApp(const MyApp());
@@ -64,9 +64,14 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(
-          create: (context) => FavouriteCubit(FavouriteRepoImplementation(auth: FirebaseAuth.instance)),
+          create: (context) => FavouriteCubit(
+            FavouriteRepoImplementation(auth: FirebaseAuth.instance),
+          ),
         ),
-        BlocProvider(create: (context) => CartCubit(CartRepoImplementation())),
+        BlocProvider(
+          create: (context) =>
+              CartCubit(CartRepoImplementation(auth: FirebaseAuth.instance)),
+        ),
         BlocProvider(
           create: (context) => OrderCubit(OrderRepoImplementation()),
         ),

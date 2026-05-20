@@ -333,7 +333,7 @@ void showconfirmMessage(BuildContext context, CartProduct cartproduct) {
                 title: 'Ok',
                 titleSize: 14,
                 onTap: () {
-                  BlocProvider.of<CartCubit>(context).addToCart(cartproduct);
+                  BlocProvider.of<CartCubit>(context).toggleCart(cartproduct);
                   Navigator.pop(context);
                 },
                 verticalPadding: 4,

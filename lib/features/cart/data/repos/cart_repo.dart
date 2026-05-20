@@ -3,21 +3,32 @@ import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
 
 abstract class CartRepo {
 
-  bool isInCart(int id);
+  // bool isInCart(int id);
 
-  void addToCart(CartProduct product);
+  // void addToCart(CartProduct product);
   
-  void clearCart();
+  // void clearCart();
 
-  List<CartProduct> fetchAllCart();
+  // List<CartProduct> fetchAllCart();
 
-  void incrementQuantity(CartProduct product);
+  // void incrementQuantity(CartProduct product);
 
-  void decrementQuantity(CartProduct product);
+  // void decrementQuantity(CartProduct product);
 
-  double getTotalPrice();
+  // double getTotalPrice();
 
 
-  
 
+// ------------------
+Future<void> addToCart(CartProduct product);
+
+  Future<void> removeFromCart(int productId);
+
+  Future<void> increaseQuantity(int productId);
+
+  Future<void> decreaseQuantity(int productId);
+
+  Future<void> clearCart();
+
+  Future<List<CartProduct>> fetchCartItems();
 }

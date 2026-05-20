@@ -11,34 +11,50 @@ class CartCubit extends Cubit<CartState> {
   CartCubit(this.cartRepo) : super(CartInitial());
   final CartRepo cartRepo;
 
-  void loadCart() {
-    // emit(CartLoading());
+  List<CartProduct> cartProducts = [];
 
-    List<CartProduct> products = cartRepo.fetchAllCart();
-    emit(CartSuccess(cartProducts: products));
+  void loadCart() async {
+    emit(CartLoading());
+
+    cartProducts = await cartRepo.fetchCartItems();
+    emit(CartSuccess(cartProducts: cartProducts));
   }
 
-  void addToCart(CartProduct product) {
-    cartRepo.addToCart(product);
+  void toggleCart(CartProduct product) {
+    if (isInCart(product.product.id!)) {
+      cartRepo.removeFromCart(product.product.id!);
+      cartProducts.remove(product);
+    } else {
+      cartRepo.addToCart(product);
+      cartProducts.add(product);
+    }
     loadCart();
   }
 
   void incrementQuantity(CartProduct product) {
-    cartRepo.incrementQuantity(product);
+    cartRepo.increaseQuantity(product.product.id!);
     loadCart();
   }
 
   void decrementQuantity(CartProduct product) {
-    cartRepo.decrementQuantity(product);
+    cartRepo.decreaseQuantity(product.product.id!);
     loadCart();
   }
 
-  double getTotalPrice() => cartRepo.getTotalPrice();
+  double getTotalPrice() {
+    double total = 0;
+    for (var product in cartProducts) {
+      total += product.product.price! * product.quantity;
+    }
+    return total;
+  }
 
-  bool isInCart(int id) => cartRepo.isInCart(id);
+  bool isInCart(int id) =>
+      cartProducts.any((product) => product.product.id == id);
 
   void clearCart() {
     cartRepo.clearCart();
+    cartProducts = [];
     // loadCart();
     emit(CartSuccess(cartProducts: []));
   }

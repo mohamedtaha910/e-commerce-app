@@ -143,7 +143,7 @@ class ProductDetailsPage extends StatelessWidget {
                     onPressed: () {
                       BlocProvider.of<CartCubit>(
                         context,
-                      ).addToCart(CartProduct(product: product, quantity: 1));
+                      ).toggleCart(CartProduct(product: product, quantity: 1));
                     },
                     child: Text(
                       BlocProvider.of<CartCubit>(context).isInCart(product.id!)

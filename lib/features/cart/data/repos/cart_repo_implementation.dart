@@ -1,60 +1,75 @@
 // import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
 import 'package:e_commerce_app/features/cart/data/repos/cart_repo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive/hive.dart';
 
 class CartRepoImplementation implements CartRepo {
-  final Box<CartProduct> box = Hive.box<CartProduct>('cartProducts');
+  // final Box<CartProduct> box = Hive.box<CartProduct>('cartProducts');
+  final FirebaseAuth auth;
+
+  CartRepoImplementation({required this.auth});
+  Box<CartProduct>? _box;
+
+  Future<Box<CartProduct>> _getBox() async {
+    if (_box != null) {
+      return _box!;
+    }
+
+    final uid = auth.currentUser!.uid;
+
+    _box = await Hive.openBox<CartProduct>('cart_$uid');
+
+    return _box!;
+  }
 
   @override
-  void addToCart(CartProduct product) {
-    if (isInCart(product.product.id!)) {
-      box.delete(product.product.id);
-    } else {
+  Future<void> addToCart(CartProduct product) async {
+    final box = await _getBox();
+
+    await box.put(product.product.id, product);
+  }
+
+  @override
+  Future<void> removeFromCart(int productId) async {
+    final box = await _getBox();
+
+    await box.delete(productId);
+  }
+
+  @override
+  Future<void> increaseQuantity(int productId) async {
+    final box = await _getBox();
+
+    final product = box.get(productId);
+    if (product!.quantity < product.product.stock!) {
+      product.quantity++;
       box.put(product.product.id, product);
     }
   }
 
   @override
-  void decrementQuantity(CartProduct product) {
-    if (product.quantity > 1) {
+  Future<void> decreaseQuantity(int productId) async {
+    final box = await _getBox();
+
+    final product = box.get(productId);
+    if (product!.quantity > 1) {
       product.quantity--;
       box.put(product.product.id, product);
     }
   }
 
   @override
-  void incrementQuantity(CartProduct product) {
-    if (product.quantity < product.product.stock!) {
-      product.quantity++;
-      box.put(product.product.id, product);
+  Future<void> clearCart() async {
+    final box = await _getBox();
 
-    }
+    await box.clear();
   }
 
   @override
-  List<CartProduct> fetchAllCart() {
-    List<CartProduct> favourites = [];
-    for (var item in box.values) {
-      favourites.add(item);
-    }
-    return favourites;
-  }
+  Future<List<CartProduct>> fetchCartItems() async {
+    final box = await _getBox();
 
-  @override
-  double getTotalPrice() {
-    double total = 0;
-    for (var item in box.values) {
-      total += item.product.price! * item.quantity;
-    }
-    return total;
-  }
-
-  @override
-  bool isInCart(int id) => box.containsKey(id);
-
-  @override
-  void clearCart() {
-    box.clear();
+    return box.values.toList();
   }
 }
