@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
             right: 0,
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 36),
+                padding: const EdgeInsets.symmetric(horizontal: 38),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(18),
 
@@ -82,8 +82,8 @@ class _HomePageState extends State<HomePage> {
                     height: 56, // => windows
                     labelBehavior:
                         NavigationDestinationLabelBehavior.alwaysHide,
-                    animationDuration: Duration(milliseconds: 400),
-                    indicatorColor: AppColors.primaryColor.withAlpha(50),
+                    animationDuration: Duration(milliseconds: 200),
+                    indicatorColor: AppColors.primaryColor.withAlpha(60),
                     // backgroundColor: Colors.white,
                     backgroundColor: const Color.fromARGB(255, 231, 229, 229),
                     // backgroundColor: Colors.grey[300],

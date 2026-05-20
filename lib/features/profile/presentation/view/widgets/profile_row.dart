@@ -37,12 +37,16 @@ class ProfileRow extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
             decoration: BoxDecoration(
               color: circleColor,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Icon(Icons.arrow_forward_ios, color: arrowColor, size: 14),
+            child: Icon(
+              Icons.chevron_right_rounded,
+              color: arrowColor,
+              size: 23,
+            ),
           ),
         ),
       ],

@@ -13,7 +13,6 @@ class SearchProductsCubit extends Cubit<SearchProductsState> {
   Future<void> searchProducts({required String query}) async {
     if (query.isEmpty || query.trim() == '') {
       emit(SearchProductsInitial());
-      return;
     }
     emit(SearchProductsLoading());
     var result = await searchRepo.searchedProductsList(query: query);

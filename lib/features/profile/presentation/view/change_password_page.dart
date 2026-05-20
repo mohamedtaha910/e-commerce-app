@@ -37,12 +37,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: Container(
-                    padding: const EdgeInsets.only(
-                      left: 14,
-                      right: 6,
-                      top: 8,
-                      bottom: 8,
-                    ),
+                    padding: const EdgeInsets.all(3),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade100,
                       shape: BoxShape.circle,
@@ -50,8 +45,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       border: Border.all(color: Colors.black12, width: 0.4),
                     ),
                     child: Icon(
-                      Icons.arrow_back_ios,
-                      size: 18,
+                      Icons.chevron_left_rounded,
+                      size: 28,
                       color: Colors.black54,
                     ),
                   ),
@@ -146,11 +141,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     // Spacer(),
                     CustomButton(
                       title: 'Change Password',
-                      verticalPadding: 9,
+                      verticalPadding: 8,
                       color: Colors.blueGrey,
                       textColor: Colors.white,
                       horizontalMargin: 0,
-                      titleSize: 17,
+                      titleSize: 15,
                       onTap: () async {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();

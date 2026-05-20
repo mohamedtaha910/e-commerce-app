@@ -16,12 +16,7 @@ class NotificationPage extends StatelessWidget {
             GestureDetector(
               onTap: () => Navigator.pop(context),
               child: Container(
-                padding: const EdgeInsets.only(
-                  left: 14,
-                  right: 6,
-                  top: 8,
-                  bottom: 8,
-                ),
+                padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   shape: BoxShape.circle,
@@ -29,8 +24,8 @@ class NotificationPage extends StatelessWidget {
                   border: Border.all(color: Colors.black12, width: 0.4),
                 ),
                 child: Icon(
-                  Icons.arrow_back_ios,
-                  size: 18,
+                  Icons.chevron_left_rounded,
+                  size: 28,
                   color: Colors.black54,
                 ),
               ),
@@ -67,9 +62,9 @@ class NotificationPage extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           Text(
-            'you All Caught Up with Notifications',
+            'you All Caught Up With Notifications',
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: Colors.black54,
             ),

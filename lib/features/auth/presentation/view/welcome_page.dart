@@ -59,12 +59,7 @@ class WelcomePage extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     child: Container(
-                      padding: const EdgeInsets.only(
-                        top: 6,
-                        bottom: 6,
-                        left: 8,
-                        right: 4,
-                      ),
+                      padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
                         // color: Colors.black38,
                         color: Colors.grey.shade100,
@@ -73,9 +68,9 @@ class WelcomePage extends StatelessWidget {
                         border: Border.all(color: Colors.black26, width: 0.4),
                       ),
                       child: Icon(
-                        Icons.arrow_back_ios,
+                        Icons.chevron_left_rounded,
                         color: Colors.black54,
-                        size: 17,
+                        size: 28,
                       ),
                     ),
                   ),

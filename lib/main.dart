@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/models/product_model/dimensions.dart';
 import 'package:e_commerce_app/core/models/product_model/meta.dart';
 import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/core/models/product_model/review.dart';
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
@@ -72,7 +73,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
-          // scaffoldBackgroundColor: AppColors.backgroundColor2,
+          // scaffoldBackgroundColor: AppColors.backgroundColor,
           scaffoldBackgroundColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,

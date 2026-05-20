@@ -9,9 +9,11 @@ class CheckoutPage extends StatefulWidget {
     super.key,
     required this.totalPrice,
     required this.checkoutProducts,
+    required this.isFromCart,
   });
   final double totalPrice;
   final List<CartProduct> checkoutProducts;
+  final bool isFromCart;
 
   @override
   State<CheckoutPage> createState() => _CheckoutPageState();
@@ -39,18 +41,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
               GestureDetector(
                 onTap: () => Navigator.pop(context),
                 child: Container(
-                  padding: const EdgeInsets.only(
-                    left: 14,
-                    right: 6,
-                    top: 8,
-                    bottom: 8,
-                  ),
+                  padding: const EdgeInsets.all(3),
                   decoration: BoxDecoration(
                     color: Colors.grey.shade100,
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.black12, width: 0.4),
                   ),
-                  child: Icon(Icons.arrow_back_ios, size: 18),
+                  child: Icon(Icons.chevron_left_rounded, size: 28),
                 ),
               ),
               SizedBox(width: 16),
@@ -211,6 +208,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               totalPrice: widget.totalPrice,
                               checkoutProducts: widget.checkoutProducts,
                               fullName: fullName,
+                              isFromCart: widget.isFromCart,
                             ),
                           ),
                         );

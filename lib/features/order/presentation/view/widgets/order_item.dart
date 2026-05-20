@@ -87,6 +87,7 @@
 // ---------------------------------------------
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
 import 'package:e_commerce_app/features/order/presentation/view/order_details_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -181,8 +182,13 @@ class OrderItem extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                       width: 22,
-                      height: 22,
+                      height: 28,
                     ),
+                    // child: Icon(
+                    //   CupertinoIcons.cart_fill,
+                    //   color: _kBlue,
+                    //   size: 22,
+                    // ),
                   ),
                 ),
 

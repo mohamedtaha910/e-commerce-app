@@ -36,21 +36,16 @@ class _FavouritePageState extends State<FavouritePage> {
                 ? GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      padding: const EdgeInsets.only(
-                        left: 12,
-                        right: 6,
-                        top: 6,
-                        bottom: 6,
-                      ),
+                      padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
+                        color: Colors.grey.shade100,
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.black12, width: 0.4),
                       ),
                       child: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.black,
-                        size: 18,
+                        Icons.chevron_left_rounded,
+                        color: Colors.black54,
+                        size: 28,
                       ),
                     ),
                   )
@@ -75,9 +70,9 @@ class _FavouritePageState extends State<FavouritePage> {
               child: Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
+                  color: Colors.grey.shade100,
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.grey.shade300, width: 1),
+                  border: Border.all(color: Colors.grey.shade300, width: 0.6),
                 ),
                 child: Icon(Icons.delete_sweep, color: Colors.red, size: 24),
               ),

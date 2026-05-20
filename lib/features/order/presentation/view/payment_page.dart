@@ -38,6 +38,7 @@ class PaymentPage extends StatefulWidget {
     required this.totalPrice,
     required this.checkoutProducts,
     required this.fullName,
+    required this.isFromCart,
   });
   final String fullName;
   final String country;
@@ -45,6 +46,7 @@ class PaymentPage extends StatefulWidget {
   final String address;
   final double totalPrice;
   final List<CartProduct> checkoutProducts;
+  final bool isFromCart;
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
@@ -68,18 +70,13 @@ class _PaymentPageState extends State<PaymentPage> {
             GestureDetector(
               onTap: () => Navigator.pop(context),
               child: Container(
-                padding: const EdgeInsets.only(
-                  left: 14,
-                  right: 6,
-                  top: 8,
-                  bottom: 8,
-                ),
+                padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.black12, width: 0.4),
                 ),
-                child: Icon(Icons.arrow_back_ios, size: 18),
+                child: Icon(Icons.chevron_left_rounded, size: 28),
               ),
             ),
             SizedBox(width: 16),
@@ -420,9 +417,11 @@ class _PaymentPageState extends State<PaymentPage> {
                   title: 'Confirm',
                   titleSize: 14,
                   onTap: () {
-                    BlocProvider.of<CartCubit>(context).clearCart();
+                    // BlocProvider.of<CartCubit>(context).clearCart();
                     BlocProvider.of<OrderCubit>(context).addOrder(order);
-                    BlocProvider.of<CartCubit>(context).clearCart();
+                    widget.isFromCart
+                        ? BlocProvider.of<CartCubit>(context).clearCart()
+                        : null;
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/order/presentation/view/order_details_page.dart';
 import 'package:e_commerce_app/features/order/presentation/view/widgets/no_order.dart';
 import 'package:e_commerce_app/features/order/presentation/view/widgets/order_item.dart';
@@ -22,6 +23,7 @@ class _OrdersPageState extends State<OrdersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
@@ -32,18 +34,17 @@ class _OrdersPageState extends State<OrdersPage> {
             GestureDetector(
               onTap: () => Navigator.pop(context),
               child: Container(
-                padding: const EdgeInsets.only(
-                  left: 14,
-                  right: 6,
-                  top: 8,
-                  bottom: 8,
-                ),
+                padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.black12, width: 0.4),
                 ),
-                child: Icon(Icons.arrow_back_ios, size: 16),
+                child: Icon(
+                  Icons.chevron_left_rounded,
+                  size: 26,
+                  color: Colors.black54,
+                ),
               ),
             ),
             SizedBox(width: 16),

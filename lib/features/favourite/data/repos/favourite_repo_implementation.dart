@@ -1,9 +1,17 @@
 import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/features/favourite/data/repos/favourite_repo.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class FavouriteRepoImplementation implements FavouriteRepo {
+  // final FirebaseAuth auth;
+
+  //  FavouriteRepoImplementation({required this.auth});
+
+
   final Box<Product> box = Hive.box<Product>('favProducts');
+
+ 
 
   @override
   void addFavourite(Product product) {

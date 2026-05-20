@@ -52,12 +52,7 @@ class _CartPageState extends State<CartPage> {
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      padding: const EdgeInsets.only(
-                        left: 14,
-                        right: 6,
-                        top: 8,
-                        bottom: 8,
-                      ),
+                      padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         color: Colors.grey.shade100,
                         shape: BoxShape.circle,
@@ -65,8 +60,8 @@ class _CartPageState extends State<CartPage> {
                         border: Border.all(color: Colors.black12, width: 0.4),
                       ),
                       child: Icon(
-                        Icons.arrow_back_ios,
-                        size: 18,
+                        Icons.chevron_left_rounded,
+                        size: 28,
                         color: Colors.black54,
                       ),
                     ),
@@ -159,6 +154,7 @@ class _CartPageState extends State<CartPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => CheckoutPage(
+                            isFromCart: true,
                             totalPrice: totalPrice,
                             checkoutProducts: cartProducts,
                           ),

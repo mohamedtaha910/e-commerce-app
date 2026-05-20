@@ -191,17 +191,16 @@ class OrderDetailsPage extends StatelessWidget {
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Container(
-              width: 36,
-              height: 36,
+              padding: EdgeInsets.all(3),
               decoration: BoxDecoration(
                 color: _kGray50,
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.black12, width: 0.4),
               ),
               child: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                size: 16,
-                color: _kGray900,
+                Icons.chevron_left_rounded,
+                size: 28,
+                color: Colors.black54,
               ),
             ),
           ),
@@ -288,12 +287,14 @@ class _InfoCard extends StatelessWidget {
         children: [
           _InfoRow(
             icon: Icons.confirmation_number_rounded,
+            iconSize: 22,
             label: 'Order ID',
             child: _CopyableId(id: order.id),
           ),
           _RowDivider(),
           _InfoRow(
             icon: CupertinoIcons.creditcard_fill,
+            iconSize: 22,
             label: 'Order Total',
             child: RichText(
               text: TextSpan(
@@ -321,6 +322,7 @@ class _InfoCard extends StatelessWidget {
           _RowDivider(),
           _InfoRow(
             icon: CupertinoIcons.location_circle_fill,
+            iconSize: 26,
             label: 'Shipping Address',
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -356,8 +358,14 @@ class _InfoRow extends StatelessWidget {
   final IconData icon;
   final String label;
   final Widget child;
+  final double iconSize;
 
-  _InfoRow({required this.icon, required this.label, required this.child});
+  _InfoRow({
+    required this.icon,
+    required this.label,
+    required this.child,
+    required this.iconSize,
+  });
 
   Color backColor = Colors.blue.withAlpha(30);
   Color iconColor = Colors.blueAccent.withAlpha(220);
@@ -371,14 +379,14 @@ class _InfoRow extends StatelessWidget {
         children: [
           // Icon bubble
           Container(
-            // width: 36,
-            // height: 36,
-            padding: const EdgeInsets.all(8),
+            width: 38,
+            height: 39,
+            // padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: backColor,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Icon(icon, size: 22, color: iconColor),
+            child: Icon(icon, size: iconSize, color: iconColor),
           ),
           const SizedBox(width: 14),
           // Content

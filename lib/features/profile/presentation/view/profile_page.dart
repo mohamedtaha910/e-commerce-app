@@ -54,7 +54,7 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 28.0),
+              padding: const EdgeInsets.symmetric(vertical: 24.0),
               child: ProfileHeader(),
             ),
             Text(
@@ -77,7 +77,7 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: CupertinoIcons.square_list_fill,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(25),
+                    circleColor: Colors.black.withAlpha(20),
                     arrowColor: Colors.grey.shade700,
                     onTap: () {
                       Navigator.of(
@@ -97,7 +97,7 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: CupertinoIcons.cart_fill,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(25),
+                    circleColor: Colors.black.withAlpha(20),
                     arrowColor: Colors.grey.shade700,
                     onTap: () {
                       Navigator.of(
@@ -152,7 +152,7 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: Icons.settings,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(25),
+                    circleColor: Colors.black.withAlpha(20),
                     arrowColor: Colors.grey.shade700,
                   ),
                   HorizintalLine(
@@ -167,7 +167,7 @@ class ProfilePage extends StatelessWidget {
                     textColor: Colors.black87,
                     icon: Icons.lock,
                     iconColor: Colors.blueGrey,
-                    circleColor: Colors.black.withAlpha(25),
+                    circleColor: Colors.black.withAlpha(20),
                     arrowColor: Colors.grey.shade700,
                     onTap: () {
                       Navigator.of(context).push(

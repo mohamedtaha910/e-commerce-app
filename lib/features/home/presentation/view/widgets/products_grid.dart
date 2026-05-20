@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/features/home/presentation/view/widgets/product_grid_shimmer.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/product_item.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_products/get_products_cubit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,12 +13,20 @@ class ProductGrid extends StatelessWidget {
     return BlocBuilder<GetProductsCubit, GetProductsState>(
       builder: (context, state) {
         if (state is GetProductsFailure) {
-          return Text(
-            state.errorMessage,
-            style: TextStyle(
-              color: Colors.black54,
-              fontWeight: FontWeight.w600,
-            ),
+          return Column(
+            children: [
+              // Spacer(),
+              Icon(CupertinoIcons.wifi),
+
+              Text(
+                state.errorMessage,
+                style: TextStyle(
+                  color: Colors.orange,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              // Spacer(),
+            ],
           );
         }
         if (state is GetProductsSuccess) {

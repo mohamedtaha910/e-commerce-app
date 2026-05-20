@@ -165,16 +165,17 @@ class ProductDetailsPage extends StatelessWidget {
                 ),
 
                 onPressed: () {
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //     builder: (c) => CheckoutPage(
-                  //       totalPrice: product.price!,
-                  //       checkoutProducts: [
-                  //         CartProduct(product: product, quantity: 1),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // );
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (c) => CheckoutPage(
+                        isFromCart: false,
+                        totalPrice: product.price!,
+                        checkoutProducts: [
+                          CartProduct(product: product, quantity: 1),
+                        ],
+                      ),
+                    ),
+                  );
                 },
                 child: Text("Buy Now", style: TextStyle(color: Colors.white)),
               ),

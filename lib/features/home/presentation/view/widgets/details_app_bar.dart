@@ -11,19 +11,18 @@ class DetailsAppBar extends StatelessWidget {
         GestureDetector(
           onTap: () => Navigator.pop(context),
           child: Container(
-            padding: const EdgeInsets.only(
-              top: 6,
-              bottom: 6,
-              left: 8,
-              right: 4,
-            ),
+            padding: const EdgeInsets.all(2.6),
             decoration: BoxDecoration(
               color: Colors.grey.shade200,
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.black12 , width: 0.6),
+              border: Border.all(color: Colors.black12, width: 0.6),
               // borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(Icons.arrow_back_ios, color: Colors.black54, size: 18),
+            child: Icon(
+              Icons.chevron_left_rounded,
+              color: Colors.black54,
+              size: 28,
+            ),
           ),
         ),
         Spacer(),
@@ -34,7 +33,7 @@ class DetailsAppBar extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
             shape: BoxShape.circle,
-            border: Border.all(color: Colors.black12 , width: 0.6),
+            border: Border.all(color: Colors.black12, width: 0.6),
             // borderRadius: BorderRadius.circular(12),
           ),
           child: SvgPicture.asset('assets/icons/bag.svg'),
