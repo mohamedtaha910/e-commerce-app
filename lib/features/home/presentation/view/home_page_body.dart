@@ -15,6 +15,7 @@ class HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      bottom: false,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * 0.04,

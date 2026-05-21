@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/models/product_model/product.dart';
 // import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/product_details_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -112,13 +113,18 @@ class ProductItem extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 4),
-            Text(
-              ' \$ ${product.price ?? ''}',
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
-              ),
+            Row(
+              children: [
+                Icon(CupertinoIcons.money_dollar, fontWeight: FontWeight.w600),
+                Text(
+                  '${product.price ?? ''}',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
           ],
         ),

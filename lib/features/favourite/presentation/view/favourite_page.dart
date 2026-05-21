@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view/widgets/custom_no_favourite.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
+import 'package:e_commerce_app/features/search/presentation/view/widgets/searched_list_shimmer.dart';
 import 'package:e_commerce_app/features/search/presentation/view/widgets/serched_products_list.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -92,7 +93,13 @@ class _FavouritePageState extends State<FavouritePage> {
                   : CustomNoFavourite(),
             );
           } else {
-            return const Center(child: Text('Loading...'));
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 2.0,
+              ),
+              child: SearchedListShimmer(),
+            );
           }
         },
       ),

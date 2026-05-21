@@ -13,7 +13,7 @@ class DetailsAppBar extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(2.6),
             decoration: BoxDecoration(
-              color: Colors.grey.shade200,
+              color: Colors.grey.shade100,
               shape: BoxShape.circle,
               border: Border.all(color: Colors.black12, width: 0.6),
               // borderRadius: BorderRadius.circular(12),
@@ -31,7 +31,7 @@ class DetailsAppBar extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.grey.shade200,
+            color: Colors.grey.shade100,
             shape: BoxShape.circle,
             border: Border.all(color: Colors.black12, width: 0.6),
             // borderRadius: BorderRadius.circular(12),

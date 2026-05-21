@@ -399,6 +399,7 @@ class _PaymentPageState extends State<PaymentPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomButton(
+                  isBorder: true,
                   title: 'Cancel',
                   onTap: () {
                     Navigator.pushReplacement(
@@ -408,7 +409,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     Navigator.pop(context);
                   },
                   verticalPadding: 4,
-                  color: AppColors.primaryColor.withAlpha(50),
+                  color: Colors.transparent,
                   textColor: AppColors.primaryColor,
                   horizontalMargin: 8,
                   titleSize: 14,

@@ -18,7 +18,7 @@ class SearchPage extends StatelessWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight: 70,
+          toolbarHeight: 60,
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,

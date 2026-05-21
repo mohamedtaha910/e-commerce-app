@@ -48,7 +48,7 @@ class OnboardingBody extends StatelessWidget {
                       onTap: Navigator.of(context).pop,
                       verticalPadding: 10,
                       color: Colors.transparent,
-                      textColor: Colors.black,
+                      textColor: AppColors.primaryColor,
                       horizontalMargin: 8,
                       isBorder: true,
                     )

@@ -16,53 +16,101 @@ class ProductInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InfoRow(title: shippingInfo, icon: Icons.local_shipping),
+    List<Widget> info = [
+      InfoRow(
+        label: 'Shipping',
+        icon: Icons.local_shipping,
+        title: shippingInfo,
+      ),
+      InfoRow(label: 'Warranty', icon: Icons.wysiwyg, title: warrantyInfo),
+      InfoRow(
+        label: 'Stock',
+        icon: Icons.inventory,
+        title: stock.toString() + ' Items Left',
+      ),
+      InfoRow(label: 'Return', icon: Icons.replay, title: returnInfo),
+    ];
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 2,
+        crossAxisSpacing: 6,
+        mainAxisSpacing: 10,
+      ),
 
-        SizedBox(height: 8),
-
-        InfoRow(title: warrantyInfo, icon: Icons.verified_rounded),
-
-        SizedBox(height: 8),
-
-        InfoRow(title: '$stock Items Left', icon: Icons.inventory_2_outlined),
-
-        SizedBox(height: 8),
-        InfoRow(title: returnInfo, icon: Icons.restart_alt),
-      ],
+      itemCount: 4,
+      itemBuilder: (context, index) {
+        return info[index];
+      },
     );
   }
 }
 
 class InfoRow extends StatelessWidget {
-  const InfoRow({super.key, required this.title, required this.icon});
+  const InfoRow({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.label,
+  });
+  final String label;
   final String title;
   final IconData icon;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          padding: EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            // color: Colors.grey.shade200,
-            color: AppColors.secondaryColor.withAlpha(50),
-            shape: BoxShape.circle,
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade100,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.black12, width: 0.4),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              // color: Colors.grey.shade200,
+              color: AppColors.secondaryColor.withAlpha(50),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icon, color: AppColors.secondaryColor, size: 22),
           ),
-          child: Icon(icon, color: AppColors.secondaryColor, size: 22),
-        ),
-        SizedBox(width: 8),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: Colors.black54,
+          SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                  color: const Color.fromARGB(255, 99, 64, 12),
+                ),
+              ),
+              const SizedBox(height: 4),
+              SizedBox(
+                width: 108,
+                child: Text(
+                  title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black54,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

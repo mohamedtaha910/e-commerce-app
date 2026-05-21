@@ -24,7 +24,7 @@ class ProductMainInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.62,
+              width: MediaQuery.of(context).size.width * 0.65,
               child: Text(
                 title,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -33,17 +33,27 @@ class ProductMainInfo extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
-              category,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey.shade600,
-                fontWeight: FontWeight.w500,
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(35),
+                // shape: BoxShape.circle,
+                border: Border.all(color: Colors.black12, width: 0.6),
+              ),
+              child: Text(
+                category,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey.shade700,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ],
         ),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
@@ -66,15 +76,15 @@ class ProductMainInfo extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 252, 221, 224),
+                color: AppColors.primaryColor.withAlpha(50),
                 borderRadius: BorderRadius.circular(35),
                 // shape: BoxShape.circle,
               ),
               child: Text(
-                "$discountPercentage% OFF",
+                "${discountPercentage.round()}% OFF",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Colors.pink.shade700,
+                  color: Colors.grey.shade700,
                   fontWeight: FontWeight.w700,
                 ),
               ),

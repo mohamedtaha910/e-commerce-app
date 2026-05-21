@@ -13,7 +13,7 @@ class CustomSearchTextFeild extends StatelessWidget {
       cursorColor: AppColors.primaryColor,
       onChanged: onChanged,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 13, horizontal: 16),
+        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
         filled: true,
 
         fillColor: Colors.grey.shade200,

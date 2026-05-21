@@ -20,18 +20,29 @@ class ReviewsSection extends StatelessWidget {
           children: [
             Text(
               'Reviews (${reviews.length})',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
             const Spacer(),
-            Row(
-              children: [
-                Icon(Icons.star, color: Colors.amber, size: 20),
-                const SizedBox(width: 3),
-                Text(
-                  rating.toString(),
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-              ],
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              decoration: BoxDecoration(
+                color: Colors.amber.withAlpha(45),
+                borderRadius: BorderRadius.circular(35),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.star_rounded,
+                    color: Colors.amber.shade600,
+                    size: 20,
+                  ),
+                  const SizedBox(width: 3),
+                  Text(
+                    rating.toString(),
+                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -40,14 +51,14 @@ class ReviewsSection extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 24),
+              padding: const EdgeInsets.symmetric(vertical: 18),
               child: ReviewItem(review: reviews[index]),
             );
           },
           separatorBuilder: (context, index) {
             return HorizintalLine(
               color: Colors.grey.shade200,
-              height: 1.6,
+              height: 1,
               horizontalMargin: 48,
               verticalMargin: 0,
               borderRadius: 12,
@@ -56,17 +67,6 @@ class ReviewsSection extends StatelessWidget {
           itemCount: reviews.length,
         ),
 
-        // ...reviews.map(
-        //   (e) => Column(
-        //     children: [
-        //       const SizedBox(height: 24),
-        //       ReviewItem(review: e),
-        //       const SizedBox(height: 24),
-        //       const HorizintalLine(),
-        //       // const SizedBox(height: 16),
-        //     ],
-        //   ),
-        // ),
         const SizedBox(height: 24),
       ],
     );
@@ -84,34 +84,40 @@ class ReviewItem extends StatelessWidget {
       children: [
         Image.asset(
           'assets/images/user2.png',
-          height: 40,
-          width: 45,
+          height: 36,
+          width: 40,
           fit: BoxFit.contain,
         ),
 
-        // SizedBox(width: 300),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                review.reviewerName!,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        SizedBox(width: 8),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              review.reviewerName!,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 2),
+            RatingStars(rating: review.rating!),
+            const SizedBox(height: 10),
+            Text(
+              review.comment!,
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
               ),
-              SizedBox(height: 2),
-              RatingStars(rating: review.rating!),
-              const SizedBox(height: 10),
-              Text(
-                review.comment!,
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
-                // textAlign: TextAlign.center,
-              ),
-            ],
+              // textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        Spacer(),
+        Text(
+          review.date!.toString().split(' ')[0],
+          style: TextStyle(
+            color: Colors.black38,
+            fontSize: 11,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],
@@ -130,9 +136,13 @@ class RatingStars extends StatelessWidget {
         return index < rating
             ? Padding(
                 padding: const EdgeInsets.only(right: 1.5),
-                child: Icon(Icons.star, color: Colors.amber, size: 18),
+                child: Icon(
+                  Icons.star_rounded,
+                  color: Colors.amber.shade600,
+                  size: 16,
+                ),
               )
-            : Icon(Icons.star_border, color: Colors.black54, size: 18);
+            : Icon(Icons.star_border_rounded, color: Colors.black54, size: 16);
       }),
     );
   }

@@ -30,11 +30,11 @@ class _SplashPageState extends State<SplashPage> {
       body: Stack(
         children: [
           Positioned(
-            top: 0,
+            top: 40,
             child: SvgPicture.asset('assets/splash_images/Ellipse 1.svg'),
           ),
           Positioned(
-            top: 130,
+            top: 180,
             child: SvgPicture.asset('assets/splash_images/Ellipse 2.svg'),
           ),
           Positioned(
