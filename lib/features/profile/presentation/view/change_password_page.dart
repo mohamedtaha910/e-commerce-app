@@ -141,7 +141,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     // Spacer(),
                     CustomButton(
                       title: 'Change Password',
-                      verticalPadding: 8,
+                      verticalPadding: 10,
                       color: Colors.blueGrey,
                       textColor: Colors.white,
                       horizontalMargin: 0,
@@ -245,7 +245,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.all(color == Colors.green ? 16 : 16),
+              padding: EdgeInsets.all(color == Colors.green ? 16 : 12),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
 
@@ -276,8 +276,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 color == Colors.green ? Navigator.of(context).pop() : null;
               },
               title: 'Ok',
-              horizontalMargin: 48,
-              verticalPadding: 8,
+              horizontalMargin: 55,
+              verticalPadding: 6,
             ),
           ],
         ),

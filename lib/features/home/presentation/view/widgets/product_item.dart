@@ -115,9 +115,9 @@ class ProductItem extends StatelessWidget {
             const SizedBox(height: 4),
             Row(
               children: [
-                Icon(CupertinoIcons.money_dollar, fontWeight: FontWeight.w600),
+                // Icon(CupertinoIcons.money_dollar, fontWeight: FontWeight.w600),
                 Text(
-                  '${product.price ?? ''}',
+                  '\$ ${product.price ?? ''}',
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,

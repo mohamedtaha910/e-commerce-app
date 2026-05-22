@@ -12,23 +12,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// class PaymentPage extends StatelessWidget {
-//   const PaymentPage({super.key, required this.country, required this.city, required this.address, required this.totalPrice, required this.checkoutProducts});
-//   final String country;
-//   final String city;
-//   final String address;
-//   final double totalPrice ;
-//   final List <CartProduct> checkoutProducts;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Payment')),
-//       body: Center(child: Text('Payment Page')),
-//     );
-//   }
-// }
-// ===================================================
 class PaymentPage extends StatefulWidget {
   const PaymentPage({
     super.key,
@@ -84,7 +67,7 @@ class _PaymentPageState extends State<PaymentPage> {
               'Payment Method',
               style: TextStyle(
                 color: Colors.black87,
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -145,7 +128,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       'sub Total:',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         // fontWeight: FontWeight.w400,
                         color: Colors.black,
                       ),
@@ -167,7 +150,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       'Shipping:',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         // fontWeight: FontWeight.w400,
                         color: Colors.black,
                       ),
@@ -195,13 +178,25 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                     Spacer(),
-                    Text(
-                      '${widget.totalPrice.toStringAsFixed(2)} \$',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.primaryColor,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          '${widget.totalPrice.toStringAsFixed(2)} ',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          '\$',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -230,9 +225,9 @@ class _PaymentPageState extends State<PaymentPage> {
                           ),
                           Spacer(),
                           Icon(
-                            Icons.arrow_forward_ios,
+                            Icons.chevron_right_rounded,
                             color: Colors.white,
-                            size: 18,
+                            size: 26,
                           ),
                         ],
                       ),

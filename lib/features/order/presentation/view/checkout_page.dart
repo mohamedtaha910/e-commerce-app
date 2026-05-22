@@ -55,7 +55,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 'Shipping Address',
                 style: TextStyle(
                   color: Colors.black87,
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -182,13 +182,25 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         ),
                       ),
                       Spacer(),
-                      Text(
-                        '${widget.totalPrice.toStringAsFixed(2)} \$',
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.primaryColor,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            '${widget.totalPrice.toStringAsFixed(2)} ',
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            '\$',
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.primaryColor,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -239,9 +251,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             ),
                             Spacer(),
                             Icon(
-                              Icons.arrow_forward_ios,
+                              Icons.chevron_right_rounded,
                               color: Colors.white,
-                              size: 16,
+                              size: 26,
                             ),
                           ],
                         ),

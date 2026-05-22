@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductInfo extends StatelessWidget {
@@ -25,17 +26,21 @@ class ProductInfo extends StatelessWidget {
       InfoRow(label: 'Warranty', icon: Icons.wysiwyg, title: warrantyInfo),
       InfoRow(
         label: 'Stock',
-        icon: Icons.inventory,
+        icon: CupertinoIcons.cart_fill,
         title: stock.toString() + ' Items Left',
       ),
-      InfoRow(label: 'Return', icon: Icons.replay, title: returnInfo),
+      InfoRow(
+        label: 'Return',
+        icon: CupertinoIcons.arrowshape_turn_up_left_2_fill,
+        title: returnInfo,
+      ),
     ];
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 2,
+        childAspectRatio: 3.2,
         crossAxisSpacing: 6,
         mainAxisSpacing: 10,
       ),
@@ -62,7 +67,7 @@ class InfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
         color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(12),
@@ -70,44 +75,37 @@ class InfoRow extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(6),
+            // padding: EdgeInsets.all(6),
             decoration: BoxDecoration(
               // color: Colors.grey.shade200,
-              color: AppColors.secondaryColor.withAlpha(50),
+              // color: AppColors.secondaryColor.withAlpha(50),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, color: AppColors.secondaryColor, size: 22),
           ),
-          SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold,
-                  color: const Color.fromARGB(255, 99, 64, 12),
-                ),
+          SizedBox(width: 6),
+          Icon(
+            Icons.chevron_right_rounded,
+            size: 18,
+            color: Colors.grey.shade600,
+          ),
+          SizedBox(width: 6),
+          const SizedBox(height: 4),
+          SizedBox(
+            width: 108,
+            child: Text(
+              title,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: Colors.black54,
               ),
-              const SizedBox(height: 4),
-              SizedBox(
-                width: 108,
-                child: Text(
-                  title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black54,
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ],
       ),

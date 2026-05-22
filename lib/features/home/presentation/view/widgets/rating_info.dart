@@ -62,7 +62,7 @@ class RatingInfo extends StatelessWidget {
               fontWeight: FontWeight.w500,
               fontSize: 13,
               color: availabilityStatus == 'In Stock'
-                  ? Colors.green.shade900
+                  ? const Color.fromARGB(255, 7, 75, 11)
                   : Colors.pink.shade700,
             ),
           ),

@@ -239,8 +239,8 @@ class OrderProductItem extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: -6,
-            right: -6,
+            top: -10,
+            right: -8,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               decoration: BoxDecoration(

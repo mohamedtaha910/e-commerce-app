@@ -46,10 +46,10 @@ class OnboardingBody extends StatelessWidget {
                       title: 'Previous',
                       titleSize: 15,
                       onTap: Navigator.of(context).pop,
-                      verticalPadding: 10,
+                      verticalPadding: 8,
                       color: Colors.transparent,
                       textColor: AppColors.primaryColor,
-                      horizontalMargin: 8,
+                      horizontalMargin: 0,
                       isBorder: true,
                     )
                   : SizedBox.shrink(),
