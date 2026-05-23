@@ -7,6 +7,7 @@ import 'package:e_commerce_app/features/auth/presentation/view/widgets/other_way
 import 'package:e_commerce_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -46,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
           inAsyncCall: isLoading,
           child: SafeArea(
             bottom: false,
+            top: false,
             child: Scaffold(
               // appBar: AppBar(),
               body: SingleChildScrollView(
@@ -58,37 +60,69 @@ class _LoginPageState extends State<LoginPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomHeader(
-                        image: 'assets/auth_images/sign_up.svg',
-                        text: 'assets/auth_images/Log_in_word.svg',
+                        title: 'Log In',
+                        icon: CupertinoIcons.person_crop_circle_fill,
+                        subtitle: 'Welcome Back',
+                        showBack: true,
                       ),
-                      // SizedBox(height: 12),
+                      SizedBox(height: 32),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          'Email address',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade800,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 8),
                       AuthTextFeild(
+                        height: 12,
+
                         hintText: 'Email',
                         icon: Icons.email,
                         onChanged: (value) {
                           email = value;
                         },
-                        borderRadius: 35,
+                        borderRadius: 22,
                         obscureText: false,
                       ),
-                      SizedBox(height: 24),
+                      SizedBox(height: 16),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          'Password',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade800,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 8),
                       AuthTextFeild(
+                        height: 12,
                         hintText: 'Password',
+                        // paddign: 10,
                         icon: Icons.lock,
                         onChanged: (value) {
                           password = value;
                         },
-                        borderRadius: 35,
+                        borderRadius: 22,
                         obscureText: true,
                       ),
                       SizedBox(height: 32),
                       CustomButton(
                         // color: const Color.fromARGB(255, 248, 124, 41),
+                        // color: const Color.fromARGB(255, 251, 157, 95),
                         color: AppColors.primaryColor,
+                        borderRadius: 14,
                         textColor: Colors.white,
                         title: 'Log In',
                         titleSize: 17,
-                        verticalPadding: 8,
+                        verticalPadding: 10,
                         horizontalMargin: 16,
                         onTap: () {
                           autovalidateMode = AutovalidateMode.always;

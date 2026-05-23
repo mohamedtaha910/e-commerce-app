@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     required this.horizontalMargin,
     required this.titleSize,
     this.isBorder = false,
+    this.borderRadius = 25,
   });
   final String title;
   final double titleSize;
@@ -21,6 +22,7 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final double horizontalMargin;
   final bool isBorder;
+  final double borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class CustomButton extends StatelessWidget {
         decoration: BoxDecoration(
           // color: AppColors.primaryColor,
           color: color,
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(borderRadius),
           border: isBorder
               ? Border.all(color: AppColors.primaryColor, width: 0.4)
               : null,

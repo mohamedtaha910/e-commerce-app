@@ -7,6 +7,7 @@ import 'package:e_commerce_app/features/auth/presentation/view/widgets/other_way
 import 'package:e_commerce_app/features/auth/presentation/view_model/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -45,6 +46,7 @@ class _SignUpPageState extends State<SignUpPage> {
           inAsyncCall: isLoading,
           child: SafeArea(
             bottom: false,
+            top: false,
             child: GestureDetector(
               onTap: () {
                 FocusScope.of(context).unfocus();
@@ -61,28 +63,62 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomHeader(
-                          image: 'assets/auth_images/frame.svg',
-                          text: 'assets/auth_images/Sign_Up_word.svg',
-                        ),
+                        // CustomHeader(
+                        //   image: 'assets/auth_images/frame.svg',
+                        //   text: 'assets/auth_images/Sign_Up_word.svg',
+                        // ),
                         // SizedBox(height: 16),
+                        CustomHeader(
+                          title: 'Sign Up',
+                          icon: CupertinoIcons.person_crop_circle_fill,
+                          subtitle: 'Welcome to our store',
+                          showBack: true,
+                        ),
+                        SizedBox(height: 32),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            'Email address',
+                            style: TextStyle(
+                              color: Colors.grey.shade800,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 8),
                         AuthTextFeild(
                           hintText: 'Email',
+                          height: 12,
+
                           icon: Icons.email,
                           onChanged: (value) {
                             email = value;
                           },
-                          borderRadius: 35,
+                          borderRadius: 22,
                           obscureText: false,
                         ),
-                        SizedBox(height: 24),
+                        SizedBox(height: 16),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            'Password',
+                            style: TextStyle(
+                              color: Colors.grey.shade800,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 8),
                         AuthTextFeild(
                           hintText: 'Password',
                           icon: Icons.lock,
                           onChanged: (value) {
                             password = value;
                           },
-                          borderRadius: 35,
+                          height: 12,
+                          borderRadius: 22,
                           obscureText: true,
                         ),
                         SizedBox(height: 32),
@@ -91,8 +127,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           textColor: Colors.white,
                           title: 'Sign Up',
                           titleSize: 17,
-                          verticalPadding: 8,
+                          verticalPadding: 10,
                           horizontalMargin: 16,
+                          borderRadius: 14,
                           onTap: () {
                             autovalidateMode = AutovalidateMode.always;
                             setState(() {});

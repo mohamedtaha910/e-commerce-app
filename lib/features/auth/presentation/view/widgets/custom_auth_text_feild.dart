@@ -10,6 +10,7 @@ class AuthTextFeild extends StatefulWidget {
     required this.borderRadius,
     required this.obscureText,
     this.paddign = 16,
+    this.height = 12,
   });
   final String hintText;
   final IconData icon;
@@ -17,6 +18,7 @@ class AuthTextFeild extends StatefulWidget {
   final double borderRadius;
   final bool obscureText;
   final double paddign;
+  final double? height;
 
   @override
   State<AuthTextFeild> createState() => _AuthTextFeildState();
@@ -50,7 +52,10 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
 
         cursorColor: AppColors.primaryColor,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          contentPadding: EdgeInsets.symmetric(
+            vertical: widget.height!,
+            horizontal: 16,
+          ),
           suffix: GestureDetector(
             onTap: () {
               setState(() {
