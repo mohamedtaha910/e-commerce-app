@@ -10,6 +10,7 @@ import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginPage extends StatefulWidget {
@@ -48,103 +49,155 @@ class _LoginPageState extends State<LoginPage> {
           child: SafeArea(
             bottom: false,
             top: false,
-            child: Scaffold(
-              // appBar: AppBar(),
-              body: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                child: Form(
-                  key: formKey,
-                  autovalidateMode: autovalidateMode,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomHeader(
-                        title: 'Log In',
-                        icon: CupertinoIcons.person_crop_circle_fill,
-                        subtitle: 'Welcome Back',
-                        showBack: true,
-                      ),
-                      SizedBox(height: 32),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Text(
-                          'Email address',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey.shade800,
+            child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+              },
+              child: Scaffold(
+                backgroundColor: AppColors.backgroundColor,
+                // appBar: AppBar(),
+                body: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  child: Form(
+                    key: formKey,
+                    autovalidateMode: autovalidateMode,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomHeader(
+                          title: 'Log In',
+                          icon: CupertinoIcons.person_crop_circle_fill,
+
+                          subtitle: 'Welcome Back',
+                          showBack: true,
+                        ),
+                        // ,
+                        Transform.translate(
+                          offset: Offset(0, -200),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 24,
+                            ),
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 4,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // SizedBox(height: 32),
+                                Text(
+                                  'Log in',
+                                  style: const TextStyle(
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                    letterSpacing: -0.5,
+                                    height: 1.1,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Log in to your account',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.grey.withOpacity(0.65),
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                const SizedBox(height: 38),
+                                Text(
+                                  'Email address',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey.shade800,
+                                  ),
+                                ),
+                                SizedBox(height: 8),
+                                AuthTextFeild(
+                                  height: 12,
+
+                                  hintText: 'Email',
+                                  icon: Icons.email,
+                                  onChanged: (value) {
+                                    email = value;
+                                  },
+                                  borderRadius: 22,
+                                  obscureText: false,
+                                  paddign: 0,
+                                ),
+                                SizedBox(height: 16),
+                                Text(
+                                  'Password',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey.shade800,
+                                  ),
+                                ),
+                                SizedBox(height: 8),
+                                AuthTextFeild(
+                                  height: 12,
+                                  hintText: 'Password',
+                                  paddign: 0,
+                                  icon: Icons.lock,
+                                  onChanged: (value) {
+                                    password = value;
+                                  },
+                                  borderRadius: 22,
+                                  obscureText: true,
+                                ),
+                                SizedBox(height: 32),
+                                CustomButton(
+                                  // color: const Color.fromARGB(255, 248, 124, 41),
+                                  // color: const Color.fromARGB(255, 251, 157, 95),
+                                  color: AppColors.primaryColor,
+                                  borderRadius: 14,
+                                  textColor: Colors.white,
+                                  title: 'Log In',
+                                  titleSize: 17,
+                                  verticalPadding: 10,
+                                  horizontalMargin: 0,
+                                  onTap: () {
+                                    autovalidateMode = AutovalidateMode.always;
+                                    setState(() {});
+
+                                    if (formKey.currentState!.validate()) {
+                                      BlocProvider.of<AuthCubit>(
+                                        context,
+                                      ).loginUser(
+                                        email: email!,
+                                        password: password!,
+                                      );
+                                    }
+                                  },
+                                ),
+                                SizedBox(height: 32),
+                                OtherWay(),
+                                SizedBox(height: 32),
+                                CustomShift(
+                                  destination: SignUpPage(),
+                                  text: 'Register Now',
+                                  text2: 'Don\'t have an account?  ',
+                                ),
+                                SizedBox(height: 8),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 8),
-                      AuthTextFeild(
-                        height: 12,
-
-                        hintText: 'Email',
-                        icon: Icons.email,
-                        onChanged: (value) {
-                          email = value;
-                        },
-                        borderRadius: 22,
-                        obscureText: false,
-                      ),
-                      SizedBox(height: 16),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Text(
-                          'Password',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey.shade800,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      AuthTextFeild(
-                        height: 12,
-                        hintText: 'Password',
-                        // paddign: 10,
-                        icon: Icons.lock,
-                        onChanged: (value) {
-                          password = value;
-                        },
-                        borderRadius: 22,
-                        obscureText: true,
-                      ),
-                      SizedBox(height: 32),
-                      CustomButton(
-                        // color: const Color.fromARGB(255, 248, 124, 41),
-                        // color: const Color.fromARGB(255, 251, 157, 95),
-                        color: AppColors.primaryColor,
-                        borderRadius: 14,
-                        textColor: Colors.white,
-                        title: 'Log In',
-                        titleSize: 17,
-                        verticalPadding: 10,
-                        horizontalMargin: 16,
-                        onTap: () {
-                          autovalidateMode = AutovalidateMode.always;
-                          setState(() {});
-
-                          if (formKey.currentState!.validate()) {
-                            BlocProvider.of<AuthCubit>(
-                              context,
-                            ).loginUser(email: email!, password: password!);
-                          }
-                        },
-                      ),
-                      SizedBox(height: 32),
-                      OtherWay(),
-                      SizedBox(height: 24),
-                      CustomShift(
-                        destination: SignUpPage(),
-                        text: 'Register Now',
-                        text2: 'Don\'t have an account?  ',
-                      ),
-                      SizedBox(height: 20),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

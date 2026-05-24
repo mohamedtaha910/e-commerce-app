@@ -107,13 +107,14 @@ class CustomHeader extends StatelessWidget {
   final IconData icon;
   final bool showBack;
 
-  static const _kPurple = Color.fromARGB(255, 237, 134, 71);
+  // static const _kPurple = Color.fromARGB(255, 237, 134, 71);
+  static const _kPurple = AppColors.primaryColor;
   static const _kPurpleL = Color.fromARGB(255, 253, 174, 119);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.39,
+      height: MediaQuery.of(context).size.height * 0.5,
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -129,12 +130,17 @@ class CustomHeader extends StatelessWidget {
           Positioned(
             top: -60,
             right: -50,
-            child: _Circle(size: 220, opacity: 0.12),
+            child: _Circle(color: Colors.white, size: 220, opacity: 0.12),
           ),
           Positioned(
-            bottom: 20,
+            top: 140,
             left: -30,
-            child: _Circle(size: 140, opacity: 0.08),
+            child: _Circle(color: Colors.white, size: 140, opacity: 0.3),
+          ),
+          Positioned(
+            bottom: -50,
+            right: -30,
+            child: _Circle(color: Colors.black, size: 140, opacity: 0.2),
           ),
 
           // ── Radial highlight ─────────────────────────────────────────────
@@ -188,7 +194,7 @@ class CustomHeader extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            bottom: 55,
+            bottom: 140,
             child: Center(
               child: Container(
                 width: 120,
@@ -201,55 +207,55 @@ class CustomHeader extends StatelessWidget {
                     width: 1.5,
                   ),
                 ),
-                child: Icon(icon, color: Colors.white, size: 52),
+                child: Icon(icon, color: Colors.white, size: 70),
               ),
             ),
           ),
 
           // ── Title + subtitle ─────────────────────────────────────────────
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(24, 16, 24, 28),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(32),
-                ),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.transparent, Colors.black.withOpacity(0.18)],
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                      letterSpacing: -0.5,
-                      height: 1.1,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.white.withOpacity(0.65),
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          // Positioned(
+          //   bottom: 0,
+          //   left: 0,
+          //   right: 0,
+          //   child: Container(
+          //     padding: const EdgeInsets.fromLTRB(24, 16, 24, 28),
+          //     decoration: BoxDecoration(
+          //       borderRadius: const BorderRadius.vertical(
+          //         bottom: Radius.circular(32),
+          //       ),
+          //       gradient: LinearGradient(
+          //         begin: Alignment.topCenter,
+          //         end: Alignment.bottomCenter,
+          //         colors: [Colors.transparent, Colors.black.withOpacity(0.18)],
+          //       ),
+          //     ),
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       mainAxisSize: MainAxisSize.min,
+          //       children: [
+          //         Text(
+          //           title,
+          //           style: const TextStyle(
+          //             fontSize: 26,
+          //             fontWeight: FontWeight.w700,
+          //             color: Colors.white,
+          //             letterSpacing: -0.5,
+          //             height: 1.1,
+          //           ),
+          //         ),
+          //         const SizedBox(height: 4),
+          //         Text(
+          //           subtitle,
+          //           style: TextStyle(
+          //             fontSize: 13,
+          //             color: Colors.white.withOpacity(0.65),
+          //             fontWeight: FontWeight.w400,
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
@@ -259,7 +265,12 @@ class CustomHeader extends StatelessWidget {
 class _Circle extends StatelessWidget {
   final double size;
   final double opacity;
-  const _Circle({required this.size, required this.opacity});
+  final Color color;
+  const _Circle({
+    required this.size,
+    required this.opacity,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -268,7 +279,7 @@ class _Circle extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: Colors.white.withOpacity(opacity), width: 1),
+        border: Border.all(color: color.withOpacity(opacity), width: 1),
       ),
     );
   }

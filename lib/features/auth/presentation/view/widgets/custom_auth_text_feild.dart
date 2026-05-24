@@ -82,18 +82,20 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
             ],
           ),
 
-          // hintText: hintText,
-          // hintStyle: TextStyle(color: Colors.grey),
+          // border: OutlineInputBorder(
+          //   borderSide: BorderSide.none,
+          //   borderRadius: BorderRadius.circular(widget.borderRadius),
+          // ),
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: Colors.grey, width: 0.8),
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.primaryColor),
+            borderSide: BorderSide(color: AppColors.primaryColor, width: 1),
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: Colors.grey, width: 0.8),
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
         ),
