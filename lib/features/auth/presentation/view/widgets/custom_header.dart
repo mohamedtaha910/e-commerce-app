@@ -122,7 +122,7 @@ class CustomHeader extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [_kPurple, _kPurpleL, _kPurple],
         ),
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(8)),
       ),
       child: Stack(
         children: [

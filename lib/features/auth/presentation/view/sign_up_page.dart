@@ -74,82 +74,126 @@ class _SignUpPageState extends State<SignUpPage> {
                           subtitle: 'Welcome to our store',
                           showBack: true,
                         ),
-                        SizedBox(height: 32),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Text(
-                            'Email address',
-                            style: TextStyle(
-                              color: Colors.grey.shade800,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
+                        // SizedBox(height: 32),
+                        Transform.translate(
+                          offset: const Offset(0, -200),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 24,
                             ),
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        AuthTextFeild(
-                          hintText: 'Email',
-                          height: 12,
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 4,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Sign Up',
+                                  style: const TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                    letterSpacing: -0.5,
+                                    height: 1.1,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Create an account to get started',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.grey.withOpacity(0.65),
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                const SizedBox(height: 38),
+                                Text(
+                                  'Email address',
+                                  style: TextStyle(
+                                    color: Colors.grey.shade800,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(height: 8),
+                                AuthTextFeild(
+                                  hintText: 'Email',
+                                  height: 12,
+                                  paddign: 0,
 
-                          icon: Icons.email,
-                          onChanged: (value) {
-                            email = value;
-                          },
-                          borderRadius: 22,
-                          obscureText: false,
-                        ),
-                        SizedBox(height: 16),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Text(
-                            'Password',
-                            style: TextStyle(
-                              color: Colors.grey.shade800,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
+                                  icon: Icons.email,
+                                  onChanged: (value) {
+                                    email = value;
+                                  },
+                                  borderRadius: 22,
+                                  obscureText: false,
+                                ),
+                                SizedBox(height: 16),
+                                Text(
+                                  'Password',
+                                  style: TextStyle(
+                                    color: Colors.grey.shade800,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(height: 8),
+                                AuthTextFeild(
+                                  paddign: 0,
+                                  hintText: 'Password',
+                                  icon: Icons.lock,
+                                  onChanged: (value) {
+                                    password = value;
+                                  },
+                                  height: 12,
+                                  borderRadius: 22,
+                                  obscureText: true,
+                                ),
+                                SizedBox(height: 32),
+                                CustomButton(
+                                  color: AppColors.primaryColor,
+                                  textColor: Colors.white,
+                                  title: 'Sign Up',
+                                  titleSize: 17,
+                                  verticalPadding: 10,
+                                  horizontalMargin: 0,
+                                  borderRadius: 14,
+                                  onTap: () {
+                                    autovalidateMode = AutovalidateMode.always;
+                                    setState(() {});
+                                    if (formKey.currentState!.validate()) {
+                                      BlocProvider.of<AuthCubit>(
+                                        context,
+                                      ).registerUser(
+                                        email: email!,
+                                        password: password!,
+                                      );
+                                    }
+                                  },
+                                ),
+                                SizedBox(height: 32),
+                                OtherWay(),
+                                SizedBox(height: 32),
+                                CustomShift(
+                                  destination: LoginPage(),
+                                  text: 'Log In',
+                                  text2: 'Already have an account?  ',
+                                ),
+                                SizedBox(height: 8),
+                              ],
                             ),
                           ),
                         ),
-                        SizedBox(height: 8),
-                        AuthTextFeild(
-                          hintText: 'Password',
-                          icon: Icons.lock,
-                          onChanged: (value) {
-                            password = value;
-                          },
-                          height: 12,
-                          borderRadius: 22,
-                          obscureText: true,
-                        ),
-                        SizedBox(height: 32),
-                        CustomButton(
-                          color: AppColors.primaryColor,
-                          textColor: Colors.white,
-                          title: 'Sign Up',
-                          titleSize: 17,
-                          verticalPadding: 10,
-                          horizontalMargin: 16,
-                          borderRadius: 14,
-                          onTap: () {
-                            autovalidateMode = AutovalidateMode.always;
-                            setState(() {});
-                            if (formKey.currentState!.validate()) {
-                              BlocProvider.of<AuthCubit>(context).registerUser(
-                                email: email!,
-                                password: password!,
-                              );
-                            }
-                          },
-                        ),
-                        SizedBox(height: 32),
-                        OtherWay(),
-                        SizedBox(height: 24),
-                        CustomShift(
-                          destination: LoginPage(),
-                          text: 'Log In',
-                          text2: 'Already have an account?  ',
-                        ),
-                        SizedBox(height: 20),
                       ],
                     ),
                   ),
@@ -175,28 +219,28 @@ class _SignUpPageState extends State<SignUpPage> {
                 color: Colors.red.withAlpha(50),
                 shape: BoxShape.circle,
               ),
-              child: Icon(Icons.error, color: Colors.red, size: 40),
+              child: Icon(Icons.error, color: Colors.pink, size: 40),
             ),
             SizedBox(height: 24),
             Text(
               message,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(height: 32),
             CustomButton(
               title: 'Ok',
-              titleSize: 17,
+              titleSize: 15,
               onTap: () {
                 Navigator.pop(context);
               },
               verticalPadding: 8,
-              color: AppColors.primaryColor,
-              textColor: Colors.white,
-              horizontalMargin: 16,
+              color: Colors.red.withAlpha(50),
+              textColor: Colors.pink,
+              horizontalMargin: 50,
             ),
           ],
         ),
