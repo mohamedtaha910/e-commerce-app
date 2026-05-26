@@ -96,20 +96,21 @@ import 'package:flutter/material.dart';
 class CustomHeader extends StatelessWidget {
   const CustomHeader({
     super.key,
-    required this.title,
-    required this.subtitle,
+
     required this.icon,
     this.showBack = true,
+    this.firstColor = AppColors.primaryColor,
+    this.secondColor = const Color.fromARGB(255, 253, 174, 119),
   });
 
-  final String title;
-  final String subtitle;
   final IconData icon;
   final bool showBack;
+  final Color firstColor;
+  final Color secondColor;
 
   // static const _kPurple = Color.fromARGB(255, 237, 134, 71);
-  static const _kPurple = AppColors.primaryColor;
-  static const _kPurpleL = Color.fromARGB(255, 253, 174, 119);
+  // static const firstColor = AppColors.primaryColor;
+  // static const secondColor = Color.fromARGB(255, 253, 174, 119);
 
   @override
   Widget build(BuildContext context) {
@@ -120,9 +121,9 @@ class CustomHeader extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [_kPurple, _kPurpleL, _kPurple],
+          colors: [firstColor, secondColor, firstColor],
         ),
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(8)),
+        // borderRadius: BorderRadius.vertical(bottom: Radius.circular(8)),
       ),
       child: Stack(
         children: [

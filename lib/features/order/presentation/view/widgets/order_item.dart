@@ -102,43 +102,11 @@ class OrderItem extends StatelessWidget {
   static const _kBlueBg = Color(0xFFEFF6FF);
   static const _kBlue = Color(0xFF3B82F6);
 
-  // ── status config ──────────────────────────────────────────────────────────
-  static _StatusStyle _statusStyle(String? status) {
-    switch ((status ?? '').toLowerCase()) {
-      case 'delivered':
-        return _StatusStyle(
-          bg: const Color(0xFFECFDF5),
-          text: const Color(0xFF15803D),
-          dot: const Color(0xFF22C55E),
-          label: 'Delivered',
-        );
-      case 'shipped':
-        return _StatusStyle(
-          bg: const Color(0xFFFEF9C3),
-          text: const Color(0xFFA16207),
-          dot: const Color(0xFFEAB308),
-          label: 'Shipped',
-        );
-      case 'cancelled':
-        return _StatusStyle(
-          bg: const Color(0xFFFEF2F2),
-          text: const Color(0xFFB91C1C),
-          dot: const Color(0xFFEF4444),
-          label: 'Cancelled',
-        );
-      default: // processing
-        return _StatusStyle(
-          bg: _kBlueBg,
-          text: const Color.fromARGB(255, 72, 116, 212),
-          dot: _kBlue,
-          label: 'Processing',
-        );
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
-    final style = _statusStyle('Processing');
+    // final style = _statusStyle('Processing');
     final shortId = order.id.length > 14
         ? '#${order.id.substring(0, 14)}…'
         : '#${order.id}';
@@ -166,7 +134,6 @@ class OrderItem extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                // ── Icon ────────────────────────────────────────────────────
                 Container(
                   width: 48,
                   height: 48,
@@ -194,7 +161,6 @@ class OrderItem extends StatelessWidget {
 
                 const SizedBox(width: 14),
 
-                // ── Info ─────────────────────────────────────────────────────
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,7 +174,7 @@ class OrderItem extends StatelessWidget {
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
-                      const SizedBox(height: 5),
+                      const SizedBox(height: 12),
                       Row(
                         children: [
                           Text(
@@ -223,7 +189,6 @@ class OrderItem extends StatelessWidget {
                           const _Dot(),
                           const SizedBox(width: 6),
 
-                          // Replace order.date with your actual date field if available
                           Text(
                             order.date.toString().substring(0, 10),
                             style: const TextStyle(
@@ -240,9 +205,10 @@ class OrderItem extends StatelessWidget {
 
                 const SizedBox(width: 12),
 
-                // ── Right: price + status ────────────────────────────────────
+                
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       '\$${order.total.toStringAsFixed(2)}',
@@ -252,8 +218,8 @@ class OrderItem extends StatelessWidget {
                         color: _kGray900,
                       ),
                     ),
-                    const SizedBox(height: 6),
-                    _StatusBadge(style: style),
+                    const SizedBox(height: 12),
+                    _StatusBadge(),
                   ],
                 ),
               ],
@@ -265,34 +231,36 @@ class OrderItem extends StatelessWidget {
   }
 }
 
-// ── Status badge ───────────────────────────────────────────────────────────────
 class _StatusBadge extends StatelessWidget {
-  final _StatusStyle style;
-  const _StatusBadge({required this.style});
+  const _StatusBadge();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
       decoration: BoxDecoration(
-        color: style.bg,
+        color: Colors.blue.withAlpha(30),
         borderRadius: BorderRadius.circular(99),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 5,
-            height: 5,
-            decoration: BoxDecoration(shape: BoxShape.circle, color: style.dot),
+            // width: 5,
+            // height: 5,
+            padding: const EdgeInsets.all(2),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.blue.shade700,
+            ),
           ),
           const SizedBox(width: 5),
           Text(
-            style.label,
+            'Processing',
             style: TextStyle(
-              fontSize: 11,
+              fontSize: 10,
               fontWeight: FontWeight.w600,
-              color: style.text,
+              color: Colors.blue.shade700,
             ),
           ),
         ],
@@ -301,20 +269,6 @@ class _StatusBadge extends StatelessWidget {
   }
 }
 
-class _StatusStyle {
-  final Color bg;
-  final Color text;
-  final Color dot;
-  final String label;
-  const _StatusStyle({
-    required this.bg,
-    required this.text,
-    required this.dot,
-    required this.label,
-  });
-}
-
-// ── Small dot separator ────────────────────────────────────────────────────────
 class _Dot extends StatelessWidget {
   const _Dot();
   @override

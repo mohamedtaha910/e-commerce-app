@@ -69,9 +69,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         // ),
                         // SizedBox(height: 16),
                         CustomHeader(
-                          title: 'Sign Up',
                           icon: CupertinoIcons.person_crop_circle_fill,
-                          subtitle: 'Welcome to our store',
+
                           showBack: true,
                         ),
                         // SizedBox(height: 32),

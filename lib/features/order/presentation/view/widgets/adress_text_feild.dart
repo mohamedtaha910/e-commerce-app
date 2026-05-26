@@ -34,6 +34,8 @@ class AdressTextFeild extends StatelessWidget {
       maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds,
       cursorColor: AppColors.primaryColor,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.grey.shade100,
         contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         hint: Text(
           'Enter your $label',
@@ -47,11 +49,11 @@ class AdressTextFeild extends StatelessWidget {
 
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide(color: Colors.black54, width: 0.5),
+          borderSide: BorderSide(color: Colors.grey.shade400, width: 0.5),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide(color: Colors.black54, width: 0.4),
+          borderSide: BorderSide(color: Colors.grey.shade400, width: 0.4),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),

@@ -128,15 +128,15 @@ class OrderDetailsPage extends StatelessWidget {
   // ── palette ────────────────────────────────────────────────────────────────
   static const _kBg = Color(0xFFF7F7F5);
   static const _kWhite = Colors.white;
-  static const _kBorder = Color(0xFFE9E9E7);
+  // static const _kBorder = Color(0xFFE9E9E7);
   static const _kGray50 = Color(0xFFF3F4F6);
-  static const _kGray400 = Color(0xFF9CA3AF);
-  static const _kGray600 = Color(0xFF6B7280);
+  // static const _kGray400 = Color(0xFF9CA3AF);
+  // static const _kGray600 = Color(0xFF6B7280);
   static const _kGray900 = Color(0xFF111827);
-  static const _kGreen = Color(0xFF22C55E);
-  static const _kGreenBg = Color(0xFFECFDF5);
-  static const _kGreenBdr = Color(0xFFA7F3D0);
-  static const _kGreenTxt = Color(0xFF15803D);
+  // static const _kGreen = Color(0xFF22C55E);
+  // static const _kGreenBg = Color(0xFFECFDF5);
+  // static const _kGreenBdr = Color(0xFFA7F3D0);
+  // static const _kGreenTxt = Color(0xFF15803D);
 
   @override
   Widget build(BuildContext context) {
@@ -273,7 +273,7 @@ class _InfoCard extends StatelessWidget {
 
   static const _kWhite = Colors.white;
   static const _kBorder = Color(0xFFE9E9E7);
-  static const _kGray50 = Color(0xFFF3F4F6);
+  // static const _kGray50 = Color(0xFFF3F4F6);
 
   @override
   Widget build(BuildContext context) {
@@ -360,18 +360,18 @@ class _InfoRow extends StatelessWidget {
   final Widget child;
   final double iconSize;
 
-  _InfoRow({
+  const _InfoRow({
     required this.icon,
     required this.label,
     required this.child,
     required this.iconSize,
   });
 
-  Color backColor = Colors.blue.withAlpha(30);
-  Color iconColor = Colors.blueAccent.withAlpha(220);
-
   @override
   Widget build(BuildContext context) {
+    Color backColor = Colors.blue.withAlpha(30);
+    Color iconColor = Colors.blueAccent.withAlpha(220);
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Row(
@@ -446,7 +446,7 @@ class _CopyableIdState extends State<_CopyableId> {
     if (mounted) setState(() => _copied = false);
   }
 
-  static const _kGray50 = Color(0xFFF3F4F6);
+  // static const _kGray50 = Color(0xFFF3F4F6);
   static const _kGray400 = Color(0xFF9CA3AF);
   static const _kGray900 = Color(0xFF111827);
 

@@ -66,10 +66,8 @@ class _LoginPageState extends State<LoginPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomHeader(
-                          title: 'Log In',
                           icon: CupertinoIcons.person_crop_circle_fill,
 
-                          subtitle: 'Welcome Back',
                           showBack: true,
                         ),
                         // ,
