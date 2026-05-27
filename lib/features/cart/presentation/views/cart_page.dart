@@ -238,7 +238,7 @@ class _CartPageState extends State<CartPage> {
               'Are you sure you want to clear your cart?',
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),

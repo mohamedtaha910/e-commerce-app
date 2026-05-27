@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                 backgroundColor: AppColors.backgroundColor,
                 // appBar: AppBar(),
                 body: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
+                  // physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   child: Form(
                     key: formKey,

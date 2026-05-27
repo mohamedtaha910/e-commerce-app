@@ -10,10 +10,11 @@ class ProfileHeader extends StatelessWidget {
       children: [
         // const SizedBox(width: 16),
         CircleAvatar(
-          radius: 60,
+          radius: MediaQuery.of(context).size.width * 0.154,
           backgroundColor: Colors.grey.shade400,
           child: CircleAvatar(
-            radius: 58,
+            // radius: 58,
+            radius: MediaQuery.of(context).size.width * 0.15,
             child: Image.asset('assets/images/user2.png'),
           ),
         ),

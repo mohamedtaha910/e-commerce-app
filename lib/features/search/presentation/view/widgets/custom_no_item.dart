@@ -9,13 +9,13 @@ class CustomNoItem extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Center(child: SvgPicture.asset('assets/icons/no_items.svg',)),
+        Center(child: SvgPicture.asset('assets/icons/no_items.svg')),
         SizedBox(height: 20),
         Text(
-          'No Item Found !',
+          'No Products Found !',
           style: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.bold,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
             color: Colors.black54,
           ),
           textAlign: TextAlign.center,

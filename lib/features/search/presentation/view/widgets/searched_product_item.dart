@@ -172,7 +172,8 @@ class SerchedProductItem extends StatelessWidget {
             // Product Image
             Container(
               height: 138,
-              width: 125,
+              // width: 125,
+              width: MediaQuery.of(context).size.width * 0.325,
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -210,7 +211,7 @@ class SerchedProductItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.42,
+                            width: MediaQuery.of(context).size.width * 0.412,
                             child: Text(
                               product.title!,
                               style: const TextStyle(

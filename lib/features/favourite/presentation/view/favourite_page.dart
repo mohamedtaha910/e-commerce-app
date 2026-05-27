@@ -126,7 +126,7 @@ class _FavouritePageState extends State<FavouritePage> {
               'Are you sure you want to clear your favourite?',
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),

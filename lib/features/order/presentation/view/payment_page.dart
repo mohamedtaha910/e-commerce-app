@@ -373,19 +373,19 @@ class _PaymentPageState extends State<PaymentPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: Colors.green.withAlpha(50),
                 shape: BoxShape.circle,
               ),
-              child: Icon(Icons.check, color: Colors.green, size: 36),
+              child: Icon(Icons.check, color: Colors.green, size: 30),
             ),
             SizedBox(height: 16),
             Text(
               'Are you sure you want to confirm your order?',
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -397,13 +397,13 @@ class _PaymentPageState extends State<PaymentPage> {
                   isBorder: true,
                   title: 'Cancel',
                   onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => OrdersPage()),
-                    );
+                    // Navigator.pushReplacement(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => OrdersPage()),
+                    // );
                     Navigator.pop(context);
                   },
-                  verticalPadding: 4,
+                  verticalPadding: 3,
                   color: Colors.transparent,
                   textColor: AppColors.primaryColor,
                   horizontalMargin: 8,

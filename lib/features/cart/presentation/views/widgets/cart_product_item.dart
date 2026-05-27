@@ -308,7 +308,7 @@ void showconfirmMessage(BuildContext context, CartProduct cartproduct) {
             'Are you sure you want to remove this product from your cart?',
             style: TextStyle(
               color: Colors.black,
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -321,7 +321,7 @@ void showconfirmMessage(BuildContext context, CartProduct cartproduct) {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                verticalPadding: 4,
+                verticalPadding: 3,
                 // color: AppColors.primaryColor.withAlpha(50),
                 color: Colors.transparent,
                 textColor: AppColors.primaryColor,

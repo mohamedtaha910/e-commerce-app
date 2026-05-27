@@ -33,15 +33,15 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             key: formKey,
             autovalidateMode: autovalidateMode,
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              // physics: BouncingScrollPhysics(),
               scrollDirection: Axis.vertical,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomHeader(
                     icon: Icons.lock_reset_rounded,
-                    firstColor: Colors.blue,
-                    secondColor: Colors.lightBlue.withAlpha(120),
+                    firstColor: Colors.blueGrey,
+                    secondColor: Colors.blueGrey.withAlpha(130),
                   ),
 
                   SizedBox(height: 20),
@@ -153,7 +153,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                             title: 'Change Password',
                             borderRadius: 18,
                             verticalPadding: 10,
-                            color: Colors.indigo.shade500,
+                            color: Colors.blueGrey,
                             textColor: Colors.white,
                             horizontalMargin: 0,
                             titleSize: 15,
@@ -275,15 +275,15 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               message,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 32),
+            SizedBox(height: 24),
             CustomButton(
               textColor: color,
-              titleSize: 16,
+              titleSize: 14,
               // isBorder: true,
               color: color.withAlpha(70),
               onTap: () {
@@ -293,6 +293,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               title: 'Ok',
               horizontalMargin: 55,
               verticalPadding: 6,
+              // isBorder: true,
             ),
           ],
         ),
