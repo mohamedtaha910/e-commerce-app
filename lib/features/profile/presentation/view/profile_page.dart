@@ -1,4 +1,5 @@
 // import 'package:e_commerce_app/core/utils/colors.dart';
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view/favourite_page.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/horizintal_line.dart';
@@ -16,6 +17,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -41,7 +43,7 @@ class ProfilePage extends StatelessWidget {
               ),
               child: Icon(
                 CupertinoIcons.settings_solid,
-                color: Colors.black,
+                // color: Colors.black54,
                 size: 22,
               ),
             ),
@@ -68,22 +70,29 @@ class ProfilePage extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 12,
+                  vertical: 16,
                 ),
                 // margin: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey.shade400, width: 0.08),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  // border: Border.all(color: Colors.grey.shade400, width: 0.1),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      offset: Offset(0, 2),
+                      blurRadius: 2,
+                    ),
+                  ],
                 ),
                 child: Column(
                   children: [
                     ProfileRow(
                       text: 'Orders',
                       textColor: Colors.black87,
-                      icon: CupertinoIcons.square_list_fill,
-                      iconColor: Colors.blueGrey,
-                      circleColor: Colors.black.withAlpha(20),
+                      icon: CupertinoIcons.creditcard_fill,
+                      iconColor: Colors.blueAccent,
+                      circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.grey.shade700,
                       onTap: () {
                         Navigator.of(
@@ -93,7 +102,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     HorizintalLine(
                       color: Colors.black26,
-                      height: 1,
+                      height: 0.7,
                       horizontalMargin: 36,
                       verticalMargin: 16,
                       borderRadius: 12,
@@ -101,9 +110,9 @@ class ProfilePage extends StatelessWidget {
                     ProfileRow(
                       text: 'Cart',
                       textColor: Colors.black87,
-                      icon: CupertinoIcons.cart_fill,
-                      iconColor: Colors.blueGrey,
-                      circleColor: Colors.black.withAlpha(20),
+                      icon: Icons.shopping_cart_rounded,
+                      iconColor: Colors.orangeAccent,
+                      circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.grey.shade700,
                       onTap: () {
                         Navigator.of(
@@ -113,7 +122,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     HorizintalLine(
                       color: Colors.black26,
-                      height: 1,
+                      height: 0.7,
                       horizontalMargin: 36,
                       verticalMargin: 16,
                       borderRadius: 12,
@@ -123,8 +132,8 @@ class ProfilePage extends StatelessWidget {
                       text: 'Favorites',
                       textColor: Colors.black87,
                       icon: Icons.favorite,
-                      iconColor: Colors.blueGrey,
-                      circleColor: Colors.black.withAlpha(20),
+                      iconColor: Colors.pinkAccent.shade200,
+                      circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.black54,
                       onTap: () async {
                         Navigator.of(context).push(
@@ -146,13 +155,20 @@ class ProfilePage extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 12,
+                  vertical: 16,
                 ),
                 // margin: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey.shade400, width: 0.08),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  // border: Border.all(color: Colors.grey.shade400, width: 0.1),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      offset: Offset(0, 2),
+                      blurRadius: 2,
+                    ),
+                  ],
                 ),
                 child: Column(
                   children: [
@@ -160,13 +176,13 @@ class ProfilePage extends StatelessWidget {
                       text: 'Settings',
                       textColor: Colors.black87,
                       icon: Icons.settings,
-                      iconColor: Colors.blueGrey,
-                      circleColor: Colors.black.withAlpha(20),
+                      iconColor: const Color.fromARGB(255, 80, 88, 130),
+                      circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.grey.shade700,
                     ),
                     HorizintalLine(
                       color: Colors.black26,
-                      height: 1,
+                      height: 0.7,
                       horizontalMargin: 36,
                       verticalMargin: 16,
                       borderRadius: 12,
@@ -174,9 +190,9 @@ class ProfilePage extends StatelessWidget {
                     ProfileRow(
                       text: 'Change Password',
                       textColor: Colors.black87,
-                      icon: Icons.lock,
+                      icon: CupertinoIcons.lock_fill,
                       iconColor: Colors.blueGrey,
-                      circleColor: Colors.black.withAlpha(20),
+                      circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.grey.shade700,
                       onTap: () {
                         Navigator.of(context).push(
@@ -188,7 +204,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                     HorizintalLine(
                       color: Colors.black26,
-                      height: 1,
+                      height: 0.7,
                       horizontalMargin: 36,
                       verticalMargin: 16,
                       borderRadius: 12,

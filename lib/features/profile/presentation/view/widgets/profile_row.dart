@@ -23,7 +23,11 @@ class ProfileRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: iconColor),
+        Container(
+          padding: EdgeInsets.all(6),
+          decoration: BoxDecoration(shape: BoxShape.circle, color: iconColor),
+          child: Icon(icon, color: Colors.white, size: 17),
+        ),
         const SizedBox(width: 12),
         Text(
           text,

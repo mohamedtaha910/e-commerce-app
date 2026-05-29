@@ -76,6 +76,7 @@ class _CategoriesListState extends State<CategoriesList> {
                               ? AppColors.primaryColor
                               : Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(12),
+                          // border: Border.all(color: Colors.black12, width: 0.3),
                         ),
                         child: Center(
                           child: Text(

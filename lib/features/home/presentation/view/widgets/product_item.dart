@@ -51,12 +51,20 @@ class ProductItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: product.images?[0] == null
-                          ? Image.asset('assets/images/test1.png')
+                          ? Icon(
+                              Icons.image_not_supported_rounded,
+                              size: 28,
+                              color: Colors.black54,
+                            )
                           : Image.network(
-                              product.images?[0] ?? '',
+                              product.images?[0],
                               fit: BoxFit.contain,
                               errorBuilder: (context, error, stack) {
-                                return Icon(Icons.image_not_supported_rounded);
+                                return Icon(
+                                  Icons.broken_image_rounded,
+                                  size: 28,
+                                  color: Colors.black54,
+                                );
                               },
                             ),
                     ),
