@@ -10,14 +10,14 @@ plugins {
 
 android {
     namespace = "com.example.e_commerce_app"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
+flutter
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }

@@ -13,6 +13,8 @@ class CustomButton extends StatelessWidget {
     required this.titleSize,
     this.isBorder = false,
     this.borderRadius = 25,
+    this.horizontalPadding = 24,
+    this.borderColor = AppColors.primaryColor,
   });
   final String title;
   final double titleSize;
@@ -23,6 +25,8 @@ class CustomButton extends StatelessWidget {
   final double horizontalMargin;
   final bool isBorder;
   final double borderRadius;
+  final double horizontalPadding;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +36,14 @@ class CustomButton extends StatelessWidget {
         // width: double.infinity,
         padding: EdgeInsets.symmetric(
           vertical: verticalPadding,
-          horizontal: 24,
+          horizontal: horizontalPadding,
         ),
         margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
         decoration: BoxDecoration(
           // color: AppColors.primaryColor,
           color: color,
           borderRadius: BorderRadius.circular(borderRadius),
-          border: isBorder
-              ? Border.all(color: AppColors.primaryColor, width: 0.4)
-              : null,
+          border: isBorder ? Border.all(color: borderColor, width: 0.4) : null,
         ),
         child: Center(
           child: Text(
