@@ -195,7 +195,7 @@ class CustomHeader extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            bottom: 140,
+            bottom: 160,
             child: Center(
               child: Container(
                 width: 120,
@@ -213,50 +213,7 @@ class CustomHeader extends StatelessWidget {
             ),
           ),
 
-          // ── Title + subtitle ─────────────────────────────────────────────
-          // Positioned(
-          //   bottom: 0,
-          //   left: 0,
-          //   right: 0,
-          //   child: Container(
-          //     padding: const EdgeInsets.fromLTRB(24, 16, 24, 28),
-          //     decoration: BoxDecoration(
-          //       borderRadius: const BorderRadius.vertical(
-          //         bottom: Radius.circular(32),
-          //       ),
-          //       gradient: LinearGradient(
-          //         begin: Alignment.topCenter,
-          //         end: Alignment.bottomCenter,
-          //         colors: [Colors.transparent, Colors.black.withOpacity(0.18)],
-          //       ),
-          //     ),
-          //     child: Column(
-          //       crossAxisAlignment: CrossAxisAlignment.start,
-          //       mainAxisSize: MainAxisSize.min,
-          //       children: [
-          //         Text(
-          //           title,
-          //           style: const TextStyle(
-          //             fontSize: 26,
-          //             fontWeight: FontWeight.w700,
-          //             color: Colors.white,
-          //             letterSpacing: -0.5,
-          //             height: 1.1,
-          //           ),
-          //         ),
-          //         const SizedBox(height: 4),
-          //         Text(
-          //           subtitle,
-          //           style: TextStyle(
-          //             fontSize: 13,
-          //             color: Colors.white.withOpacity(0.65),
-          //             fontWeight: FontWeight.w400,
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
+          
         ],
       ),
     );

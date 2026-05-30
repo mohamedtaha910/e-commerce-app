@@ -110,7 +110,7 @@ class ProfilePage extends StatelessWidget {
                     ProfileRow(
                       text: 'Cart',
                       textColor: Colors.black87,
-                      icon: Icons.shopping_cart_rounded,
+                      icon: CupertinoIcons.cart_fill,
                       iconColor: Colors.orangeAccent,
                       circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.grey.shade700,

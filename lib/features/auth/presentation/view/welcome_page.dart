@@ -27,8 +27,9 @@ class WelcomePage extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          AppColors.primaryColor.withAlpha(150),
-                          Colors.purple.withAlpha(150),
+                          AppColors.primaryColor,
+                          AppColors.primaryColor.withAlpha(120),
+                          AppColors.primaryColor,
                         ],
                       ).createShader(bounds);
                     },

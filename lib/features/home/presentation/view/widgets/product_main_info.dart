@@ -24,7 +24,7 @@ class ProductMainInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.65,
+              width: MediaQuery.of(context).size.width * 0.62,
               child: Text(
                 title,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

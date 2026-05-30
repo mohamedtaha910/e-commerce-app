@@ -10,6 +10,7 @@ import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -52,10 +53,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 FocusScope.of(context).unfocus();
               },
               child: Scaffold(
-                // backgroundColor:AppColors.backgroundColor,
+                backgroundColor: AppColors.backgroundColor,
                 // appBar: AppBar(),
                 body: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   child: Form(
                     key: formKey,
@@ -63,23 +63,17 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // CustomHeader(
-                        //   image: 'assets/auth_images/frame.svg',
-                        //   text: 'assets/auth_images/Sign_Up_word.svg',
-                        // ),
-                        // SizedBox(height: 16),
                         CustomHeader(
                           icon: CupertinoIcons.person_crop_circle_fill,
 
                           showBack: true,
                         ),
-                        // SizedBox(height: 32),
                         Transform.translate(
                           offset: const Offset(0, -200),
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 16,
-                              vertical: 24,
+                              vertical: 16,
                             ),
                             margin: const EdgeInsets.symmetric(horizontal: 8),
                             decoration: BoxDecoration(
@@ -96,15 +90,10 @@ class _SignUpPageState extends State<SignUpPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Sign Up',
-                                  style: const TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black,
-                                    letterSpacing: -0.5,
-                                    height: 1.1,
-                                  ),
+                                const SizedBox(height: 12),
+                                SvgPicture.asset(
+                                  'assets/auth_images/Sign_Up_word.svg',
+                                  height: 32,
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
@@ -130,7 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   height: 12,
                                   paddign: 0,
 
-                                  icon: Icons.email,
+                                  icon: CupertinoIcons.mail_solid,
                                   onChanged: (value) {
                                     email = value;
                                   },
@@ -164,7 +153,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   textColor: Colors.white,
                                   title: 'Sign Up',
                                   titleSize: 17,
-                                  verticalPadding: 10,
+                                  verticalPadding: 9,
                                   horizontalMargin: 0,
                                   borderRadius: 14,
                                   onTap: () {
@@ -180,15 +169,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                     }
                                   },
                                 ),
-                                SizedBox(height: 32),
+                                SizedBox(height: 34),
                                 OtherWay(),
-                                SizedBox(height: 32),
+                                SizedBox(height: 34),
                                 CustomShift(
                                   destination: LoginPage(),
                                   text: 'Log In',
                                   text2: 'Already have an account?  ',
                                 ),
-                                SizedBox(height: 8),
+                                // SizedBox(height: 8),
                               ],
                             ),
                           ),

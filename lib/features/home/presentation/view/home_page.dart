@@ -92,7 +92,8 @@ class _HomePageState extends State<HomePage> {
                     animationDuration: Duration(milliseconds: 200),
                     indicatorColor: AppColors.primaryColor.withAlpha(60),
                     // backgroundColor: Colors.white,
-                    backgroundColor: const Color.fromARGB(255, 231, 229, 229),
+                    backgroundColor: const Color.fromARGB(255, 237, 234, 233),
+                    // backgroundColor: const Color.fromARGB(255, 231, 229, 229),
                     // backgroundColor: Colors.grey[300],
                     // backgroundColor: Colors.white,
                     onDestinationSelected: (index) {

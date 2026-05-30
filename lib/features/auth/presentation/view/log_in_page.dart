@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 16,
-                              vertical: 24,
+                              vertical: 16,
                             ),
                             margin: const EdgeInsets.symmetric(horizontal: 8),
                             decoration: BoxDecoration(
@@ -93,20 +93,15 @@ class _LoginPageState extends State<LoginPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // SizedBox(height: 32),
-                                Text(
-                                  'Log in',
-                                  style: const TextStyle(
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black,
-                                    letterSpacing: -0.5,
-                                    height: 1.1,
-                                  ),
+                                const SizedBox(height: 12),
+                                SvgPicture.asset(
+                                  'assets/auth_images/Log_in_word.svg',
+                                  height: 32,
                                 ),
+
                                 const SizedBox(height: 4),
                                 Text(
-                                  'Log in to your account',
+                                  'Welcome back! Login to your account',
                                   style: TextStyle(
                                     fontSize: 13,
                                     color: Colors.grey.withOpacity(0.65),
@@ -125,13 +120,13 @@ class _LoginPageState extends State<LoginPage> {
                                 SizedBox(height: 8),
                                 AuthTextFeild(
                                   height: 12,
-
                                   hintText: 'Email',
-                                  icon: Icons.email,
+                                  // icon: Icons.email,
+                                  icon: CupertinoIcons.mail_solid,
                                   onChanged: (value) {
                                     email = value;
                                   },
-                                  borderRadius: 22,
+                                  borderRadius: 40,
                                   obscureText: false,
                                   paddign: 0,
                                 ),
@@ -150,13 +145,14 @@ class _LoginPageState extends State<LoginPage> {
                                   hintText: 'Password',
                                   paddign: 0,
                                   icon: Icons.lock,
+                                  // icon: CupertinoIcons.lock_circle_fill,
                                   onChanged: (value) {
                                     password = value;
                                   },
-                                  borderRadius: 22,
+                                  borderRadius: 40,
                                   obscureText: true,
                                 ),
-                                SizedBox(height: 32),
+                                SizedBox(height: 34),
                                 CustomButton(
                                   // color: const Color.fromARGB(255, 248, 124, 41),
                                   // color: const Color.fromARGB(255, 251, 157, 95),
@@ -165,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                                   textColor: Colors.white,
                                   title: 'Log In',
                                   titleSize: 17,
-                                  verticalPadding: 10,
+                                  verticalPadding: 9,
                                   horizontalMargin: 0,
                                   onTap: () {
                                     autovalidateMode = AutovalidateMode.always;
@@ -181,15 +177,15 @@ class _LoginPageState extends State<LoginPage> {
                                     }
                                   },
                                 ),
-                                SizedBox(height: 32),
+                                SizedBox(height: 34),
                                 OtherWay(),
-                                SizedBox(height: 32),
+                                SizedBox(height: 34),
                                 CustomShift(
                                   destination: SignUpPage(),
                                   text: 'Register Now',
                                   text2: 'Don\'t have an account?  ',
                                 ),
-                                SizedBox(height: 8),
+                                // SizedBox(height: 8),
                               ],
                             ),
                           ),
