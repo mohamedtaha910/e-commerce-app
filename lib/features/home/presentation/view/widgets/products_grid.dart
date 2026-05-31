@@ -25,7 +25,7 @@ class ProductGrid extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              // Spacer(),
+              Spacer(),
             ],
           );
         }
