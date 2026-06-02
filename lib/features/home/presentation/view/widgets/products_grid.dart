@@ -14,8 +14,11 @@ class ProductGrid extends StatelessWidget {
       builder: (context, state) {
         if (state is GetProductsFailure) {
           return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Spacer(),
+              const SizedBox(height: 300),
               Icon(CupertinoIcons.wifi),
 
               Text(
@@ -25,7 +28,8 @@ class ProductGrid extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Spacer(),
+              // Spacer(),
+              const SizedBox(height: 350),
             ],
           );
         }

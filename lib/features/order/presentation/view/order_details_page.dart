@@ -548,7 +548,8 @@ class _TotalFooter extends StatelessWidget {
             'Order Total',
             style: TextStyle(
               fontSize: 14,
-              color: Colors.white54,
+              // color: Colors.white,
+              color: Colors.white,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -558,6 +559,8 @@ class _TotalFooter extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18,
               color: Colors.white,
+              //color: Colors.white,
+
               fontWeight: FontWeight.w700,
             ),
           ),
