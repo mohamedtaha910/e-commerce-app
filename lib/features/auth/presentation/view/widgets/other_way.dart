@@ -51,7 +51,7 @@ import 'package:flutter_svg/svg.dart';
 class OtherWay extends StatelessWidget {
   const OtherWay({super.key});
 
-  static const _kGray100 = Color(0xFFF3F4F6);
+  // static const _kGray100 = Color(0xFFF3F4F6);
   static const _kGray300 = Color(0xFFD1D5DB);
   static const _kGray400 = Color(0xFF9CA3AF);
   static const _kGray900 = Color(0xFF111827);
@@ -163,16 +163,16 @@ class _SocialBtn extends StatelessWidget {
 }
 
 // Inline Google "G" icon using colored text (no asset needed)
-class _GoogleIcon extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'G',
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w700,
-        color: Color(0xFF4285F4),
-      ),
-    );
-  }
-}
+// class _GoogleIcon extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Text(
+//       'G',
+//       style: TextStyle(
+//         fontSize: 16,
+//         fontWeight: FontWeight.w700,
+//         color: Color(0xFF4285F4),
+//       ),
+//     );
+//   }
+// }
