@@ -559,8 +559,8 @@ class _TotalFooter extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18,
               color: Colors.white,
-              //color: Colors.white,
 
+              //color: Colors.white,
               fontWeight: FontWeight.w700,
             ),
           ),

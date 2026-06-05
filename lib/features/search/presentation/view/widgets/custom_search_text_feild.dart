@@ -34,6 +34,10 @@ class CustomSearchTextFeild extends StatelessWidget {
           fontWeight: FontWeight.w600,
           color: Colors.black54,
         ),
+        // border: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(35),
+        //   borderSide: BorderSide.none,
+        // ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(35),
           borderSide: BorderSide(color: Colors.black38, width: 0.2),

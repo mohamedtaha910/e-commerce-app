@@ -12,13 +12,13 @@ class NoOrder extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Image.asset('assets/icons/no_order.png', height: 200)],
+            children: [Image.asset('assets/icons/no_order.png', height: 180)],
           ),
-          SizedBox(height: 24),
+          SizedBox(height: 32),
           Text(
             'No Orders Yet ! ',
             style: TextStyle(
-              fontSize: 17,
+              fontSize: 15,
               fontWeight: FontWeight.w600,
               color: Colors.black54,
             ),
