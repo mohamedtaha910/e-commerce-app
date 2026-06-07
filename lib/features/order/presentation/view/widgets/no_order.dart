@@ -14,7 +14,9 @@ class NoOrder extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [Image.asset('assets/icons/no_order.png', height: 180)],
           ),
-          SizedBox(height: 32),
+          // SizedBox(height: 30),
+          const SizedBox(height: 32),
+
           Text(
             'No Orders Yet ! ',
             style: TextStyle(
