@@ -234,11 +234,11 @@ class _StatusChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       decoration: BoxDecoration(
         color: _kGreenBg,
         borderRadius: BorderRadius.circular(99),
-        border: Border.all(color: _kGreenBdr, width: 1),
+        border: Border.all(color: _kGreenBdr, width: 0.5),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -290,9 +290,13 @@ class _InfoCard extends StatelessWidget {
             iconSize: 22,
             label: 'Order ID',
             child: _CopyableId(id: order.id),
+            backColor: Colors.blue.withAlpha(30),
+            iconColor: Colors.blueAccent.withAlpha(250),
           ),
           _RowDivider(),
           _InfoRow(
+            backColor: Colors.orange.withAlpha(30),
+            iconColor: Colors.orange,
             icon: CupertinoIcons.creditcard_fill,
             iconSize: 22,
             label: 'Order Total',
@@ -321,6 +325,8 @@ class _InfoCard extends StatelessWidget {
           ),
           _RowDivider(),
           _InfoRow(
+            backColor: Colors.pink.withAlpha(30),
+            iconColor: Colors.pinkAccent,
             icon: CupertinoIcons.location_circle_fill,
             iconSize: 26,
             label: 'Shipping Address',
@@ -359,18 +365,21 @@ class _InfoRow extends StatelessWidget {
   final String label;
   final Widget child;
   final double iconSize;
-
+  final Color backColor;
+  final Color iconColor;
   const _InfoRow({
     required this.icon,
     required this.label,
     required this.child,
     required this.iconSize,
+    required this.backColor,
+    required this.iconColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    Color backColor = Colors.blue.withAlpha(30);
-    Color iconColor = Colors.blueAccent.withAlpha(220);
+    // Color backColor = Colors.blue.withAlpha(30);
+    // Color iconColor = Colors.blueAccent.withAlpha(220);
 
     return Padding(
       padding: const EdgeInsets.all(16),

@@ -52,7 +52,7 @@ class _OrdersPageState extends State<OrdersPage> {
               'My Orders',
               style: TextStyle(
                 color: Colors.black87,
-                fontSize: 20,
+                fontSize: 19,
                 fontWeight: FontWeight.bold,
               ),
             ),

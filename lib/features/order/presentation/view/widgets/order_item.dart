@@ -102,8 +102,6 @@ class OrderItem extends StatelessWidget {
   static const _kBlueBg = Color(0xFFEFF6FF);
   static const _kBlue = Color(0xFF3B82F6);
 
-  
-
   @override
   Widget build(BuildContext context) {
     // final style = _statusStyle('Processing');
@@ -205,7 +203,6 @@ class OrderItem extends StatelessWidget {
 
                 const SizedBox(width: 12),
 
-                
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -239,7 +236,9 @@ class _StatusBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.blue.withAlpha(30),
+        // color: Colors.blue.withAlpha(30),
+        color: Colors.blueGrey.withAlpha(50),
+        // border: Border.all(color: Colors.blueGrey.withAlpha(100), width: 0.3),
         borderRadius: BorderRadius.circular(99),
       ),
       child: Row(
@@ -251,7 +250,8 @@ class _StatusBadge extends StatelessWidget {
             padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.blue.shade700,
+              // color: Colors.blue.shade700,
+              color: Colors.blueGrey,
             ),
           ),
           const SizedBox(width: 5),
@@ -260,7 +260,8 @@ class _StatusBadge extends StatelessWidget {
             style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w600,
-              color: Colors.blue.shade700,
+              // color: Colors.blue.shade800,
+              color: Colors.blueGrey,
             ),
           ),
         ],
