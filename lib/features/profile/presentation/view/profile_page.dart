@@ -64,7 +64,7 @@ class ProfilePage extends StatelessWidget {
               ),
               Text(
                 'Personal',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
               Container(
@@ -110,7 +110,7 @@ class ProfilePage extends StatelessWidget {
                     ProfileRow(
                       text: 'Cart',
                       textColor: Colors.black87,
-                      icon: CupertinoIcons.cart_fill,
+                      icon: CupertinoIcons.bag_fill,
                       iconColor: Colors.orangeAccent,
                       circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.grey.shade700,
@@ -131,7 +131,7 @@ class ProfilePage extends StatelessWidget {
                     ProfileRow(
                       text: 'Favorites',
                       textColor: Colors.black87,
-                      icon: Icons.favorite,
+                      icon: Icons.bookmark_rounded,
                       iconColor: Colors.pinkAccent.shade200,
                       circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.black54,
@@ -149,7 +149,7 @@ class ProfilePage extends StatelessWidget {
               SizedBox(height: 24),
               Text(
                 'General',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
               Container(

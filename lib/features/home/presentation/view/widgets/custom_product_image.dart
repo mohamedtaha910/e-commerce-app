@@ -85,30 +85,37 @@ class _CustomProductImageState extends State<CustomProductImage> {
                           ),
                           border: Border.all(color: Colors.white, width: 1),
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(
-                            widget.product.images!.length,
-                            (index) => AnimatedContainer(
-                              padding: EdgeInsets.all(1),
-                              duration: Duration(milliseconds: 300),
-                              margin: EdgeInsets.symmetric(horizontal: 3),
-                              width: 45,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                  color: currentIndex == index
-                                      ? AppColors.primaryColor
-                                      : Colors.white,
-                                  width: 1.5,
-                                ),
-                              ),
+                        child: SizedBox(
+                          // width: MediaQuery.of(context).size.width * 0.75,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            physics: BouncingScrollPhysics(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                widget.product.images!.length,
+                                (index) => AnimatedContainer(
+                                  padding: EdgeInsets.all(1),
+                                  duration: Duration(milliseconds: 300),
+                                  margin: EdgeInsets.symmetric(horizontal: 3),
+                                  width: 45,
+                                  height: 48,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade200,
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: currentIndex == index
+                                          ? AppColors.primaryColor
+                                          : Colors.white,
+                                      width: 1.5,
+                                    ),
+                                  ),
 
-                              child: Image.network(
-                                widget.product.images![index],
+                                  child: Image.network(
+                                    widget.product.images![index],
+                                  ),
+                                ),
                               ),
                             ),
                           ),
