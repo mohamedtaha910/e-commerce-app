@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/home/presentation/view/widgets/custom_no_network.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/product_grid_shimmer.dart';
 import 'package:e_commerce_app/features/home/presentation/view/widgets/product_item.dart';
 import 'package:e_commerce_app/features/home/presentation/view_model/get_products/get_products_cubit.dart';
@@ -13,25 +14,7 @@ class ProductGrid extends StatelessWidget {
     return BlocBuilder<GetProductsCubit, GetProductsState>(
       builder: (context, state) {
         if (state is GetProductsFailure) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Spacer(),
-              const SizedBox(height: 300),
-              Icon(CupertinoIcons.wifi),
-
-              Text(
-                state.errorMessage,
-                style: TextStyle(
-                  color: Colors.orange,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              // Spacer(),
-              const SizedBox(height: 350),
-            ],
-          );
+          return CustomNoNetwork(errorMessage: state.errorMessage);
         }
         if (state is GetProductsSuccess) {
           List products = state.products;
