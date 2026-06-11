@@ -131,7 +131,7 @@ class ProfilePage extends StatelessWidget {
                     ProfileRow(
                       text: 'Favorites',
                       textColor: Colors.black87,
-                      icon: Icons.bookmark_rounded,
+                      icon: CupertinoIcons.bookmark_fill,
                       iconColor: Colors.pinkAccent.shade200,
                       circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.black54,
@@ -144,7 +144,7 @@ class ProfilePage extends StatelessWidget {
                       },
                     ),
                   ],
-                ),
+              ),
               ),
               SizedBox(height: 24),
               Text(
@@ -157,7 +157,6 @@ class ProfilePage extends StatelessWidget {
                   horizontal: 16,
                   vertical: 16,
                 ),
-                // margin: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),

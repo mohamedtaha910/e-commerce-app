@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/core/utils/service_locator.dart';
-import 'package:e_commerce_app/features/cart/presentation/views/cart_page.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view/favourite_page.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/home_page_body.dart';
@@ -48,13 +47,10 @@ class _HomePageState extends State<HomePage> {
 
           //  shadow
           Positioned(
-            // top: 100,
             bottom: 0,
             left: 0,
             right: 0,
-            // height: 42,
-            // height: 55,
-            // height: 63,
+            
             child: Container(
               height: 45,
               decoration: BoxDecoration(
@@ -74,7 +70,7 @@ class _HomePageState extends State<HomePage> {
           ),
 
           Positioned(
-            bottom: 22,
+            bottom: 20,
             left: 0,
             right: 0,
             child: SafeArea(
@@ -85,17 +81,13 @@ class _HomePageState extends State<HomePage> {
 
                   child: NavigationBar(
                     labelPadding: const EdgeInsets.all(0),
-                    // height: 63, // emulator
-                    height: 56, // => windows
+                    height: 56,
                     labelBehavior:
                         NavigationDestinationLabelBehavior.alwaysHide,
                     animationDuration: Duration(milliseconds: 200),
                     indicatorColor: AppColors.primaryColor.withAlpha(60),
-                    // backgroundColor: Colors.white,
                     backgroundColor: const Color.fromARGB(255, 237, 234, 233),
                     // backgroundColor: const Color.fromARGB(255, 231, 229, 229),
-                    // backgroundColor: Colors.grey[300],
-                    // backgroundColor: Colors.white,
                     onDestinationSelected: (index) {
                       setState(() {
                         currentIndex = index;
@@ -104,7 +96,6 @@ class _HomePageState extends State<HomePage> {
                     selectedIndex: currentIndex,
                     destinations: [
                       NavigationDestination(
-                        // icon: Icon(Icons.home_outlined , ),
                         icon: SvgPicture.asset(
                           'assets/icons/Home.svg',
                           colorFilter: ColorFilter.mode(
