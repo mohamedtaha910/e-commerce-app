@@ -14,7 +14,6 @@ class FavouriteCubit extends Cubit<FavouriteState> {
 
   void loadFavorites() async {
     emit(FavouriteLoading());
-
     products = await favouriteRepo.fetchAllFavourites();
     emit(FavouriteSuccess(products));
   }
