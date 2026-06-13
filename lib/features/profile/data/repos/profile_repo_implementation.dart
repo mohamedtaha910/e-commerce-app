@@ -34,6 +34,6 @@ class ProfileRepoImplementation implements ProfileRepo {
   @override
   Future<String> fetchProfileImage() async {
     final box = await _openBox();
-    return box.values.toList().first;
+    return box.get('profile_image') ?? '';
   }
 }

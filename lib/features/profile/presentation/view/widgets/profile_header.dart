@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:e_commerce_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileHeader extends StatefulWidget {
@@ -15,12 +17,24 @@ class ProfileHeader extends StatefulWidget {
 class _ProfileHeaderState extends State<ProfileHeader> {
   XFile? selectedImage;
 
+  @override
+  void initState() {
+    BlocProvider.of<ProfileCubit>(context).loadProfileImage();
+    selectedImage = BlocProvider.of<ProfileCubit>(context).imagePath != ''
+        ? XFile(BlocProvider.of<ProfileCubit>(context).imagePath!)
+        : null;
+    super.initState();
+  }
+
   Future<void> _uploadImage() async {
     final pickedImage = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
     setState(() {
-      selectedImage = pickedImage;
+      BlocProvider.of<ProfileCubit>(context).addProfileImage(pickedImage!);
+      selectedImage = BlocProvider.of<ProfileCubit>(context).imagePath != ''
+          ? XFile(BlocProvider.of<ProfileCubit>(context).imagePath!)
+          : null;
     });
   }
 
@@ -30,42 +44,63 @@ class _ProfileHeaderState extends State<ProfileHeader> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // const SizedBox(width: 16),
-        Column(
-          children: [
-            CircleAvatar(
-              radius: MediaQuery.of(context).size.width * 0.12,
-              backgroundColor: Colors.grey.shade400,
-              child: CircleAvatar(
-                // radius: 58,
-                radius: MediaQuery.of(context).size.width * 0.115,
-                backgroundImage: selectedImage != null
-                    ? FileImage(File(selectedImage!.path))
-                    : const AssetImage('assets/images/user2.png'),
-              ),
-            ),
-            const SizedBox(height: 12),
-            CustomButton(
-              color: Colors.transparent,
-              title: selectedImage != null ? 'Remove Photo' : '+ Add Photo',
-              titleSize: 12,
-              onTap: () {
-                if (selectedImage != null) {
-                  setState(() {
-                    selectedImage = null;
-                  });
-                } else {
-                  _uploadImage();
-                }
-              },
-              textColor: Colors.black54,
-              verticalPadding: 3,
-              horizontalPadding: 14,
-              horizontalMargin: 0,
-              borderRadius: 30,
-              isBorder: true,
-              borderColor: Colors.black54,
-            ),
-          ],
+        BlocBuilder<ProfileCubit, ProfileState>(
+          builder: (context, state) {
+            if (state is ProfileLoading) {
+              return CircularProgressIndicator();
+            } else if (state is ProfileSuccess) {
+              selectedImage = state.imagePath != ''
+                  ? XFile(state.imagePath)
+                  : null;
+              return Column(
+                children: [
+                  CircleAvatar(
+                    radius: MediaQuery.of(context).size.width * 0.12,
+                    backgroundColor: Colors.grey.shade400,
+                    child: CircleAvatar(
+                      // radius: 58,
+                      radius: MediaQuery.of(context).size.width * 0.115,
+                      backgroundImage: selectedImage != null
+                          ? FileImage(File(selectedImage!.path))
+                          : const AssetImage('assets/images/user2.png'),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  CustomButton(
+                    color: Colors.transparent,
+                    title: selectedImage != null
+                        ? 'Remove Photo'
+                        : '+ Add Photo',
+                    titleSize: 12,
+                    onTap: () {
+                      if (selectedImage != null) {
+                        setState(() {
+                          selectedImage = null;
+                          BlocProvider.of<ProfileCubit>(
+                            context,
+                          ).removeProfileImage();
+                        });
+                      } else {
+                        _uploadImage();
+                      }
+                    },
+                    textColor: Colors.black54,
+                    verticalPadding: 3,
+                    horizontalPadding: 14,
+                    horizontalMargin: 0,
+                    borderRadius: 30,
+                    isBorder: true,
+                    borderColor: Colors.black54,
+                  ),
+                ],
+              );
+            } else {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(child: CircularProgressIndicator()),
+              );
+            }
+          },
         ),
         const SizedBox(width: 16),
         Column(

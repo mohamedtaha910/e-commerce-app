@@ -3,10 +3,13 @@ import 'package:e_commerce_app/core/utils/service_locator.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view/favourite_page.dart';
 import 'package:e_commerce_app/features/favourite/presentation/view_model/favourite_cubit/favourite_cubit.dart';
 import 'package:e_commerce_app/features/home/presentation/view/home_page_body.dart';
+import 'package:e_commerce_app/features/profile/data/repos/profile_repo_implementation.dart';
 import 'package:e_commerce_app/features/profile/presentation/view/profile_page.dart';
+import 'package:e_commerce_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
 import 'package:e_commerce_app/features/search/data/repos/search_repo_implementation.dart';
 import 'package:e_commerce_app/features/search/presentation/view/search_page.dart';
 import 'package:e_commerce_app/features/search/presentation/view_model/search_products_cubit/search_products_cubit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,7 +32,11 @@ class _HomePageState extends State<HomePage> {
     ),
     FavouritePage(isFromProfile: false),
     // CartPage(),
-    ProfilePage(),
+    BlocProvider(
+      create: (context) =>
+          ProfileCubit(ProfileRepoImplementation(auth: FirebaseAuth.instance)),
+      child: ProfilePage(),
+    ),
   ];
   @override
   void initState() {
@@ -50,7 +57,7 @@ class _HomePageState extends State<HomePage> {
             bottom: 0,
             left: 0,
             right: 0,
-            
+
             child: Container(
               height: 45,
               decoration: BoxDecoration(

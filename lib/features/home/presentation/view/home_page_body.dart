@@ -26,7 +26,7 @@ class HomePageBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               const CustomAppBar(),
               const SizedBox(height: 36),
               GestureDetector(
