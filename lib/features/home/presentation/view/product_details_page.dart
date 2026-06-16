@@ -112,6 +112,7 @@ class ProductDetailsPage extends StatelessWidget {
         ),
         child: Row(
           children: [
+            SizedBox(width: 10),
             Expanded(
               child: BlocBuilder<CartCubit, CartState>(
                 builder: (context, state) {

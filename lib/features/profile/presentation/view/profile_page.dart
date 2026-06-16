@@ -59,7 +59,7 @@ class ProfilePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                padding: const EdgeInsets.only(bottom: 18.0, top: 8),
                 child: ProfileHeader(),
               ),
               Text(
@@ -80,8 +80,8 @@ class ProfilePage extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
-                      offset: Offset(0, 2),
-                      blurRadius: 2,
+                      offset: Offset(0, 1),
+                      blurRadius: 4,
                     ),
                   ],
                 ),
@@ -144,9 +144,9 @@ class ProfilePage extends StatelessWidget {
                       },
                     ),
                   ],
+                ),
               ),
-              ),
-              SizedBox(height: 24),
+              SizedBox(height: 20),
               Text(
                 'General',
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),

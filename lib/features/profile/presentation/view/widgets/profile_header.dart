@@ -30,6 +30,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
     final pickedImage = await ImagePicker().pickImage(
       source: ImageSource.gallery,
     );
+    if (pickedImage == null) return;
     setState(() {
       BlocProvider.of<ProfileCubit>(context).addProfileImage(pickedImage!);
       selectedImage = BlocProvider.of<ProfileCubit>(context).imagePath != ''
@@ -55,11 +56,11 @@ class _ProfileHeaderState extends State<ProfileHeader> {
               return Column(
                 children: [
                   CircleAvatar(
-                    radius: MediaQuery.of(context).size.width * 0.12,
+                    radius: MediaQuery.of(context).size.width * 0.134,
                     backgroundColor: Colors.grey.shade400,
                     child: CircleAvatar(
                       // radius: 58,
-                      radius: MediaQuery.of(context).size.width * 0.115,
+                      radius: MediaQuery.of(context).size.width * 0.13,
                       backgroundImage: selectedImage != null
                           ? FileImage(File(selectedImage!.path))
                           : const AssetImage('assets/images/user2.png'),
