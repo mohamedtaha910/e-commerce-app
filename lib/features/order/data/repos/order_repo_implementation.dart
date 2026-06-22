@@ -1,12 +1,38 @@
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
 import 'package:e_commerce_app/features/order/data/repos/order_repo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive/hive.dart';
 
 class OrderRepoImplementation implements OrderRepo {
-  
-  final Box<Order> box = Hive.box<Order>('orders');
+  final FirebaseAuth auth;
+  Box<Order>? _box ;
+
+
+  Future<Box<Order>> _getBox() async {
+
+    if (_box != null) {
+      return _box!;
+    }
+
+    final user = auth.currentUser;
+
+    if (user == null) {
+      throw Exception(
+        'User not logged in',
+      );
+    }
+
+    _box = await Hive.openBox<Order>(
+      'orders_${user.uid}',
+    );
+
+    return _box!;
+  }
+
+  OrderRepoImplementation({required this.auth});
   @override
   Future<void> addOrder(Order order) async {
+    final box = await _getBox();
    await box.add(order);
   }
 
@@ -16,7 +42,8 @@ class OrderRepoImplementation implements OrderRepo {
   // }
 
   @override
-  List<Order> getOrders() {
+  Future<List<Order>> getOrders() async {
+    final box = await _getBox();
     return box.values.toList();
   }
 }

@@ -9,13 +9,16 @@ part 'order_state.dart';
 
 class OrderCubit extends Cubit<OrderState> {
   OrderCubit(this.repo) : super(OrderInitial());
+
   final OrderRepo repo;
+
+  List<Order> orders = [];  
 
   Future<void> getOrders() async {
 
     emit(OrderLoading());
 
-    final orders = repo.getOrders();
+    orders = await repo.getOrders();
 
     emit(OrderSuccess(orders));
   }
@@ -26,7 +29,5 @@ class OrderCubit extends Cubit<OrderState> {
 
     getOrders();
   }
-
-
   
 }
