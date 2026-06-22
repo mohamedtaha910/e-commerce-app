@@ -2,9 +2,9 @@
 import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
 import 'package:e_commerce_app/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
-import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
+// import 'package:e_commerce_app/features/home/presentation/view/home_page.dart';
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
-import 'package:e_commerce_app/features/order/presentation/view/orders_page.dart';
+// import 'package:e_commerce_app/features/order/presentation/view/orders_page.dart';
 import 'package:e_commerce_app/features/order/presentation/view/succes_page.dart';
 import 'package:e_commerce_app/features/order/presentation/view_model/order_cubit/order_cubit.dart';
 import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
@@ -253,7 +253,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 child: Text(
                   '${widget.checkoutProducts.length}',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),
@@ -262,7 +262,9 @@ class _PaymentPageState extends State<PaymentPage> {
             ),
           ),
           ...List.generate(
-            widget.checkoutProducts.length,
+            widget.checkoutProducts.length > 5
+                ? 6
+                : widget.checkoutProducts.length,
             (index) => Positioned(
               top: -16,
               left: index * 28.0,
@@ -278,12 +280,24 @@ class _PaymentPageState extends State<PaymentPage> {
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.black12, width: 0.8),
                 ),
-                child: Image.network(
-                  widget.checkoutProducts[index].product.images![0],
-                  height: 30,
-                  width: 24,
-                  fit: BoxFit.cover,
-                ),
+                child: index == 5
+                    ? Padding(
+                        padding: const EdgeInsets.all(3.8),
+                        child: Text(
+                          '+${widget.checkoutProducts.length - 5}',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      )
+                    : Image.network(
+                        widget.checkoutProducts[index].product.images![0],
+                        height: 30,
+                        width: 24,
+                        fit: BoxFit.cover,
+                      ),
               ),
             ),
           ),

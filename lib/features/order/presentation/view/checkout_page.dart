@@ -282,7 +282,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   child: Text(
                     '${widget.checkoutProducts.length}',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
                     ),
@@ -291,7 +291,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
               ),
             ),
             ...List.generate(
-              widget.checkoutProducts.length,
+              widget.checkoutProducts.length > 5
+                  ? 6
+                  : widget.checkoutProducts.length,
               (index) => Positioned(
                 top: -16,
                 left: index * 28.0,
@@ -307,12 +309,24 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.black12, width: 0.8),
                   ),
-                  child: Image.network(
-                    widget.checkoutProducts[index].product.images![0],
-                    height: 30,
-                    width: 24,
-                    fit: BoxFit.cover,
-                  ),
+                  child: index == 5
+                      ? Padding(
+                          padding: const EdgeInsets.all(3.8),
+                          child: Text(
+                            '+${widget.checkoutProducts.length - 5}',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
+                          ),
+                        )
+                      : Image.network(
+                          widget.checkoutProducts[index].product.images![0],
+                          height: 30,
+                          width: 24,
+                          fit: BoxFit.cover,
+                        ),
                 ),
               ),
             ),

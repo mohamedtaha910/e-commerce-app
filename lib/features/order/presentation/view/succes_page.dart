@@ -73,7 +73,6 @@ class _OrderSuccessPageState extends State<OrderSuccessPage>
                 children: [
                   const SizedBox(height: 24),
 
-                  // ── Check icon ──────────────────────────────────────────
                   Transform.scale(
                     scale: _checkScale.value,
                     child: Container(
@@ -93,7 +92,6 @@ class _OrderSuccessPageState extends State<OrderSuccessPage>
 
                   const SizedBox(height: 24),
 
-                  // ── Title ───────────────────────────────────────────────
                   Opacity(
                     opacity: _fadeSlide.value,
                     child: Transform.translate(
@@ -142,7 +140,6 @@ class _OrderSuccessPageState extends State<OrderSuccessPage>
 
                   const SizedBox(height: 16),
 
-                  // ── Steps ───────────────────────────────────────────────
                   Opacity(
                     opacity: _fadeSlide.value,
                     child: Transform.translate(
@@ -153,7 +150,6 @@ class _OrderSuccessPageState extends State<OrderSuccessPage>
 
                   const SizedBox(height: 36),
 
-                  // ── Buttons ─────────────────────────────────────────────
                   Opacity(
                     opacity: _fadeSlide.value,
                     child: Column(
@@ -186,8 +182,11 @@ class _OrderSuccessPageState extends State<OrderSuccessPage>
                           height: 52,
                           child: OutlinedButton(
                             onPressed: () {
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(builder: (_) => HomePage()),
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ),
+                                (route) => false,
                               );
                             },
                             style: OutlinedButton.styleFrom(
@@ -224,7 +223,6 @@ class _OrderSuccessPageState extends State<OrderSuccessPage>
   }
 }
 
-// ── Info card ──────────────────────────────────────────────────────────────────
 class _InfoCard extends StatelessWidget {
   final String orderId;
   final int itemCount;
@@ -370,7 +368,6 @@ class _InfoDivider extends StatelessWidget {
   }
 }
 
-// ── Steps card ─────────────────────────────────────────────────────────────────
 class _StepsCard extends StatelessWidget {
   const _StepsCard();
 
