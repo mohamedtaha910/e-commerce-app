@@ -7,6 +7,9 @@ import 'package:e_commerce_app/features/order/presentation/view/orders_page.dart
 import 'package:e_commerce_app/features/profile/presentation/view/change_password_page.dart';
 import 'package:e_commerce_app/features/profile/presentation/view/widgets/profile_header.dart';
 import 'package:e_commerce_app/features/profile/presentation/view/widgets/profile_row.dart';
+import 'package:e_commerce_app/features/splash/presentation/view/splash_page.dart';
+import 'package:e_commerce_app/features/splash/presentation/view/widgets/custom_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -217,7 +220,7 @@ class ProfilePage extends StatelessWidget {
                       circleColor: Colors.redAccent.withAlpha(50),
                       arrowColor: Colors.redAccent,
                       onTap: () async {
-                        // await FirebaseAuth.instance.signOut();
+                        confirmLogout(context);
                       },
                     ),
                   ],
@@ -229,5 +232,70 @@ class ProfilePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void confirmLogout(BuildContext context) {
+    (showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.red.withAlpha(50),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.logout, color: Colors.red, size: 26),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Are you sure you want to logout?',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                CustomButton(
+                  title: 'Cancel',
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  verticalPadding: 3,
+                  // color: AppColors.primaryColor.withAlpha(50),
+                  color: Colors.transparent,
+                  textColor: AppColors.primaryColor,
+                  horizontalMargin: 8,
+                  titleSize: 14,
+                  isBorder: true,
+                ),
+                CustomButton(
+                  title: 'Logout',
+                  onTap: () {
+                    FirebaseAuth.instance.signOut();
+                    if (!context.mounted) return;
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (c) => SplashPage()),
+                      (route) => false,
+                    );
+                  },
+                  verticalPadding: 4,
+                  color: Colors.red.withAlpha(50),
+                  textColor: Colors.red,
+                  horizontalMargin: 8,
+                  titleSize: 14,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ));
   }
 }

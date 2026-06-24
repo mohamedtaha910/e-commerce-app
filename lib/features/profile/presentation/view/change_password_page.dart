@@ -97,7 +97,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           ),
                           SizedBox(height: 8),
                           AuthTextFeild(
-                            borderRadius: 20,
+                            borderRadius: 50,
 
                             obscureText: true,
                             hintText: 'Enter old password',
@@ -118,7 +118,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           ),
                           SizedBox(height: 8),
                           AuthTextFeild(
-                            borderRadius: 20,
+                            borderRadius: 50,
                             obscureText: true,
                             hintText: 'Enter new password',
                             icon: Icons.lock,
@@ -138,7 +138,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           ),
                           SizedBox(height: 8),
                           AuthTextFeild(
-                            borderRadius: 20,
+                            borderRadius: 50,
                             obscureText: true,
                             hintText: 'Enter Confirm password',
                             icon: Icons.lock,
@@ -151,8 +151,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           // Spacer(),
                           CustomButton(
                             title: 'Change Password',
-                            borderRadius: 18,
-                            verticalPadding: 10,
+                            borderRadius: 16,
+                            verticalPadding: 12,
                             color: Colors.blueGrey,
                             textColor: Colors.white,
                             horizontalMargin: 0,

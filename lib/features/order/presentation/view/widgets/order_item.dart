@@ -87,7 +87,7 @@
 // ---------------------------------------------
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
 import 'package:e_commerce_app/features/order/presentation/view/order_details_page.dart';
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -237,8 +237,8 @@ class _StatusBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
       decoration: BoxDecoration(
         // color: Colors.blue.withAlpha(30),
-        color: Colors.blueGrey.withAlpha(50),
-        // border: Border.all(color: Colors.blueGrey.withAlpha(100), width: 0.3),
+        // color: Colors.blueGrey.withAlpha(50),
+        border: Border.all(color: Colors.blueGrey.withAlpha(100), width: 0.4),
         borderRadius: BorderRadius.circular(99),
       ),
       child: Row(
