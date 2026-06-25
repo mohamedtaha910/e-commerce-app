@@ -20,7 +20,7 @@ class CustomSearchBar extends StatelessWidget {
           child: Row(
             children: [
               SvgPicture.asset('assets/icons/search.svg'),
-              const SizedBox(width: 10),
+              const SizedBox(width: 12),
               const Text(
                 'Search products',
                 style: TextStyle(

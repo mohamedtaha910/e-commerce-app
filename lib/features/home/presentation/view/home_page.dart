@@ -82,19 +82,24 @@ class _HomePageState extends State<HomePage> {
             right: 0,
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 38),
+                // padding: const EdgeInsets.symmetric(horizontal: 38),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(18),
+                  borderRadius: BorderRadius.circular(50),
 
                   child: NavigationBar(
                     labelPadding: const EdgeInsets.all(0),
                     height: 56,
+                    indicatorShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
                     labelBehavior:
                         NavigationDestinationLabelBehavior.alwaysHide,
                     animationDuration: Duration(milliseconds: 200),
                     indicatorColor: AppColors.primaryColor.withAlpha(60),
+
                     backgroundColor: const Color.fromARGB(255, 237, 234, 233),
-                    // backgroundColor: const Color.fromARGB(255, 231, 229, 229),
+                    // backgroundColor: Colors.white.withAlpha(250),
                     onDestinationSelected: (index) {
                       setState(() {
                         currentIndex = index;

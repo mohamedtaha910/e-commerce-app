@@ -47,6 +47,7 @@ class HomePageBody extends StatelessWidget {
               const SizedBox(height: 36),
 
               const CategoriesList(),
+              const SizedBox(height: 75),
             ],
           ),
         ),
