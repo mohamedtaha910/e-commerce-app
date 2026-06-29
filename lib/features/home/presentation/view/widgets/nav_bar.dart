@@ -21,7 +21,7 @@ class LiquidGlassNavBar extends StatelessWidget {
       right: 0,
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           child: _GlassNavBar(
             currentIndex: currentIndex,
             onDestinationSelected: onDestinationSelected,
@@ -79,9 +79,9 @@ class _GlassNavBar extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Colors.white.withOpacity(0.45),
+                Colors.grey.withOpacity(0.25),
                 Colors.white.withOpacity(0.15),
-                Colors.white.withOpacity(0.25),
+                Colors.grey.withOpacity(0.25),
               ],
               stops: const [0.0, 0.5, 1.0],
             ),
