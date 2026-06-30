@@ -69,7 +69,7 @@ class _GlassNavBar extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
         child: Container(
           height: 62,
           decoration: BoxDecoration(
@@ -79,9 +79,9 @@ class _GlassNavBar extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Colors.grey.withOpacity(0.25),
+                Colors.grey.withOpacity(0.20),
                 Colors.white.withOpacity(0.15),
-                Colors.grey.withOpacity(0.25),
+                Colors.grey.withOpacity(0.20),
               ],
               stops: const [0.0, 0.5, 1.0],
             ),
@@ -138,7 +138,7 @@ class _GlassNavItem extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
         decoration: isSelected
             ? BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
@@ -147,7 +147,7 @@ class _GlassNavItem extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    AppColors.primaryColor.withOpacity(0.22),
+                    AppColors.primaryColor.withOpacity(0.25),
                     AppColors.primaryColor.withOpacity(0.08),
                   ],
                 ),

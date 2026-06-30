@@ -123,7 +123,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   onChanged: (value) {
                                     email = value;
                                   },
-                                  borderRadius: 22,
+                                  borderRadius: 50,
                                   obscureText: false,
                                 ),
                                 SizedBox(height: 16),
@@ -144,7 +144,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     password = value;
                                   },
                                   height: 12,
-                                  borderRadius: 22,
+                                  borderRadius: 50,
                                   obscureText: true,
                                 ),
                                 SizedBox(height: 32),

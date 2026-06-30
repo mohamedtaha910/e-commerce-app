@@ -225,6 +225,7 @@ class _LoginPageState extends State<LoginPage> {
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
+              textAlign: TextAlign.center,
             ),
             SizedBox(height: 32),
             CustomButton(
@@ -233,11 +234,11 @@ class _LoginPageState extends State<LoginPage> {
               onTap: () {
                 Navigator.pop(context);
               },
-              verticalPadding: 8,
+              verticalPadding: 6,
               color: Colors.red.withAlpha(50),
               // isBorder: true,
               textColor: Colors.pink,
-              horizontalMargin: 50,
+              horizontalMargin: 80,
             ),
           ],
         ),

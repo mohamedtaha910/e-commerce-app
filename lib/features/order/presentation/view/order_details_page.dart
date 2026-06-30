@@ -115,6 +115,7 @@
 //   }
 // }
 // ------------------
+import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/features/order/data/models/order_model.dart';
 import 'package:e_commerce_app/features/order/presentation/view/widgets/order_products_list.dart';
 import 'package:flutter/cupertino.dart';
@@ -562,16 +563,33 @@ class _TotalFooter extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          const Spacer(),
-          Text(
-            '\$${total.toStringAsFixed(2)}',
-            style: const TextStyle(
-              fontSize: 18,
-              color: Colors.white,
 
-              //color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+          // const SizedBox(width: 8),
+          // Icon(Icons.chevron_right_rounded, size: 16, color: Colors.white),
+          const Spacer(),
+          Row(
+            children: [
+              const Text(
+                '\$',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: AppColors.primaryColor,
+                  //color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(width: 4),
+              Text(
+                '${total.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+
+                  //color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
           ),
         ],
       ),
