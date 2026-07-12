@@ -125,17 +125,17 @@ class _CustomProductImageState extends State<CustomProductImage> {
             ),
           ),
           Positioned(
-            top: 0,
-            right: 0,
+            top: -2,
+            right: -2,
             child: BlocBuilder<FavouriteCubit, FavouriteState>(
               builder: (context, state) {
                 return Container(
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
                     color: Colors.grey.shade200,
-                    // shape: BoxShape.circle,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.white, width: 4),
+                    shape: BoxShape.circle,
+                    // borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.white, width: 3),
                   ),
                   child: GestureDetector(
                     onTap: () => BlocProvider.of<FavouriteCubit>(
@@ -148,11 +148,11 @@ class _CustomProductImageState extends State<CustomProductImage> {
                         ? const Icon(
                             Icons.favorite,
                             color: Colors.black,
-                            size: 22,
+                            size: 24,
                           )
                         : SvgPicture.asset(
                             'assets/icons/heart.svg',
-                            height: 22,
+                            height: 24,
                           ),
                   ),
                 );

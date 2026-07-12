@@ -70,17 +70,17 @@ class ProductItem extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 0,
-                    right: 0,
+                    top: -1.5,
+                    right: -1.5,
                     child: BlocBuilder<FavouriteCubit, FavouriteState>(
                       builder: (context, state) {
                         return Container(
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade200,
-                            // shape: BoxShape.circle,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: Colors.white, width: 4),
+                            shape: BoxShape.circle,
+                            // borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: Colors.white, width: 2),
                           ),
                           child: GestureDetector(
                             onTap: () {

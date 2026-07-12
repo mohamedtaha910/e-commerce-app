@@ -69,7 +69,7 @@ class _GlassNavBar extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
           height: 62,
           decoration: BoxDecoration(
@@ -80,14 +80,16 @@ class _GlassNavBar extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: [
                 Colors.grey.withOpacity(0.20),
-                Colors.white.withOpacity(0.15),
+                Colors.grey.withOpacity(0.15),
                 Colors.grey.withOpacity(0.20),
               ],
               stops: const [0.0, 0.5, 1.0],
             ),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.6),
-              width: 1.2,
+            border: Border(
+              top: BorderSide(
+                color: Colors.grey.shade100.withOpacity(0.6),
+                width: 1,
+              ),
             ),
             boxShadow: [
               BoxShadow(
@@ -138,7 +140,7 @@ class _GlassNavItem extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
         decoration: isSelected
             ? BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
@@ -147,8 +149,8 @@ class _GlassNavItem extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    AppColors.primaryColor.withOpacity(0.25),
-                    AppColors.primaryColor.withOpacity(0.08),
+                    AppColors.primaryColor.withOpacity(0.40),
+                    AppColors.primaryColor.withOpacity(0.1),
                   ],
                 ),
                 // border: Border.all(

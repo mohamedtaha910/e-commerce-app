@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:e_commerce_app/core/utils/colors.dart';
 import 'package:e_commerce_app/core/models/product_model/product.dart';
 import 'package:e_commerce_app/features/cart/data/models/cart_product.dart';
@@ -101,75 +103,98 @@ class ProductDetailsPage extends StatelessWidget {
         ),
       ),
 
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.only(right: 16, left: 16, top: 6, bottom: 16),
-        decoration: BoxDecoration(
-          // color: Colors.white38,
-          // boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
-          border: Border(
-            top: BorderSide(color: Colors.grey.shade200, width: 1),
-          ),
-        ),
-        child: Row(
-          children: [
-            SizedBox(width: 10),
-            Expanded(
-              child: BlocBuilder<CartCubit, CartState>(
-                builder: (context, state) {
-                  return ElevatedButton(
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Container(
+            height: 70,
+            padding: EdgeInsets.only(right: 16, left: 16, top: 6, bottom: 16),
+            decoration: BoxDecoration(
+              // gradient: LinearGradient(
+              //   begin: Alignment.topLeft,
+              //   end: Alignment.bottomRight,
+              //   colors: [
+              //     Colors.grey.withOpacity(0.20),
+              //     Colors.white.withOpacity(0.15),
+              //     Colors.grey.withOpacity(0.20),
+              //   ],
+              //   stops: const [0.0, 0.5, 1.0],
+              // ),
+
+              // color: Colors.white38,
+              // boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
+              border: Border(
+                top: BorderSide(color: Colors.grey.shade200, width: 1),
+              ),
+            ),
+            child: Row(
+              children: [
+                SizedBox(width: 10),
+                Expanded(
+                  child: BlocBuilder<CartCubit, CartState>(
+                    builder: (context, state) {
+                      return ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          side: BorderSide(color: Colors.black12, width: 1.2),
+                          backgroundColor: Colors.transparent,
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          shadowColor: Colors.transparent,
+                        ),
+                        onPressed: () {
+                          BlocProvider.of<CartCubit>(context).toggleCart(
+                            CartProduct(product: product, quantity: 1),
+                          );
+                        },
+                        child: Text(
+                          BlocProvider.of<CartCubit>(
+                                context,
+                              ).isInCart(product.id!)
+                              ? 'Remove from Cart'
+                              : 'Add to Cart',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14),
                       ),
-                      side: BorderSide(color: Colors.black12, width: 1.2),
-                      backgroundColor: Colors.transparent,
+                      backgroundColor: Colors.grey.shade900,
                       padding: EdgeInsets.symmetric(vertical: 10),
                       shadowColor: Colors.transparent,
                     ),
+
                     onPressed: () {
-                      BlocProvider.of<CartCubit>(
-                        context,
-                      ).toggleCart(CartProduct(product: product, quantity: 1));
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (c) => CheckoutPage(
+                            isFromCart: false,
+                            totalPrice: product.price!,
+                            checkoutProducts: [
+                              CartProduct(product: product, quantity: 1),
+                            ],
+                          ),
+                        ),
+                      );
                     },
                     child: Text(
-                      BlocProvider.of<CartCubit>(context).isInCart(product.id!)
-                          ? 'Remove from Cart'
-                          : 'Add to Cart',
-                      style: TextStyle(color: Colors.black),
+                      "Buy Now",
+                      style: TextStyle(color: Colors.white),
                     ),
-                  );
-                },
-              ),
-            ),
-            SizedBox(width: 10),
-            Expanded(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
                   ),
-                  backgroundColor: Colors.grey.shade900,
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  shadowColor: Colors.transparent,
                 ),
-
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (c) => CheckoutPage(
-                        isFromCart: false,
-                        totalPrice: product.price!,
-                        checkoutProducts: [
-                          CartProduct(product: product, quantity: 1),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-                child: Text("Buy Now", style: TextStyle(color: Colors.white)),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

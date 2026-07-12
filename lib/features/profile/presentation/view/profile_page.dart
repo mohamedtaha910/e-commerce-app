@@ -80,11 +80,15 @@ class ProfilePage extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
                   // border: Border.all(color: Colors.grey.shade400, width: 0.1),
+                  border: Border.all(
+                    color: Colors.grey.shade200.withAlpha(200),
+                    width: 0.4,
+                  ),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
-                      offset: Offset(0, 1),
-                      blurRadius: 4,
+                      offset: Offset(0, 2),
+                      blurRadius: 2,
                     ),
                   ],
                 ),
@@ -94,7 +98,8 @@ class ProfilePage extends StatelessWidget {
                       text: 'Orders',
                       textColor: Colors.black87,
                       icon: CupertinoIcons.creditcard_fill,
-                      iconColor: Colors.blueAccent,
+                      // iconColor: Colors.blueAccent,
+                      iconColor: Colors.deepPurpleAccent,
                       circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.grey.shade700,
                       onTap: () {
@@ -163,7 +168,10 @@ class ProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
-                  // border: Border.all(color: Colors.grey.shade400, width: 0.1),
+                  border: Border.all(
+                    color: Colors.grey.shade200.withAlpha(200),
+                    width: 0.4,
+                  ),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black12,
@@ -216,7 +224,7 @@ class ProfilePage extends StatelessWidget {
                       text: 'Logout',
                       textColor: Colors.redAccent,
                       icon: Icons.logout,
-                      iconColor: Colors.redAccent,
+                      iconColor: Colors.red.shade600,
                       circleColor: Colors.redAccent.withAlpha(50),
                       arrowColor: Colors.redAccent,
                       onTap: () async {
