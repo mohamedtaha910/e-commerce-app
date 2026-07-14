@@ -16,7 +16,7 @@ class LiquidGlassNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 20,
+      bottom: 14,
       left: 0,
       right: 0,
       child: SafeArea(

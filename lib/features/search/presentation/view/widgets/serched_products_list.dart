@@ -15,11 +15,12 @@ class SearchedProductsList extends StatelessWidget {
       separatorBuilder: (context, index) => Padding(
         padding: const EdgeInsets.all(8.0),
         // child: const Divider(indent: 40, endIndent: 40 ),
-        child: SizedBox(height: 4,),
+        child: SizedBox(height: 4),
       ),
       itemBuilder: (context, index) {
         return Column(
           children: [
+            index == 0 ? const SizedBox(height: 55) : SizedBox.shrink(),
             SerchedProductItem(product: products[index]),
             index == products.length - 1
                 ? const SizedBox(height: 85)

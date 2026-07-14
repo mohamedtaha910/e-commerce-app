@@ -99,7 +99,7 @@ class ProfilePage extends StatelessWidget {
                       textColor: Colors.black87,
                       icon: CupertinoIcons.creditcard_fill,
                       // iconColor: Colors.blueAccent,
-                      iconColor: Colors.deepPurpleAccent,
+                      iconColor: Colors.deepPurpleAccent.shade700,
                       circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.grey.shade700,
                       onTap: () {
@@ -139,7 +139,8 @@ class ProfilePage extends StatelessWidget {
                     ProfileRow(
                       text: 'Favorites',
                       textColor: Colors.black87,
-                      icon: CupertinoIcons.bookmark_fill,
+                      // icon: CupertinoIcons.bookmark_fill,
+                      icon: Icons.bookmark_rounded,
                       iconColor: Colors.pinkAccent.shade200,
                       circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.black54,

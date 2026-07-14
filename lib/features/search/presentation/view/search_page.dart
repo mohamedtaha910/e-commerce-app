@@ -17,71 +17,139 @@ class SearchPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 60,
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          surfaceTintColor: Colors.transparent,
-          title: Column(
+        // appBar: AppBar(
+        //   toolbarHeight: 60,
+        //   automaticallyImplyLeading: false,
+        //   backgroundColor: Colors.transparent,
+        //   surfaceTintColor: Colors.transparent,.
+        //   title: Column(
+        //     children: [
+        //       SizedBox(height: 8),
+        //       Row(
+        //         children: [
+        //           isInHome
+        //               ? GestureDetector(
+        //                   onTap: () => Navigator.pop(context),
+        //                   child: Icon(
+        //                     Icons.arrow_back_ios_new_rounded,
+        //                     size: 20,
+        //                     color: Colors.black54,
+        //                   ),
+        //                 )
+        //               : SizedBox.shrink(),
+        //           SizedBox(width: 10),
+        //           Expanded(
+        //             child: CustomSearchTextFeild(
+        //               onChanged: (value) {
+        //                 BlocProvider.of<SearchProductsCubit>(
+        //                   context,
+        //                 ).searchProducts(query: value);
+        //               },
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //       // SizedBox(height: 8),
+        //     ],
+        //   ),
+        // ),
+        body: SafeArea(
+          bottom: false,
+          child: Stack(
             children: [
-              SizedBox(height: 8),
-              Row(
-                children: [
-                  isInHome
-                      ? GestureDetector(
-                          onTap: () => Navigator.pop(context),
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            size: 20,
-                            color: Colors.black54,
-                          ),
-                        )
-                      : SizedBox.shrink(),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: CustomSearchTextFeild(
-                      onChanged: (value) {
-                        BlocProvider.of<SearchProductsCubit>(
-                          context,
-                        ).searchProducts(query: value);
-                      },
+              BlocBuilder<SearchProductsCubit, SearchProductsState>(
+                builder: (context, state) {
+                  if (state is SearchProductsInitial) {
+                    return CustomStartSearch();
+                  }
+                  if (state is SearchProductsFailure) {
+                    return Text(
+                      state.errorMessage,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black54,
+                      ),
+                    );
+                  }
+                  if (state is SearchProductsSuccess) {
+                    List<Product> products = state.products;
+                    if (products.isEmpty) {
+                      return CustomNoItem();
+                    }
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        right: 16.0,
+                        left: 16,
+                        top: 16,
+                      ),
+                      child: SearchedProductsList(products: products),
+                    );
+                  }
+                  return Padding(
+                    padding: const EdgeInsets.only(
+                      right: 16.0,
+                      left: 16,
+                      top: 70,
                     ),
-                  ),
-                ],
+                    child: SearchedListShimmer(),
+                  );
+                },
               ),
-              // SizedBox(height: 8),
+
+              Container(
+                padding: EdgeInsets.only(
+                  right: 22,
+                  left: 22,
+                  top: 12,
+                  bottom: 18,
+                ),
+                decoration: BoxDecoration(
+                  // color: Colors.grey.shade100,
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.white.withAlpha(200),
+                      // Colors.white.withAlpha(250),
+                      // Colors.white.withAlpha(240),
+                      Colors.white.withAlpha(180),
+                      Colors.white.withAlpha(100),
+                      // Colors.white.withAlpha(180),
+                      Colors.white.withAlpha(50),
+                      // Colors.white.withAlpha(80),
+                      // Colors.white.withAlpha(50),
+                      Colors.white.withAlpha(2),
+                      // Colors.red,
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    isInHome
+                        ? GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: Icon(
+                              Icons.arrow_back_ios_new_rounded,
+                              size: 20,
+                              color: Colors.black54,
+                            ),
+                          )
+                        : SizedBox.shrink(),
+                    isInHome ? SizedBox(width: 10) : SizedBox.shrink(),
+                    Expanded(
+                      child: CustomSearchTextFeild(
+                        onChanged: (value) {
+                          BlocProvider.of<SearchProductsCubit>(
+                            context,
+                          ).searchProducts(query: value);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
-        ),
-        body: BlocBuilder<SearchProductsCubit, SearchProductsState>(
-          builder: (context, state) {
-            if (state is SearchProductsInitial) {
-              return CustomStartSearch();
-            }
-            if (state is SearchProductsFailure) {
-              return Text(
-                state.errorMessage,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black54,
-                ),
-              );
-            }
-            if (state is SearchProductsSuccess) {
-              List<Product> products = state.products;
-              if (products.isEmpty) {
-                return CustomNoItem();
-              }
-              return Padding(
-                padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
-                child: SearchedProductsList(products: products),
-              );
-            }
-            return Padding(
-              padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
-              child: SearchedListShimmer(),
-            );
-          },
         ),
       ),
     );

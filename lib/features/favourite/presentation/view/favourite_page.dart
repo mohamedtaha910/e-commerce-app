@@ -26,82 +26,126 @@ class _FavouritePageState extends State<FavouritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        title: Row(
+      body: SafeArea(
+        bottom: false,
+        child: Stack(
           children: [
-            widget.isFromProfile == true
-                ? GestureDetector(
-                    onTap: () => Navigator.pop(context),
+            BlocBuilder<FavouriteCubit, FavouriteState>(
+              builder: (context, state) {
+                if (state is FavouriteSuccess) {
+                  List<Product> products = state.favourites;
+
+                  return Padding(
+                    padding: const EdgeInsets.only(
+                      right: 16.0,
+                      left: 16,
+                      top: 8,
+                    ),
+                    child: products.isNotEmpty
+                        ? SearchedProductsList(products: products)
+                        : CustomNoFavourite(),
+                  );
+                } else {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 2.0,
+                    ),
+                    child: SearchedListShimmer(),
+                  );
+                }
+              },
+            ),
+
+            Container(
+              padding: EdgeInsets.only(
+                right: 16,
+                left: 16,
+                top: 12,
+                bottom: 40,
+              ),
+              decoration: BoxDecoration(
+                // color: Colors.grey.shade100,
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.white,
+                    Colors.white.withAlpha(250),
+                    Colors.white.withAlpha(240),
+                    Colors.white.withAlpha(230),
+                    Colors.white.withAlpha(180),
+                    // Colors.white.withAlpha(180),
+                    Colors.white.withAlpha(100),
+                    // Colors.white.withAlpha(80),
+                    // Colors.white.withAlpha(50),
+                    Colors.white.withAlpha(5),
+                    // Colors.red,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+              child: Row(
+                children: [
+                  widget.isFromProfile == true
+                      ? GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Container(
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade100,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.black12,
+                                width: 0.4,
+                              ),
+                            ),
+                            child: Icon(
+                              Icons.chevron_left_rounded,
+                              color: Colors.black54,
+                              size: 28,
+                            ),
+                          ),
+                        )
+                      : SizedBox.shrink(),
+                  widget.isFromProfile == true ? Spacer() : SizedBox.shrink(),
+
+                  // const SizedBox(width: 8),
+                  // Spacer(),
+                  Text(
+                    'My Favourite',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () {
+                      deleteAllFavouriteMessage(context);
+                    },
                     child: Container(
-                      padding: const EdgeInsets.all(3),
+                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         color: Colors.grey.shade100,
                         shape: BoxShape.circle,
-                        border: Border.all(color: Colors.black12, width: 0.4),
+                        border: Border.all(
+                          color: Colors.grey.shade300,
+                          width: 0.6,
+                        ),
                       ),
                       child: Icon(
-                        Icons.chevron_left_rounded,
-                        color: Colors.black54,
-                        size: 28,
+                        Icons.delete_sweep,
+                        color: Colors.red,
+                        size: 24,
                       ),
                     ),
-                  )
-                : SizedBox.shrink(),
-            widget.isFromProfile == true ? Spacer() : SizedBox.shrink(),
-
-            // const SizedBox(width: 8),
-            // Spacer(),
-            Text(
-              'My Favourite',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-            const Spacer(),
-            GestureDetector(
-              onTap: () {
-                deleteAllFavouriteMessage(context);
-              },
-              child: Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.grey.shade300, width: 0.6),
-                ),
-                child: Icon(Icons.delete_sweep, color: Colors.red, size: 24),
+                  ),
+                ],
               ),
             ),
           ],
         ),
-      ),
-      body: BlocBuilder<FavouriteCubit, FavouriteState>(
-        builder: (context, state) {
-          if (state is FavouriteSuccess) {
-            List<Product> products = state.favourites;
-
-            return Padding(
-              padding: const EdgeInsets.only(right: 16.0, left: 16, top: 8),
-              child: products.isNotEmpty
-                  ? SearchedProductsList(products: products)
-                  : CustomNoFavourite(),
-            );
-          } else {
-            return Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 2.0,
-              ),
-              child: SearchedListShimmer(),
-            );
-          }
-        },
       ),
     );
   }

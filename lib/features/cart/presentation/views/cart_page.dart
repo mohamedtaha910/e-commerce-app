@@ -42,72 +42,106 @@ class _CartPageState extends State<CartPage> {
             totalPrice += item.product.price! * item.quantity;
           }
           return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              surfaceTintColor: Colors.transparent,
-              automaticallyImplyLeading: false,
-              title: Row(
+            body: SafeArea(
+              child: Stack(
                 children: [
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Container(
-                      padding: const EdgeInsets.all(3),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        shape: BoxShape.circle,
-                        // borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.black12, width: 0.4),
-                      ),
-                      child: Icon(
-                        Icons.chevron_left_rounded,
-                        size: 28,
-                        color: Colors.black54,
+                  cartProducts.isEmpty
+                      ? CustomCartEmpty()
+                      : Padding(
+                          padding: const EdgeInsets.only(
+                            right: 16.0,
+                            left: 16,
+                            top: 16,
+                          ),
+                          child: CartProductList(cartProducts: cartProducts),
+                        ),
+                  Container(
+                    padding: EdgeInsets.only(
+                      right: 16,
+                      left: 16,
+                      top: 12,
+                      bottom: 40,
+                    ),
+                    decoration: BoxDecoration(
+                      // color: Colors.grey.shade100,
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.white,
+                          Colors.white.withAlpha(250),
+                          Colors.white.withAlpha(240),
+                          Colors.white.withAlpha(230),
+                          Colors.white.withAlpha(180),
+                          // Colors.white.withAlpha(180),
+                          Colors.white.withAlpha(100),
+                          // Colors.white.withAlpha(80),
+                          // Colors.white.withAlpha(50),
+                          Colors.white.withAlpha(5),
+                          // Colors.red,
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
                       ),
                     ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'Cart ',
-                    style: TextStyle(
-                      // fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  const Spacer(),
-                  GestureDetector(
-                    onTap: () {
-                      deleteAllCartMessage(context);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        shape: BoxShape.circle,
-                        // borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.black12, width: 0.4),
-                      ),
-                      child: Icon(
-                        Icons.delete_sweep_rounded,
-                        size: 24,
-                        // color: Colors.red,
-                      ),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Container(
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade100,
+                              shape: BoxShape.circle,
+                              // borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: Colors.black12,
+                                width: 0.4,
+                              ),
+                            ),
+                            child: Icon(
+                              Icons.chevron_left_rounded,
+                              size: 28,
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          'My Cart ',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () {
+                            deleteAllCartMessage(context);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade100,
+                              shape: BoxShape.circle,
+                              // borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: Colors.black12,
+                                width: 0.4,
+                              ),
+                            ),
+                            child: Icon(
+                              Icons.delete_sweep_rounded,
+                              size: 24,
+                              // color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            body: cartProducts.isEmpty
-                ? CustomCartEmpty()
-                : Padding(
-                    padding: const EdgeInsets.only(
-                      right: 16.0,
-                      left: 16,
-                      top: 16,
-                    ),
-                    child: CartProductList(cartProducts: cartProducts),
-                  ),
 
             bottomNavigationBar: Container(
               height: 125,

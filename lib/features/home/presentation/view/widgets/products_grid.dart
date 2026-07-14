@@ -22,6 +22,7 @@ class ProductGrid extends StatelessWidget {
           return GridView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
+            // physics: BouncingScrollPhysics(),
             clipBehavior: Clip.none,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

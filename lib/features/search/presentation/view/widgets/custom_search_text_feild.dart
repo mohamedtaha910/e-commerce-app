@@ -16,7 +16,7 @@ class CustomSearchTextFeild extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
         filled: true,
 
-        fillColor: Colors.grey.shade200,
+        fillColor: Colors.grey.shade200.withAlpha(250),
         prefixIcon: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
           child: SvgPicture.asset(
