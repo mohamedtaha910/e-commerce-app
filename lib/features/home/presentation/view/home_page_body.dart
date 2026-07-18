@@ -20,37 +20,38 @@ class HomePageBody extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * 0.04,
         ),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 16),
-              const CustomAppBar(),
-              const SizedBox(height: 36),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => BlocProvider(
-                        create: (context) => SearchProductsCubit(
-                          getIt.get<SearchRepoImplementation>(),
-                        ),
-                        child: SearchPage(isInHome: true),
+        // child: SingleChildScrollView(
+        // physics: BouncingScrollPhysics(),
+        // scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 16),
+            const CustomAppBar(),
+            const SizedBox(height: 36),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => BlocProvider(
+                      create: (context) => SearchProductsCubit(
+                        getIt.get<SearchRepoImplementation>(),
                       ),
+                      child: SearchPage(isInHome: true),
                     ),
-                  );
-                },
-                child: CustomSearchBar(),
-              ),
-              const SizedBox(height: 36),
+                  ),
+                );
+              },
+              child: CustomSearchBar(),
+            ),
+            const SizedBox(height: 36),
 
-              const CategoriesList(),
-              const SizedBox(height: 75),
-            ],
-          ),
+            Expanded(child: CategoriesList()),
+
+            // const SizedBox(height: 75),
+          ],
         ),
+        // ),
       ),
     );
   }

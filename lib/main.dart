@@ -37,9 +37,6 @@ void main() async {
   Hive.registerAdapter(CartProductAdapter());
   Hive.registerAdapter(OrderAdapter());
 
-  // await Hive.openBox<Product>('favProducts');
-  // await Hive.openBox<CartProduct>('cartProducts');
-  // await Hive.openBox<Order>('orders');
   setUpServiceLocator();
   runApp(const MyApp());
 }

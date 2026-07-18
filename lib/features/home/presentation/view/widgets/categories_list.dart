@@ -103,10 +103,10 @@ class _CategoriesListState extends State<CategoriesList> {
           },
         ),
 
-        const SizedBox(height: 24),
+        const SizedBox(height: 9),
 
         // product grid
-        ProductGrid(),
+        Expanded(child: ProductGrid()),
       ],
     );
   }

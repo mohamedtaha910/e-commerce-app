@@ -19,22 +19,67 @@ class ProductGrid extends StatelessWidget {
         if (state is GetProductsSuccess) {
           List products = state.products;
 
-          return GridView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            // physics: BouncingScrollPhysics(),
-            clipBehavior: Clip.none,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              // childAspectRatio: 0.4, // 1.8
-              childAspectRatio: 0.65, // 1.8
-              crossAxisSpacing: 10, // x axis spacing
-              mainAxisSpacing: 10, // y axis spacing
-            ),
-            itemCount: products.length,
-            itemBuilder: (context, index) {
-              return ProductItem(product: products[index]);
-            },
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: [
+                    SizedBox(height: 22),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      // physics: BouncingScrollPhysics(),
+                      clipBehavior: Clip.none,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        // childAspectRatio: 0.4, // 1.8
+                        childAspectRatio: 0.65, // 1.8
+                        crossAxisSpacing: 10, // x axis spacing
+                        mainAxisSpacing: 10, // y axis spacing
+                      ),
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return ProductItem(product: products[index]);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  // color: Colors.red,
+                  gradient: LinearGradient(
+                    begin: AlignmentGeometry.topCenter,
+                    end: AlignmentGeometry.bottomCenter,
+                    colors: [
+                      Colors.white.withAlpha(250),
+                      Colors.white.withAlpha(200),
+                      Colors.white.withAlpha(150),
+                      // Colors.white.withAlpha(120),
+                      Colors.white.withAlpha(100),
+                      Colors.white.withAlpha(70),
+                      Colors.white.withAlpha(50),
+                      Colors.white.withAlpha(25),
+                      Colors.white.withAlpha(0),
+
+                      // Colors.white,
+                      // Colors.white.withAlpha(250),
+                      // Colors.white.withAlpha(240),
+                      // Colors.white.withAlpha(230),
+                      // Colors.white.withAlpha(180),
+                      // // Colors.white.withAlpha(180),
+                      // Colors.white.withAlpha(100),
+                      // // Colors.white.withAlpha(80),
+                      // // Colors.white.withAlpha(50),
+                      // Colors.white.withAlpha(5),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           );
         }
         return ProductGridShimmer();
