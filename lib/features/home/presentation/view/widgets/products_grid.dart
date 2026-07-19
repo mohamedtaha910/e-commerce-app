@@ -44,6 +44,7 @@ class ProductGrid extends StatelessWidget {
                         return ProductItem(product: products[index]);
                       },
                     ),
+                    SizedBox(height: 75),
                   ],
                 ),
               ),

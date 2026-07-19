@@ -9,37 +9,47 @@ class CartRepoImplementation implements CartRepo {
   final FirebaseAuth auth;
 
   CartRepoImplementation({required this.auth});
-  Box<CartProduct>? _box;
+  // Box<CartProduct>? _box;
 
-  Future<Box<CartProduct>> _getBox() async {
-    if (_box != null) {
-      return _box!;
+  // Future<Box<CartProduct>> _getBox() async {
+  //   if (_box != null) {
+  //     return _box!;
+  //   }
+
+  //   final uid = auth.currentUser!.uid;
+
+  //   _box = await Hive.openBox<CartProduct>('cart_$uid');
+
+  //   return _box!;
+  // }
+  Future<Box<CartProduct>> _openBox() async {
+    final user = auth.currentUser;
+
+    if (user == null) {
+      throw Exception('User not logged in');
     }
+    final uid = user.uid;
 
-    final uid = auth.currentUser!.uid;
-
-    _box = await Hive.openBox<CartProduct>('cart_$uid');
-
-    return _box!;
+    return await Hive.openBox<CartProduct>('cart_$uid');
   }
 
   @override
   Future<void> addToCart(CartProduct product) async {
-    final box = await _getBox();
+    final box = await _openBox();
 
     await box.put(product.product.id, product);
   }
 
   @override
   Future<void> removeFromCart(int productId) async {
-    final box = await _getBox();
+    final box = await _openBox();
 
     await box.delete(productId);
   }
 
   @override
   Future<void> increaseQuantity(int productId) async {
-    final box = await _getBox();
+    final box = await _openBox();
 
     final product = box.get(productId);
     if (product!.quantity < product.product.stock!) {
@@ -50,7 +60,7 @@ class CartRepoImplementation implements CartRepo {
 
   @override
   Future<void> decreaseQuantity(int productId) async {
-    final box = await _getBox();
+    final box = await _openBox();
 
     final product = box.get(productId);
     if (product!.quantity > 1) {
@@ -61,14 +71,14 @@ class CartRepoImplementation implements CartRepo {
 
   @override
   Future<void> clearCart() async {
-    final box = await _getBox();
+    final box = await _openBox();
 
     await box.clear();
   }
 
   @override
   Future<List<CartProduct>> fetchCartItems() async {
-    final box = await _getBox();
+    final box = await _openBox();
 
     return box.values.toList();
   }
