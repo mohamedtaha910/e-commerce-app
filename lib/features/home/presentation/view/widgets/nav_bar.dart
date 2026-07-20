@@ -16,7 +16,7 @@ class LiquidGlassNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 14,
+      bottom: 12,
       left: 0,
       right: 0,
       child: SafeArea(
@@ -69,7 +69,7 @@ class _GlassNavBar extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
         child: Container(
           height: 62,
           decoration: BoxDecoration(
@@ -79,9 +79,9 @@ class _GlassNavBar extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Colors.grey.withOpacity(0.20),
-                Colors.grey.withOpacity(0.15),
-                Colors.grey.withOpacity(0.20),
+                Colors.grey.withOpacity(0.18),
+                Colors.grey.withOpacity(0.10),
+                Colors.grey.withOpacity(0.18),
               ],
               stops: const [0.0, 0.5, 1.0],
             ),

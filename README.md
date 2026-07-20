@@ -118,6 +118,10 @@ Each authenticated user has isolated local storage:
 | ---------------------------------------------------- | -------------------------------------------------------- |
 | ![Home](assets/screenshots/home.jpg)                 | ![Home](assets/screenshots/home3.jpg)                    |
 
+| Product details                                      | Product details 2                                        |
+| ---------------------------------------------------- | -------------------------------------------------------- |
+| ![Product details](assets/screenshots/product.jpg)   | ![Product details](assets/screenshots/product2.jpg)      |
+
 | Search                                               | search 2                                                 |
 | ---------------------------------------------------- | -------------------------------------------------------- |
 | ![Search](assets/screenshots/search1.jpg)            | ![search](assets/screenshots/search2.jpg)                |
@@ -145,6 +149,10 @@ Each authenticated user has isolated local storage:
 |   change password page                               | favourite page                                           |
 | ---------------------------------------------------- | -------------------------------------------------------- |
 | ![confirm](assets/screenshots/change_password.jpg)   | ![confirm ](assets/screenshots/fav.jpg)                  |
+
+|   Product details 3                                  | Product details 4                                        |
+| ---------------------------------------------------- | -------------------------------------------------------- | 
+| ![confirm](assets/screenshots/product3.jpg)          | ![confirm ](assets/screenshots/product4.jpg)             |
 
 
 
