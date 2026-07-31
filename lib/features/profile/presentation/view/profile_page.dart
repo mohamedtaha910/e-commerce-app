@@ -81,7 +81,7 @@ class ProfilePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                   // border: Border.all(color: Colors.grey.shade400, width: 0.1),
                   border: Border.all(
-                    color: Colors.grey.shade200.withAlpha(200),
+                    color: Colors.grey.shade300.withAlpha(90),
                     width: 0.4,
                   ),
                   boxShadow: [
@@ -99,7 +99,8 @@ class ProfilePage extends StatelessWidget {
                       textColor: Colors.black87,
                       icon: CupertinoIcons.creditcard_fill,
                       // iconColor: Colors.blueAccent,
-                      iconColor: Colors.deepPurpleAccent.shade700,
+                      // iconColor: Colors.deepPurpleAccent.shade700,
+                      iconColor: Colors.blueAccent,
                       circleColor: Colors.black.withAlpha(15),
                       arrowColor: Colors.grey.shade700,
                       onTap: () {
@@ -170,7 +171,7 @@ class ProfilePage extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: Colors.grey.shade200.withAlpha(200),
+                    color: Colors.grey.shade300.withAlpha(90),
                     width: 0.4,
                   ),
                   boxShadow: [
@@ -225,7 +226,7 @@ class ProfilePage extends StatelessWidget {
                       text: 'Logout',
                       textColor: Colors.redAccent,
                       icon: Icons.logout,
-                      iconColor: Colors.red.shade600,
+                      iconColor: Colors.red,
                       circleColor: Colors.redAccent.withAlpha(50),
                       arrowColor: Colors.redAccent,
                       onTap: () async {

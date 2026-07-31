@@ -71,7 +71,8 @@ class _GlassNavBar extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
         child: Container(
-          height: 62,
+          padding: EdgeInsets.all(3),
+          // height: 62,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
             // Liquid glass layers: white tint + gradient shimmer
@@ -140,7 +141,7 @@ class _GlassNavItem extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 14),
         decoration: isSelected
             ? BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
