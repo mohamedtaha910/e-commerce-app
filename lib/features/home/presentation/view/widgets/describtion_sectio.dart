@@ -19,13 +19,23 @@ class DescribtionSection extends StatelessWidget {
           'Describtion',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 10),
         Row(
           children: [
-            Icon(
-              Icons.store_mall_directory_rounded,
-              color: AppColors.secondaryColor,
-              size: 24,
+            Container(
+              padding: EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: AppColors.secondaryColor.withAlpha(80),
+                  width: 0.4,
+                )
+              ),
+              child: Icon(
+                Icons.store_mall_directory_rounded,
+                color: AppColors.secondaryColor,
+                size: 24,
+              ),
             ),
             const SizedBox(width: 4),
             Icon(Icons.chevron_right_rounded, color: Colors.black54, size: 18),
@@ -53,11 +63,15 @@ class DescribtionSection extends StatelessWidget {
         const SizedBox(height: 10),
         Text(
           describtion,
-          style: TextStyle(
+          style: TextStyle( 
+            // fontWeight: FontWeight.w100,
+            height: 1.63,
+            // wordSpacing: 1,
             color: Colors.black54,
             fontSize: 14,
-            fontWeight: FontWeight.w500,
+           
           ),
+          
         ),
       ],
     );

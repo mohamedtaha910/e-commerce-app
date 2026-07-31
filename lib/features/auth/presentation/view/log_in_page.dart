@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                                   onChanged: (value) {
                                     email = value;
                                   },
-                                  borderRadius: 40,
+                                  borderRadius: 100,
                                   obscureText: false,
                                   paddign: 0,
                                 ),
@@ -149,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                                   onChanged: (value) {
                                     password = value;
                                   },
-                                  borderRadius: 40,
+                                  borderRadius: 100,
                                   obscureText: true,
                                 ),
                                 SizedBox(height: 34),

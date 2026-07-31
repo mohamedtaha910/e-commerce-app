@@ -68,7 +68,8 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
             ),
           ),
 
-          fillColor: Colors.grey.withOpacity(0.1),
+          // fillColor: Colors.grey.withAlpha(20),
+          fillColor: Colors.grey.shade100,
           filled: true,
           label: Row(
             mainAxisSize: MainAxisSize.min,
@@ -86,16 +87,16 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
           //   borderSide: BorderSide.none,
           //   borderRadius: BorderRadius.circular(widget.borderRadius),
           // ),
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey, width: 0.8),
-            borderRadius: BorderRadius.circular(widget.borderRadius),
-          ),
+          // border: OutlineInputBorder(
+          //   borderSide: BorderSide(color: Colors.grey, width: 0.8),
+          //   borderRadius: BorderRadius.circular(widget.borderRadius),
+          // ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.primaryColor, width: 1),
+            borderSide: BorderSide(color: AppColors.primaryColor, width: 0.9),
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey, width: 0.8),
+            borderSide: BorderSide(color: Colors.grey.shade300, width: 0.8),
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
         ),

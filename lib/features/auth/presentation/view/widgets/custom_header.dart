@@ -100,7 +100,7 @@ class CustomHeader extends StatelessWidget {
     required this.icon,
     this.showBack = true,
     this.firstColor = AppColors.primaryColor,
-    this.secondColor = const Color.fromARGB(255, 253, 174, 119),
+    this.secondColor = const Color.fromARGB(255, 235, 166, 116),
   });
 
   final IconData icon;
