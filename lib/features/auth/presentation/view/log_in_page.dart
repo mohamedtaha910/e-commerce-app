@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                                   'Welcome back! Login to your account',
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.grey.withOpacity(0.65),
+                                    color: Colors.black38,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),

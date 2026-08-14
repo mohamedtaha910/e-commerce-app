@@ -100,7 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   'Create an account to get started',
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: Colors.grey.withOpacity(0.65),
+                                    color: Colors.black38,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -123,7 +123,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   onChanged: (value) {
                                     email = value;
                                   },
-                                  borderRadius: 50,
+                                  borderRadius: 100,
                                   obscureText: false,
                                 ),
                                 SizedBox(height: 16),
@@ -144,7 +144,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                     password = value;
                                   },
                                   height: 12,
-                                  borderRadius: 50,
+                                  borderRadius: 100,
                                   obscureText: true,
                                 ),
                                 SizedBox(height: 32),

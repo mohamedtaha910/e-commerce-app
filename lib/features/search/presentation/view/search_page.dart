@@ -17,42 +17,7 @@ class SearchPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        // appBar: AppBar(
-        //   toolbarHeight: 60,
-        //   automaticallyImplyLeading: false,
-        //   backgroundColor: Colors.transparent,
-        //   surfaceTintColor: Colors.transparent,.
-        //   title: Column(
-        //     children: [
-        //       SizedBox(height: 8),
-        //       Row(
-        //         children: [
-        //           isInHome
-        //               ? GestureDetector(
-        //                   onTap: () => Navigator.pop(context),
-        //                   child: Icon(
-        //                     Icons.arrow_back_ios_new_rounded,
-        //                     size: 20,
-        //                     color: Colors.black54,
-        //                   ),
-        //                 )
-        //               : SizedBox.shrink(),
-        //           SizedBox(width: 10),
-        //           Expanded(
-        //             child: CustomSearchTextFeild(
-        //               onChanged: (value) {
-        //                 BlocProvider.of<SearchProductsCubit>(
-        //                   context,
-        //                 ).searchProducts(query: value);
-        //               },
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //       // SizedBox(height: 8),
-        //     ],
-        //   ),
-        // ),
+        
         body: SafeArea(
           bottom: false,
           child: Stack(

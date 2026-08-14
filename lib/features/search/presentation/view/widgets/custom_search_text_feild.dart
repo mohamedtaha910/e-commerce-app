@@ -38,17 +38,14 @@ class CustomSearchTextFeild extends StatelessWidget {
         //   borderRadius: BorderRadius.circular(35),
         //   borderSide: BorderSide.none,
         // ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(35),
-          borderSide: BorderSide(color: Colors.black38, width: 0.2),
-        ),
+       
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(35),
-          borderSide: BorderSide(color: Colors.black38, width: 0.2),
+          borderSide: BorderSide(color: Colors.grey.shade300.withAlpha(250), width: 0.8),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(35),
-          borderSide: BorderSide(color: Colors.black54, width: 0.4),
+          borderSide: BorderSide(color: Colors.grey.shade400, width: 0.7),
         ),
       ),
     );

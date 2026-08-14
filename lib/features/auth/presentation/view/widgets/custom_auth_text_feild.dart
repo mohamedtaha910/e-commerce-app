@@ -74,11 +74,11 @@ class _AuthTextFeildState extends State<AuthTextFeild> {
           label: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(widget.icon, color: Colors.grey, size: 20),
+              Icon(widget.icon, color: Colors.black38, size: 20),
               SizedBox(width: 8),
               Text(
                 widget.hintText,
-                style: TextStyle(color: Colors.black45, fontSize: 14),
+                style: TextStyle(color: Colors.black38, fontSize: 13.5),
               ),
             ],
           ),

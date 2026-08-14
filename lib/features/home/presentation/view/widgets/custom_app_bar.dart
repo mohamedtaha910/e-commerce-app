@@ -13,19 +13,20 @@ class CustomAppBar extends StatelessWidget {
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(3),
           decoration: BoxDecoration(
             // color: Colors.grey.shade50,
             color: Colors.grey.shade200,
             shape: BoxShape.circle,
             // borderRadius: BorderRadius.circular(25),
-            // border: Border.all(color: Colors.grey.shade400 , width: 0.6),  
+            // border: Border.all(color: Colors.grey.shade400 , width: 0.6),
           ),
-          child: SvgPicture.asset(
-            'assets/icons/logo.svg',
-            color: AppColors.primaryColor,
-            height: 20,
-          ),
+          child: Image.asset('assets/icons/shopping-bag (1).png', height: 34),
+          // SvgPicture.asset(
+          //   'assets/icons/logo.svg',
+          //   color: AppColors.primaryColor,
+          //   height: 20,
+          // ),
         ),
         const SizedBox(width: 10),
         Column(

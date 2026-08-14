@@ -23,16 +23,26 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: DetailsAppBar(),
-        // bottom: PreferredSize(
-        //   preferredSize: const Size.fromHeight(1),
-        //   child: Container(height: 0.8, color: Colors.grey.shade200),
-        // ),
+      // extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+            child: AppBar(
+              backgroundColor: Colors.transparent,
+              surfaceTintColor: Colors.transparent,
+              elevation: 0,
+              automaticallyImplyLeading: false,
+              title: DetailsAppBar(),
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(1),
+                child: Container(height: 0.9, color: Colors.grey.shade200),
+              ),
+            ),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -42,7 +52,9 @@ class ProductDetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // const SizedBox(height: 110),
               const SizedBox(height: 24),
+
               CustomProductImage(product: product),
               const SizedBox(height: 24),
               ProductMainInfo(
