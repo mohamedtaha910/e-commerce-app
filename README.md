@@ -150,9 +150,9 @@ Each authenticated user has isolated local storage:
 | ---------------------------------------------------- | -------------------------------------------------------- |
 | ![confirm](assets/screenshots/confirmation.jpg)      | ![confirm ](assets/screenshots/confirmation2.jpg)        |
 
-|   change password page                               | favourite page                                           |
+|   change password page                               | Profile 2                                                |
 | ---------------------------------------------------- | -------------------------------------------------------- |
-| ![confirm](assets/screenshots/change_password.jpg)   | ![confirm ](assets/screenshots/fav.jpg)                  |
+| ![confirm](assets/screenshots/change_password.jpg)   | ![Profile ](assets/screenshots/profile2.jpg)             |
 
 
 
