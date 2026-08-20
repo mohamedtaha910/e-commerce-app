@@ -13,7 +13,7 @@ class CustomAppBar extends StatelessWidget {
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          padding: const EdgeInsets.all(3),
+          padding: const EdgeInsets.all(3.5),
           decoration: BoxDecoration(
             // color: Colors.grey.shade50,
             color: Colors.grey.shade200,
@@ -21,7 +21,7 @@ class CustomAppBar extends StatelessWidget {
             // borderRadius: BorderRadius.circular(25),
             // border: Border.all(color: Colors.grey.shade400 , width: 0.6),
           ),
-          child: Image.asset('assets/icons/shopping-bag (1).png', height: 34),
+          child: Image.asset('assets/icons/shopping-bag (1).png', height: 33),
           // SvgPicture.asset(
           //   'assets/icons/logo.svg',
           //   color: AppColors.primaryColor,

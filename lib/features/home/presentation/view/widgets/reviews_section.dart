@@ -26,8 +26,12 @@ class ReviewsSection extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               decoration: BoxDecoration(
-                color: Colors.amber.withAlpha(45),
+                color: Colors.amber.withAlpha(50),
                 borderRadius: BorderRadius.circular(35),
+                border: Border.all(
+                  color: Colors.amber.withAlpha(25),
+                  width: 0.8,
+                ),
               ),
               child: Row(
                 children: [
@@ -46,7 +50,9 @@ class ReviewsSection extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(height: 16),
         ListView.separated(
+          padding: EdgeInsets.all(0),
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {

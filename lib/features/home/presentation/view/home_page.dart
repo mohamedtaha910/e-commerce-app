@@ -68,8 +68,7 @@ class _HomePageState extends State<HomePage> {
                   colors: [
                     Colors.white,
                     Colors.white.withAlpha(30),
-                    // Colors.white.withAlpha(10),
-
+                
                     // Colors.transparent
                   ],
                 ),
@@ -86,104 +85,6 @@ class _HomePageState extends State<HomePage> {
             },
           ),
 
-          // Positioned(
-          //   bottom: 20,
-          //   left: 0,
-          //   right: 0,
-          //   child: SafeArea(
-          //     child: Padding(
-          //       // padding: const EdgeInsets.symmetric(horizontal: 38),
-          //       padding: const EdgeInsets.symmetric(horizontal: 30),
-          //       child: ClipRRect(
-          //         borderRadius: BorderRadius.circular(50),
-
-          //         child: NavigationBar(
-          //           labelPadding: const EdgeInsets.all(0),
-          //           height: 56,
-
-          //           labelBehavior:
-          //               NavigationDestinationLabelBehavior.alwaysHide,
-          //           animationDuration: Duration(milliseconds: 200),
-          //           indicatorColor: AppColors.primaryColor.withAlpha(60),
-
-          //           backgroundColor: const Color.fromARGB(255, 237, 234, 233),
-          //           // backgroundColor: Colors.red.withAlpha(250),
-          //           onDestinationSelected: (index) {
-          //             setState(() {
-          //               currentIndex = index;
-          //             });
-          //           },
-          //           selectedIndex: currentIndex,
-          //           destinations: [
-          //             NavigationDestination(
-          //               icon: SvgPicture.asset(
-          //                 'assets/icons/Home.svg',
-          //                 colorFilter: ColorFilter.mode(
-          //                   Colors.black54,
-          //                   BlendMode.srcIn,
-          //                 ),
-          //               ),
-          //               selectedIcon: SvgPicture.asset(
-          //                 'assets/icons/home_selected.svg',
-          //                 colorFilter: ColorFilter.mode(
-          //                   AppColors.primaryColor,
-          //                   BlendMode.srcIn,
-          //                 ),
-          //               ),
-          //               label: 'Home',
-          //             ),
-          //             NavigationDestination(
-          //               icon: SvgPicture.asset(
-          //                 'assets/icons/search.svg',
-          //                 colorFilter: ColorFilter.mode(
-          //                   Colors.black54,
-          //                   BlendMode.srcIn,
-          //                 ),
-          //               ),
-          //               selectedIcon: SvgPicture.asset(
-          //                 'assets/icons/search.svg',
-          //                 colorFilter: ColorFilter.mode(
-          //                   AppColors.primaryColor,
-          //                   BlendMode.srcIn,
-          //                 ),
-          //               ),
-          //               label: 'Search',
-          //             ),
-          //             NavigationDestination(
-          //               icon: SvgPicture.asset(
-          //                 'assets/icons/heart.svg',
-          //                 height: 24,
-          //               ),
-          //               selectedIcon: Icon(
-          //                 Icons.favorite,
-          //                 color: AppColors.primaryColor,
-          //               ),
-          //               label: 'Favourites',
-          //             ),
-
-          //             NavigationDestination(
-          //               icon: SvgPicture.asset(
-          //                 'assets/icons/Profile.svg',
-          //                 colorFilter: ColorFilter.mode(
-          //                   Colors.black54,
-          //                   BlendMode.srcIn,
-          //                 ),
-          //               ),
-          //               selectedIcon: SvgPicture.asset(
-          //                 'assets/icons/Profile_selected.svg',
-          //                 colorFilter: ColorFilter.mode(
-          //                   AppColors.primaryColor,
-          //                   BlendMode.srcIn,
-          //                 ),
-          //               ),
-          //               label: 'Profile',
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );

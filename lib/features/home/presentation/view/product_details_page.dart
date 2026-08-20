@@ -23,13 +23,13 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, kToolbarHeight),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(0),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+            filter: ImageFilter.blur(sigmaX: 30, sigmaY: 15),
             child: AppBar(
               backgroundColor: Colors.transparent,
               surfaceTintColor: Colors.transparent,
@@ -52,9 +52,9 @@ class ProductDetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // const SizedBox(height: 110),
-              const SizedBox(height: 24),
+              const SizedBox(height: 110),
 
+              // const SizedBox(height: 24),
               CustomProductImage(product: product),
               const SizedBox(height: 24),
               ProductMainInfo(

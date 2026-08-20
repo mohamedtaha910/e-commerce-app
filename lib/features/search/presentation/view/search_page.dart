@@ -17,7 +17,6 @@ class SearchPage extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        
         body: SafeArea(
           bottom: false,
           child: Stack(

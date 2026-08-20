@@ -36,6 +36,7 @@ class ProductInfo extends StatelessWidget {
       ),
     ];
     return GridView.builder(
+      padding: EdgeInsets.all(0),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

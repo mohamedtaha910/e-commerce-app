@@ -80,7 +80,7 @@ class _GlassNavBar extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Colors.grey.shade300.withOpacity(0.30),
+                Colors.grey.shade300.withOpacity(0.38),
                 Colors.grey.shade300.withOpacity(0.20),
                 Colors.grey.shade300.withOpacity(0.18),
               ],

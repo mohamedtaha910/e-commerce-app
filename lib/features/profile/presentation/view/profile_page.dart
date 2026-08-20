@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.backgroundColor2,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -77,20 +77,20 @@ class ProfilePage extends StatelessWidget {
                 ),
                 // margin: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.grey.shade50,
                   borderRadius: BorderRadius.circular(16),
                   // border: Border.all(color: Colors.grey.shade400, width: 0.1),
                   border: Border.all(
-                    color: Colors.grey.shade300.withAlpha(90),
-                    width: 0.4,
+                    color: Colors.grey.shade400.withAlpha(90),
+                    width: 0.6,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      offset: Offset(0, 2),
-                      blurRadius: 2,
-                    ),
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.black12,
+                  //     offset: Offset(0, 2),
+                  //     blurRadius: 2,
+                  //   ),
+                  // ],
                 ),
                 child: Column(
                   children: [
@@ -110,8 +110,8 @@ class ProfilePage extends StatelessWidget {
                       },
                     ),
                     HorizintalLine(
-                      color: Colors.black26,
-                      height: 0.7,
+                      color: Colors.grey.shade400.withAlpha(200),
+                      height: 1.0,
                       horizontalMargin: 36,
                       verticalMargin: 16,
                       borderRadius: 12,
@@ -130,8 +130,8 @@ class ProfilePage extends StatelessWidget {
                       },
                     ),
                     HorizintalLine(
-                      color: Colors.black26,
-                      height: 0.7,
+                      color: Colors.grey.shade400.withAlpha(200),
+                      height: 1.0,
                       horizontalMargin: 36,
                       verticalMargin: 16,
                       borderRadius: 12,
@@ -168,19 +168,20 @@ class ProfilePage extends StatelessWidget {
                   vertical: 16,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.grey.shade50,
                   borderRadius: BorderRadius.circular(16),
+                  // border: Border.all(color: Colors.grey.shade400, width: 0.1),
                   border: Border.all(
-                    color: Colors.grey.shade300.withAlpha(90),
-                    width: 0.4,
+                    color: Colors.grey.shade400.withAlpha(90),
+                    width: 0.6,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      offset: Offset(0, 2),
-                      blurRadius: 2,
-                    ),
-                  ],
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.black12,
+                  //     offset: Offset(0, 2),
+                  //     blurRadius: 2,
+                  //   ),
+                  // ],
                 ),
                 child: Column(
                   children: [
@@ -193,8 +194,8 @@ class ProfilePage extends StatelessWidget {
                       arrowColor: Colors.grey.shade700,
                     ),
                     HorizintalLine(
-                      color: Colors.black26,
-                      height: 0.7,
+                      color: Colors.grey.shade400.withAlpha(200),
+                      height: 1.0,
                       horizontalMargin: 36,
                       verticalMargin: 16,
                       borderRadius: 12,
@@ -215,8 +216,8 @@ class ProfilePage extends StatelessWidget {
                       },
                     ),
                     HorizintalLine(
-                      color: Colors.black26,
-                      height: 0.7,
+                      color: Colors.grey.shade400.withAlpha(200),
+                      height: 1.0,
                       horizontalMargin: 36,
                       verticalMargin: 16,
                       borderRadius: 12,

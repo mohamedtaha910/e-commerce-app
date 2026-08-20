@@ -49,21 +49,27 @@ class RatingInfo extends StatelessWidget {
         ),
         const Spacer(),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
           decoration: BoxDecoration(
             color: availabilityStatus == 'In Stock'
                 ? Colors.green.withAlpha(40)
-                : Colors.red.withAlpha(50),
-            borderRadius: BorderRadius.circular(35),
+                : Colors.red.withAlpha(40),
+            borderRadius: BorderRadius.circular(100),
+            border: Border.all(
+              color: availabilityStatus == 'In Stock'
+                  ? Colors.green.withAlpha(25)
+                  : Colors.red.withAlpha(25),
+              width: 0.4,
+            ),
           ),
           child: Text(
             availabilityStatus!,
             style: TextStyle(
               fontWeight: FontWeight.w500,
-              fontSize: 13,
+              fontSize: 12,
               color: availabilityStatus == 'In Stock'
                   ? const Color.fromARGB(255, 7, 75, 11)
-                  : Colors.pink.shade700,
+                  : Colors.pink.shade800,
             ),
           ),
         ),

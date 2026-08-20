@@ -116,7 +116,7 @@ Each authenticated user has isolated local storage:
 
 | Home page                                            | Home page 2                                              |
 | ---------------------------------------------------- | -------------------------------------------------------- |
-| ![Home](assets/screenshots/home.jpg)                 | ![Home](assets/screenshots/home3.jpg)                    |
+| ![Home](assets/screenshots/home.jpg)                 | ![Home](assets/screenshots/home2.jpg)                    |
 
 | Product details                                      | Product details 2                                        |
 | ---------------------------------------------------- | -------------------------------------------------------- |
@@ -125,6 +125,10 @@ Each authenticated user has isolated local storage:
 | Search                                               | search 2                                                 |
 | ---------------------------------------------------- | -------------------------------------------------------- |
 | ![Search](assets/screenshots/search1.jpg)            | ![search](assets/screenshots/search2.jpg)                |
+
+| Favourite                                            | Favourite                                                |
+| ---------------------------------------------------- | -------------------------------------------------------- |
+| ![fav](assets/screenshots/fav2.jpg)                  | ![fav](assets/screenshots/fav3.jpg)                      |
 
 | Profile                                              | Cart                                                     |
 | ---------------------------------------------------- | -------------------------------------------------------- |
@@ -149,10 +153,6 @@ Each authenticated user has isolated local storage:
 |   change password page                               | favourite page                                           |
 | ---------------------------------------------------- | -------------------------------------------------------- |
 | ![confirm](assets/screenshots/change_password.jpg)   | ![confirm ](assets/screenshots/fav.jpg)                  |
-
-|   Product details 3                                  | Product details 4                                        |
-| ---------------------------------------------------- | -------------------------------------------------------- | 
-| ![confirm](assets/screenshots/product3.jpg)          | ![confirm ](assets/screenshots/product4.jpg)             |
 
 
 
